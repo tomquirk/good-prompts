@@ -201,6 +201,18 @@ Source: [@tommymarshall](https://gist.github.com/tommymarshall/c8e25407aecd11157
 
 Related tweet: [https://x.com/tommyjmarshall/status/2091681150552989700](https://x.com/tommyjmarshall/status/2091681150552989700) (unverified)
 
+<a id="fix-happy-path-debt"></a>
+
+### Find and fix happy-path debt in your app
+
+An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.
+
+```text
+Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren't empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.
+```
+
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2120864199324889469) (verified)
+
 ## Performance
 
 <a id="select-database-fields"></a>
