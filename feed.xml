@@ -7,6 +7,45 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collection/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Plan logging that can replay what the user experienced</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#plan-replayable-logging</link>
+      <guid isPermaLink="false">urn:prompt-collection:plan-replayable-logging</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want a program to produce logs good enough to later analyze for broken behavior and user friction.&lt;/p&gt;&lt;pre&gt;help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2114772499686998221"&gt;@kunchenguid&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>logging</category>
+      <category>observability</category>
+      <category>self-improvement</category>
+      <category>debugging</category>
+    </item>
+    <item>
+      <title>Review your agent setup for guardrail gaps</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#review-agent-setup</link>
+      <guid isPermaLink="false">urn:prompt-collection:review-agent-setup</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.&lt;/p&gt;&lt;pre&gt;Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>agents</category>
+      <category>configuration</category>
+      <category>guardrails</category>
+      <category>review</category>
+    </item>
+    <item>
+      <title>Check whether you load third-party JS that could be compromised</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#third-party-js-supply-chain-check</link>
+      <guid isPermaLink="false">urn:prompt-collection:third-party-js-supply-chain-check</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.&lt;/p&gt;&lt;pre&gt;Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
+
+Help me understand what the root cause of this issue is.
+Do we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/beyang/status/2122480180128350443"&gt;@beyang&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Security and system cleanup</category>
+      <category>security</category>
+      <category>supply-chain</category>
+      <category>javascript</category>
+      <category>incident-response</category>
+    </item>
+    <item>
       <title>Estimate what your Claude Code usage would cost on the API</title>
       <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#claude-code-api-cost-estimate</link>
       <guid isPermaLink="false">urn:prompt-collection:claude-code-api-cost-estimate</guid>
@@ -87,6 +126,32 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
       <category>usage</category>
       <category>logs</category>
       <category>report</category>
+    </item>
+    <item>
+      <title>Find and fix happy-path debt in your app</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fix-happy-path-debt</link>
+      <guid isPermaLink="false">urn:prompt-collection:fix-happy-path-debt</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.&lt;/p&gt;&lt;pre&gt;Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren&amp;#x27;t empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2120864199324889469"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Design and experience</category>
+      <category>ux</category>
+      <category>polish</category>
+      <category>empty-states</category>
+      <category>error-states</category>
+      <category>responsive</category>
+    </item>
+    <item>
+      <title>Fresh-eyes due-diligence audit of a live domain</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fresh-eyes-domain-audit</link>
+      <guid isPermaLink="false">urn:prompt-collection:fresh-eyes-domain-audit</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.&lt;/p&gt;&lt;pre&gt;Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/illyism/status/2121301002490192378"&gt;@illyism&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Codebase audits and simplification</category>
+      <category>web</category>
+      <category>dns</category>
+      <category>legal-links</category>
+      <category>due-diligence</category>
+      <category>external-audit</category>
     </item>
     <item>
       <title>Browser testing across widths, touch, and slow networks</title>

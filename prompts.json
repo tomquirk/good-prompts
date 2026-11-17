@@ -154,7 +154,7 @@
       "use_when": "Async behavior, duplicated state, or refactors need semantic analysis.",
       "scope": "project",
       "added_on": "2026-11-12",
-      "prompt": "Recover my program's minimal semantic model.\n\n1. State: every value that changes what the user sees\n2. Transitions: what commutes, what's idempotent, what's order-dependent\n3. Dependencies: what must be true before each effect fires\n\nThen find:\n\u2192 nondeterminism in awaits, retries and event order\n\u2192 invariants enforced by hope\n\u2192 one fact stored in two places, drifting\n\u2192 work that never reaches the screen\n\nLast, split my refactors into \"provably equivalent\" and \"trust me\". For each \"trust me\", give the smallest input that breaks it.",
+      "prompt": "Recover my program's minimal semantic model.\n\n1. State: every value that changes what the user sees\n2. Transitions: what commutes, what's idempotent, what's order-dependent\n3. Dependencies: what must be true before each effect fires\n\nThen find:\n→ nondeterminism in awaits, retries and event order\n→ invariants enforced by hope\n→ one fact stored in two places, drifting\n→ work that never reaches the screen\n\nLast, split my refactors into \"provably equivalent\" and \"trust me\". For each \"trust me\", give the smallest input that breaks it.",
       "source": {
         "url": "https://x.com/infinterenders/status/2119676620680339490",
         "author": "@infinterenders",
@@ -174,7 +174,7 @@
       "use_when": "Reachable invalid states need evidence, documentation, and regression-tested fixes.",
       "scope": "project",
       "added_on": "2026-11-12",
-      "prompt": "Find the app\u2019s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.",
+      "prompt": "Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.",
       "source": {
         "url": "https://x.com/trevin/status/2118690987153186845",
         "author": "@trevin",
@@ -312,7 +312,7 @@
       "use_when": "A project needs a security audit and evidence of remediation; the prompt references an external Cloudflare skill.",
       "scope": "project",
       "added_on": "2026-11-12",
-      "prompt": "Install Cloudflare\u2019s security-audit skill globally and invoke its full audit workflow on this project.\n\ngithub.com/cloudflare/sec \u2014 https://t.co/PoZZnDNiPy\n\nPlease implement this skill for my project repos or globally in my projects.\n\nIndependently verify findings, implement targeted fixes for confirmed vulnerabilities, and run relevant tests. Preserve unrelated changes.\n\nBuild an interactive security dashboard covering frontend, APIs, authentication, databases, infrastructure and dependencies. Show:\n- Findings by severity and affected stack layer.\n- Open, fixed and verified remediation status.\n- Security posture before and after fixes.\n- Source evidence, code changes and test results.\n- Audit coverage, unverified areas and remaining priorities.\n\nBase posture assessments on evidence and clearly label coverage gaps.",
+      "prompt": "Install Cloudflare’s security-audit skill globally and invoke its full audit workflow on this project.\n\ngithub.com/cloudflare/sec — https://t.co/PoZZnDNiPy\n\nPlease implement this skill for my project repos or globally in my projects.\n\nIndependently verify findings, implement targeted fixes for confirmed vulnerabilities, and run relevant tests. Preserve unrelated changes.\n\nBuild an interactive security dashboard covering frontend, APIs, authentication, databases, infrastructure and dependencies. Show:\n- Findings by severity and affected stack layer.\n- Open, fixed and verified remediation status.\n- Security posture before and after fixes.\n- Source evidence, code changes and test results.\n- Audit coverage, unverified areas and remaining priorities.\n\nBase posture assessments on evidence and clearly label coverage gaps.",
       "source": {
         "url": "https://x.com/thejoegardiner/status/2118119394517950725",
         "author": "@thejoegardiner",
@@ -460,6 +460,108 @@
       }
     },
     {
+      "id": "fix-happy-path-debt",
+      "title": "Find and fix happy-path debt in your app",
+      "category": "Design and experience",
+      "tags": [
+        "ux",
+        "polish",
+        "empty-states",
+        "error-states",
+        "responsive"
+      ],
+      "use_when": "An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.",
+      "scope": "project",
+      "added_on": "2026-11-15",
+      "prompt": "Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren't empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.",
+      "source": {
+        "url": "https://x.com/Voxyz_ai/status/2120864199324889469",
+        "author": "@Voxyz_ai",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "fresh-eyes-domain-audit",
+      "title": "Fresh-eyes due-diligence audit of a live domain",
+      "category": "Codebase audits and simplification",
+      "tags": [
+        "web",
+        "dns",
+        "legal-links",
+        "due-diligence",
+        "external-audit"
+      ],
+      "use_when": "The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.",
+      "scope": "project",
+      "added_on": "2026-11-14",
+      "prompt": "Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.",
+      "source": {
+        "url": "https://x.com/illyism/status/2121301002490192378",
+        "author": "@illyism",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "third-party-js-supply-chain-check",
+      "title": "Check whether you load third-party JS that could be compromised",
+      "category": "Security and system cleanup",
+      "tags": [
+        "security",
+        "supply-chain",
+        "javascript",
+        "incident-response"
+      ],
+      "use_when": "A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.",
+      "scope": "project",
+      "added_on": "2026-11-17",
+      "prompt": "Read this incident: https://x.com/Scott_Helme/status/2122422157959471456\n\nHelp me understand what the root cause of this issue is.\nDo we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?",
+      "source": {
+        "url": "https://x.com/beyang/status/2122480180128350443",
+        "author": "@beyang",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "plan-replayable-logging",
+      "title": "Plan logging that can replay what the user experienced",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "logging",
+        "observability",
+        "self-improvement",
+        "debugging"
+      ],
+      "use_when": "You want a program to produce logs good enough to later analyze for broken behavior and user friction.",
+      "scope": "project",
+      "added_on": "2026-11-17",
+      "prompt": "help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes",
+      "source": {
+        "url": "https://x.com/kunchenguid/status/2114772499686998221",
+        "author": "@kunchenguid",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "review-agent-setup",
+      "title": "Review your agent setup for guardrail gaps",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "agents",
+        "configuration",
+        "guardrails",
+        "review"
+      ],
+      "use_when": "You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.",
+      "scope": "machine",
+      "added_on": "2026-11-17",
+      "prompt": "Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.",
+      "source": {
+        "url": "https://x.com/chenchengpro/status/2120040764243894547",
+        "author": "@chenchengpro",
+        "status": "verified"
+      }
+    },
+    {
       "id": "claude-code-api-cost-estimate",
       "title": "Estimate what your Claude Code usage would cost on the API",
       "category": "Agent workflows and retrospectives",
@@ -473,7 +575,7 @@
       "use_when": "The user wants a local, offline-safe report of what their Claude Code sessions over a time frame would have cost at Anthropic's API list prices, with an HTML summary card.",
       "scope": "machine",
       "added_on": "2026-11-15",
-      "prompt": "Time frame: 30d\n\nWork out what my Claude Code sessions in this time frame would cost if I had paid for\nthem on the Claude API at Anthropic's list prices. Use only Python's standard library\nand do it in one script you write to a temporary folder. Do not send my logs or any\nresults anywhere.\n\n1. **Prices.** Fetch `https://platform.claude.com/docs/en/about-claude/pricing.md`\n   (the public pricing page, as Markdown). From the \"Model pricing\" table take, per\n   model, the USD per million tokens for: base input, 5-minute cache write, 1-hour\n   cache write, cache read and output. From the \"Fast mode pricing\" section take the\n   fast-mode input and output price per model; fast-mode cache prices are the base\n   cache prices scaled by fast input divided by base input. Take the web search price\n   per 1,000 searches. Never guess or hard-code a rate. If the page cannot be fetched,\n   stop and tell me.\n\n2. **Usage.** Read every `*.jsonl` file under `~/.claude/projects/`, recursively, so\n   subagent logs under `<project>/<session>/subagents/` count too and belong to their\n   parent project. Each line is JSON. Keep lines whose `message.usage` and\n   `message.model` are set, skipping the model `<synthetic>`. A reply is written as\n   several lines that stream, so its usage is only final on the last one: treat each\n   `(message.id, requestId)` pair as one reply and keep each usage field's largest\n   value across its lines, not the first line's. Use the first line's `timestamp`\n   (ISO, UTC) and keep only replies inside the time frame, counted back from now\n   (`all` means everything; a month is 30.44 days).\n\n   Claude Code deletes logs after its cleanup period (30 days by default). If the\n   time frame starts before the oldest log, estimate the missing days from\n   `~/.claude/stats-cache.json` (what /stats shows): `dailyModelTokens` has tokens\n   per day per model, `modelUsage` has each model's split by token type (use it to\n   split a day's tokens), `dailyActivity` has sessions per day. /stats adds up every\n   log line, so it counts each reply several times. Measure that overcount on the\n   full days that have both logs and cache (cache tokens divided by log tokens, all\n   types summed) and divide the missing days by it. Never hard-code the ratio. Price\n   the estimate's cache writes at the 5-minute rate, so it is a lower bound. If the\n   file is missing or no day has both, skip the estimate and say why.\n\n3. **Price each reply** at the rate of the model that wrote it. Map the model id to\n   the pricing table by dropping a trailing `[...]`, a leading `claude-`, any\n   `anthropic.`/`us.anthropic.` prefix and a date suffix (`claude-haiku-4-5-20251001`\n   is Haiku 4.5; old ids like `claude-3-5-haiku` are Haiku 3.5). From `usage`:\n   - `input_tokens` at the input rate, `output_tokens` at the output rate,\n     `cache_read_input_tokens` at the cache read rate;\n   - `cache_creation.ephemeral_5m_input_tokens` and `ephemeral_1h_input_tokens` at the\n     5-minute and 1-hour write rates; if both are missing, put all of\n     `cache_creation_input_tokens` at the 5-minute rate;\n   - `speed == \"fast\"` means fast-mode rates;\n   - `server_tool_use.web_search_requests` at the web search price.\n   A model with no list price is left out of the total and listed as unpriced.\n\n4. **Tell me:** the total API cost for the time frame, the number of sessions\n   (distinct `sessionId`) and replies, the split by cache reads, cache writes, output,\n   fresh input and web searches (tokens and dollars each), cost by model, the top six\n   projects (the project is the log's folder name under `~/.claude/projects/`), any\n   unpriced models, and the date the prices were fetched. If part of it is the\n   estimate, say how much, for which dates, and the overcount you divided by;\n   projects and per-day cover the logged days only.\n\n5. **Card.** Write the same figures as one self-contained HTML page to\n   `~/api-bill/api-bill-<timeframe>-<date>.html` and give me the path: the total in\n   large type, the itemised split as a receipt, bars for cost by model and by\n   project, a bar chart of cost per day, and a table of the prices used, and the\n   estimate (if any) marked as one. Start the page with `<!doctype html>`,\n   `<meta charset=\"utf-8\">` and a viewport meta tag, so symbols such as \"\u00b7\" and \"\u00d7\"\n   show correctly when opened locally. Make it readable on a phone and in dark mode. If you can publish Artifacts in this\n   session, offer to publish the card as a private page. It shows my project names,\n   so never make it public.\n\nDo not compare with my subscription price. This is what the same work would cost on\nthe API, nothing more.",
+      "prompt": "Time frame: 30d\n\nWork out what my Claude Code sessions in this time frame would cost if I had paid for\nthem on the Claude API at Anthropic's list prices. Use only Python's standard library\nand do it in one script you write to a temporary folder. Do not send my logs or any\nresults anywhere.\n\n1. **Prices.** Fetch `https://platform.claude.com/docs/en/about-claude/pricing.md`\n   (the public pricing page, as Markdown). From the \"Model pricing\" table take, per\n   model, the USD per million tokens for: base input, 5-minute cache write, 1-hour\n   cache write, cache read and output. From the \"Fast mode pricing\" section take the\n   fast-mode input and output price per model; fast-mode cache prices are the base\n   cache prices scaled by fast input divided by base input. Take the web search price\n   per 1,000 searches. Never guess or hard-code a rate. If the page cannot be fetched,\n   stop and tell me.\n\n2. **Usage.** Read every `*.jsonl` file under `~/.claude/projects/`, recursively, so\n   subagent logs under `<project>/<session>/subagents/` count too and belong to their\n   parent project. Each line is JSON. Keep lines whose `message.usage` and\n   `message.model` are set, skipping the model `<synthetic>`. A reply is written as\n   several lines that stream, so its usage is only final on the last one: treat each\n   `(message.id, requestId)` pair as one reply and keep each usage field's largest\n   value across its lines, not the first line's. Use the first line's `timestamp`\n   (ISO, UTC) and keep only replies inside the time frame, counted back from now\n   (`all` means everything; a month is 30.44 days).\n\n   Claude Code deletes logs after its cleanup period (30 days by default). If the\n   time frame starts before the oldest log, estimate the missing days from\n   `~/.claude/stats-cache.json` (what /stats shows): `dailyModelTokens` has tokens\n   per day per model, `modelUsage` has each model's split by token type (use it to\n   split a day's tokens), `dailyActivity` has sessions per day. /stats adds up every\n   log line, so it counts each reply several times. Measure that overcount on the\n   full days that have both logs and cache (cache tokens divided by log tokens, all\n   types summed) and divide the missing days by it. Never hard-code the ratio. Price\n   the estimate's cache writes at the 5-minute rate, so it is a lower bound. If the\n   file is missing or no day has both, skip the estimate and say why.\n\n3. **Price each reply** at the rate of the model that wrote it. Map the model id to\n   the pricing table by dropping a trailing `[...]`, a leading `claude-`, any\n   `anthropic.`/`us.anthropic.` prefix and a date suffix (`claude-haiku-4-5-20251001`\n   is Haiku 4.5; old ids like `claude-3-5-haiku` are Haiku 3.5). From `usage`:\n   - `input_tokens` at the input rate, `output_tokens` at the output rate,\n     `cache_read_input_tokens` at the cache read rate;\n   - `cache_creation.ephemeral_5m_input_tokens` and `ephemeral_1h_input_tokens` at the\n     5-minute and 1-hour write rates; if both are missing, put all of\n     `cache_creation_input_tokens` at the 5-minute rate;\n   - `speed == \"fast\"` means fast-mode rates;\n   - `server_tool_use.web_search_requests` at the web search price.\n   A model with no list price is left out of the total and listed as unpriced.\n\n4. **Tell me:** the total API cost for the time frame, the number of sessions\n   (distinct `sessionId`) and replies, the split by cache reads, cache writes, output,\n   fresh input and web searches (tokens and dollars each), cost by model, the top six\n   projects (the project is the log's folder name under `~/.claude/projects/`), any\n   unpriced models, and the date the prices were fetched. If part of it is the\n   estimate, say how much, for which dates, and the overcount you divided by;\n   projects and per-day cover the logged days only.\n\n5. **Card.** Write the same figures as one self-contained HTML page to\n   `~/api-bill/api-bill-<timeframe>-<date>.html` and give me the path: the total in\n   large type, the itemised split as a receipt, bars for cost by model and by\n   project, a bar chart of cost per day, and a table of the prices used, and the\n   estimate (if any) marked as one. Start the page with `<!doctype html>`,\n   `<meta charset=\"utf-8\">` and a viewport meta tag, so symbols such as \"·\" and \"×\"\n   show correctly when opened locally. Make it readable on a phone and in dark mode. If you can publish Artifacts in this\n   session, offer to publish the card as a private page. It shows my project names,\n   so never make it public.\n\nDo not compare with my subscription price. This is what the same work would cost on\nthe API, nothing more.",
       "source": {
         "url": "https://x.com/ZazaGDev/status/2121268144471695462",
         "author": "@ZazaGDev",

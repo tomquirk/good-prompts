@@ -105,6 +105,18 @@ Map this codebase for me. Show the folder structure, what each main file does, h
 
 Source: [@mdjunaidap](https://x.com/mdjunaidap/status/2119844974019973308) (unverified)
 
+<a id="fresh-eyes-domain-audit"></a>
+
+### Fresh-eyes due-diligence audit of a live domain
+
+The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.
+
+```text
+Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.
+```
+
+Source: [@illyism](https://x.com/illyism/status/2121301002490192378) (verified)
+
 ## State machines and semantics
 
 <a id="find-state-machines"></a>
@@ -200,6 +212,18 @@ Editorial summary; follow the source link for the full prompt.
 Source: [@tommymarshall](https://gist.github.com/tommymarshall/c8e25407aecd111573766c9f1456a412) (verified)
 
 Related tweet: [https://x.com/tommyjmarshall/status/2091681150552989700](https://x.com/tommyjmarshall/status/2091681150552989700) (unverified)
+
+<a id="fix-happy-path-debt"></a>
+
+### Find and fix happy-path debt in your app
+
+An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.
+
+```text
+Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren't empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.
+```
+
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2120864199324889469) (verified)
 
 ## Performance
 
@@ -316,6 +340,21 @@ Audit my Mac for AI agent transcripts (Claude, Codex, Cursor, Grok), SQLite sess
 
 Source: [@illyism](https://x.com/illyism/status/2117103631564689691) (verified)
 
+<a id="third-party-js-supply-chain-check"></a>
+
+### Check whether you load third-party JS that could be compromised
+
+A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.
+
+```text
+Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
+
+Help me understand what the root cause of this issue is.
+Do we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?
+```
+
+Source: [@beyang](https://x.com/beyang/status/2122480180128350443) (verified)
+
 ## Agent workflows and retrospectives
 
 <a id="weekly-session-review"></a>
@@ -329,6 +368,30 @@ look at last weeks sessions and suggest improvements
 ```
 
 Source: [@nateberkopec](https://x.com/nateberkopec/status/2114842635743674790) (unverified)
+
+<a id="plan-replayable-logging"></a>
+
+### Plan logging that can replay what the user experienced
+
+You want a program to produce logs good enough to later analyze for broken behavior and user friction.
+
+```text
+help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes
+```
+
+Source: [@kunchenguid](https://x.com/kunchenguid/status/2114772499686998221) (verified)
+
+<a id="review-agent-setup"></a>
+
+### Review your agent setup for guardrail gaps
+
+You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.
+
+```text
+Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.
+```
+
+Source: [@chenchengpro](https://x.com/chenchengpro/status/2120040764243894547) (verified)
 
 <a id="claude-code-api-cost-estimate"></a>
 

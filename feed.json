@@ -7,6 +7,108 @@
   "language": "en",
   "items": [
     {
+      "id": "urn:prompt-collection:plan-replayable-logging",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#plan-replayable-logging",
+      "title": "Plan logging that can replay what the user experienced",
+      "content_text": "help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes",
+      "summary": "You want a program to produce logs good enough to later analyze for broken behavior and user friction.",
+      "date_published": "2026-11-17T00:00:00+00:00",
+      "tags": [
+        "Agent workflows and retrospectives",
+        "logging",
+        "observability",
+        "self-improvement",
+        "debugging"
+      ],
+      "_prompt": {
+        "id": "plan-replayable-logging",
+        "category": "Agent workflows and retrospectives",
+        "use_when": "You want a program to produce logs good enough to later analyze for broken behavior and user friction.",
+        "scope": "project",
+        "added_on": "2026-11-17",
+        "source": {
+          "url": "https://x.com/kunchenguid/status/2114772499686998221",
+          "author": "@kunchenguid",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/kunchenguid/status/2114772499686998221",
+      "authors": [
+        {
+          "name": "@kunchenguid"
+        }
+      ]
+    },
+    {
+      "id": "urn:prompt-collection:review-agent-setup",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#review-agent-setup",
+      "title": "Review your agent setup for guardrail gaps",
+      "content_text": "Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.",
+      "summary": "You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.",
+      "date_published": "2026-11-17T00:00:00+00:00",
+      "tags": [
+        "Agent workflows and retrospectives",
+        "agents",
+        "configuration",
+        "guardrails",
+        "review"
+      ],
+      "_prompt": {
+        "id": "review-agent-setup",
+        "category": "Agent workflows and retrospectives",
+        "use_when": "You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.",
+        "scope": "machine",
+        "added_on": "2026-11-17",
+        "source": {
+          "url": "https://x.com/chenchengpro/status/2120040764243894547",
+          "author": "@chenchengpro",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/chenchengpro/status/2120040764243894547",
+      "authors": [
+        {
+          "name": "@chenchengpro"
+        }
+      ]
+    },
+    {
+      "id": "urn:prompt-collection:third-party-js-supply-chain-check",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#third-party-js-supply-chain-check",
+      "title": "Check whether you load third-party JS that could be compromised",
+      "content_text": "Read this incident: https://x.com/Scott_Helme/status/2122422157959471456\n\nHelp me understand what the root cause of this issue is.\nDo we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?",
+      "summary": "A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.",
+      "date_published": "2026-11-17T00:00:00+00:00",
+      "tags": [
+        "Security and system cleanup",
+        "security",
+        "supply-chain",
+        "javascript",
+        "incident-response"
+      ],
+      "_prompt": {
+        "id": "third-party-js-supply-chain-check",
+        "category": "Security and system cleanup",
+        "use_when": "A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.",
+        "scope": "project",
+        "added_on": "2026-11-17",
+        "source": {
+          "url": "https://x.com/beyang/status/2122480180128350443",
+          "author": "@beyang",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/beyang/status/2122480180128350443",
+      "authors": [
+        {
+          "name": "@beyang"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:claude-code-api-cost-estimate",
       "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#claude-code-api-cost-estimate",
       "title": "Estimate what your Claude Code usage would cost on the API",
@@ -45,6 +147,76 @@
       "authors": [
         {
           "name": "@ZazaGDev"
+        }
+      ]
+    },
+    {
+      "id": "urn:prompt-collection:fix-happy-path-debt",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fix-happy-path-debt",
+      "title": "Find and fix happy-path debt in your app",
+      "content_text": "Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren't empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.",
+      "summary": "An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.",
+      "date_published": "2026-11-15T00:00:00+00:00",
+      "tags": [
+        "Design and experience",
+        "ux",
+        "polish",
+        "empty-states",
+        "error-states",
+        "responsive"
+      ],
+      "_prompt": {
+        "id": "fix-happy-path-debt",
+        "category": "Design and experience",
+        "use_when": "An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.",
+        "scope": "project",
+        "added_on": "2026-11-15",
+        "source": {
+          "url": "https://x.com/Voxyz_ai/status/2120864199324889469",
+          "author": "@Voxyz_ai",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/Voxyz_ai/status/2120864199324889469",
+      "authors": [
+        {
+          "name": "@Voxyz_ai"
+        }
+      ]
+    },
+    {
+      "id": "urn:prompt-collection:fresh-eyes-domain-audit",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fresh-eyes-domain-audit",
+      "title": "Fresh-eyes due-diligence audit of a live domain",
+      "content_text": "Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.",
+      "summary": "The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.",
+      "date_published": "2026-11-14T00:00:00+00:00",
+      "tags": [
+        "Codebase audits and simplification",
+        "web",
+        "dns",
+        "legal-links",
+        "due-diligence",
+        "external-audit"
+      ],
+      "_prompt": {
+        "id": "fresh-eyes-domain-audit",
+        "category": "Codebase audits and simplification",
+        "use_when": "The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.",
+        "scope": "project",
+        "added_on": "2026-11-14",
+        "source": {
+          "url": "https://x.com/illyism/status/2121301002490192378",
+          "author": "@illyism",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/illyism/status/2121301002490192378",
+      "authors": [
+        {
+          "name": "@illyism"
         }
       ]
     },
