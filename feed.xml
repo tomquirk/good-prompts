@@ -7,6 +7,57 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collection/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deepen modules and simplify interfaces</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#deepen-modules-simplify-interfaces</link>
+      <guid isPermaLink="false">urn:prompt-collection:deepen-modules-simplify-interfaces</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.&lt;/p&gt;&lt;pre&gt;deepen modules and simplify interfaces&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_khrus/status/2118971805885239777"&gt;@_khrus&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Codebase audits and simplification</category>
+      <category>refactoring</category>
+      <category>abstraction</category>
+      <category>deduplication</category>
+      <category>simplification</category>
+    </item>
+    <item>
+      <title>Plan logging that can replay what the user experienced</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#plan-replayable-logging</link>
+      <guid isPermaLink="false">urn:prompt-collection:plan-replayable-logging</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want a program to produce logs good enough to later analyze for broken behavior and user friction.&lt;/p&gt;&lt;pre&gt;help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2114772499686998221"&gt;@kunchenguid&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>logging</category>
+      <category>observability</category>
+      <category>self-improvement</category>
+      <category>debugging</category>
+    </item>
+    <item>
+      <title>Review your agent setup for guardrail gaps</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#review-agent-setup</link>
+      <guid isPermaLink="false">urn:prompt-collection:review-agent-setup</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.&lt;/p&gt;&lt;pre&gt;Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>agents</category>
+      <category>configuration</category>
+      <category>guardrails</category>
+      <category>review</category>
+    </item>
+    <item>
+      <title>Check whether you load third-party JS that could be compromised</title>
+      <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#third-party-js-supply-chain-check</link>
+      <guid isPermaLink="false">urn:prompt-collection:third-party-js-supply-chain-check</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.&lt;/p&gt;&lt;pre&gt;Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
+
+Help me understand what the root cause of this issue is.
+Do we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/beyang/status/2122480180128350443"&gt;@beyang&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Security and system cleanup</category>
+      <category>security</category>
+      <category>supply-chain</category>
+      <category>javascript</category>
+      <category>incident-response</category>
+    </item>
+    <item>
       <title>Find and fix happy-path debt in your app</title>
       <link>https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fix-happy-path-debt</link>
       <guid isPermaLink="false">urn:prompt-collection:fix-happy-path-debt</guid>

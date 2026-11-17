@@ -500,6 +500,86 @@
         "author": "@illyism",
         "status": "verified"
       }
+    },
+    {
+      "id": "third-party-js-supply-chain-check",
+      "title": "Check whether you load third-party JS that could be compromised",
+      "category": "Security and system cleanup",
+      "tags": [
+        "security",
+        "supply-chain",
+        "javascript",
+        "incident-response"
+      ],
+      "use_when": "A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.",
+      "scope": "project",
+      "added_on": "2026-11-17",
+      "prompt": "Read this incident: https://x.com/Scott_Helme/status/2122422157959471456\n\nHelp me understand what the root cause of this issue is.\nDo we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?",
+      "source": {
+        "url": "https://x.com/beyang/status/2122480180128350443",
+        "author": "@beyang",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "deepen-modules-simplify-interfaces",
+      "title": "Deepen modules and simplify interfaces",
+      "category": "Codebase audits and simplification",
+      "tags": [
+        "refactoring",
+        "abstraction",
+        "deduplication",
+        "simplification"
+      ],
+      "use_when": "Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.",
+      "scope": "project",
+      "added_on": "2026-11-17",
+      "prompt": "deepen modules and simplify interfaces",
+      "source": {
+        "url": "https://x.com/_khrus/status/2118971805885239777",
+        "author": "@_khrus",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "plan-replayable-logging",
+      "title": "Plan logging that can replay what the user experienced",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "logging",
+        "observability",
+        "self-improvement",
+        "debugging"
+      ],
+      "use_when": "You want a program to produce logs good enough to later analyze for broken behavior and user friction.",
+      "scope": "project",
+      "added_on": "2026-11-17",
+      "prompt": "help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes",
+      "source": {
+        "url": "https://x.com/kunchenguid/status/2114772499686998221",
+        "author": "@kunchenguid",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "review-agent-setup",
+      "title": "Review your agent setup for guardrail gaps",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "agents",
+        "configuration",
+        "guardrails",
+        "review"
+      ],
+      "use_when": "You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.",
+      "scope": "machine",
+      "added_on": "2026-11-17",
+      "prompt": "Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.",
+      "source": {
+        "url": "https://x.com/chenchengpro/status/2120040764243894547",
+        "author": "@chenchengpro",
+        "status": "verified"
+      }
     }
   ]
 }

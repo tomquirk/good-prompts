@@ -117,6 +117,18 @@ Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS rec
 
 Source: [@illyism](https://x.com/illyism/status/2121301002490192378) (verified)
 
+<a id="deepen-modules-simplify-interfaces"></a>
+
+### Deepen modules and simplify interfaces
+
+Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.
+
+```text
+deepen modules and simplify interfaces
+```
+
+Source: [@_khrus](https://x.com/_khrus/status/2118971805885239777) (verified)
+
 ## State machines and semantics
 
 <a id="find-state-machines"></a>
@@ -340,6 +352,21 @@ Audit my Mac for AI agent transcripts (Claude, Codex, Cursor, Grok), SQLite sess
 
 Source: [@illyism](https://x.com/illyism/status/2117103631564689691) (verified)
 
+<a id="third-party-js-supply-chain-check"></a>
+
+### Check whether you load third-party JS that could be compromised
+
+A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.
+
+```text
+Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
+
+Help me understand what the root cause of this issue is.
+Do we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?
+```
+
+Source: [@beyang](https://x.com/beyang/status/2122480180128350443) (verified)
+
 ## Agent workflows and retrospectives
 
 <a id="weekly-session-review"></a>
@@ -353,3 +380,27 @@ look at last weeks sessions and suggest improvements
 ```
 
 Source: [@nateberkopec](https://x.com/nateberkopec/status/2114842635743674790) (unverified)
+
+<a id="plan-replayable-logging"></a>
+
+### Plan logging that can replay what the user experienced
+
+You want a program to produce logs good enough to later analyze for broken behavior and user friction.
+
+```text
+help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes
+```
+
+Source: [@kunchenguid](https://x.com/kunchenguid/status/2114772499686998221) (verified)
+
+<a id="review-agent-setup"></a>
+
+### Review your agent setup for guardrail gaps
+
+You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.
+
+```text
+Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.
+```
+
+Source: [@chenchengpro](https://x.com/chenchengpro/status/2120040764243894547) (verified)
