@@ -117,18 +117,6 @@ Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS rec
 
 Source: [@illyism](https://x.com/illyism/status/2121301002490192378) (verified)
 
-<a id="deepen-modules-simplify-interfaces"></a>
-
-### Deepen modules and simplify interfaces
-
-Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.
-
-```text
-deepen modules and simplify interfaces
-```
-
-Source: [@_khrus](https://x.com/_khrus/status/2118971805885239777) (verified)
-
 ## State machines and semantics
 
 <a id="find-state-machines"></a>
