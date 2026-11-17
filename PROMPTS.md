@@ -347,6 +347,8 @@ Source: [@illyism](https://x.com/illyism/status/2117103631564689691) (verified)
 A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.
 
 ```text
+Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
+
 Help me understand what the root cause of this issue is.
 Do we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?
 ```
