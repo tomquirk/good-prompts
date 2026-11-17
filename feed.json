@@ -7,40 +7,6 @@
   "language": "en",
   "items": [
     {
-      "id": "urn:prompt-collection:deepen-modules-simplify-interfaces",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#deepen-modules-simplify-interfaces",
-      "title": "Deepen modules and simplify interfaces",
-      "content_text": "deepen modules and simplify interfaces",
-      "summary": "Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.",
-      "date_published": "2026-11-17T00:00:00+00:00",
-      "tags": [
-        "Codebase audits and simplification",
-        "refactoring",
-        "abstraction",
-        "deduplication",
-        "simplification"
-      ],
-      "_prompt": {
-        "id": "deepen-modules-simplify-interfaces",
-        "category": "Codebase audits and simplification",
-        "use_when": "Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.",
-        "scope": "project",
-        "added_on": "2026-11-17",
-        "source": {
-          "url": "https://x.com/_khrus/status/2118971805885239777",
-          "author": "@_khrus",
-          "status": "verified"
-        },
-        "text_kind": "collected"
-      },
-      "external_url": "https://x.com/_khrus/status/2118971805885239777",
-      "authors": [
-        {
-          "name": "@_khrus"
-        }
-      ]
-    },
-    {
       "id": "urn:prompt-collection:plan-replayable-logging",
       "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#plan-replayable-logging",
       "title": "Plan logging that can replay what the user experienced",

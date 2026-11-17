@@ -522,26 +522,6 @@
       }
     },
     {
-      "id": "deepen-modules-simplify-interfaces",
-      "title": "Deepen modules and simplify interfaces",
-      "category": "Codebase audits and simplification",
-      "tags": [
-        "refactoring",
-        "abstraction",
-        "deduplication",
-        "simplification"
-      ],
-      "use_when": "Code feels sloppy, duplicated, or has shallow abstractions and you want a consistency and LOC-reducing pass.",
-      "scope": "project",
-      "added_on": "2026-11-17",
-      "prompt": "deepen modules and simplify interfaces",
-      "source": {
-        "url": "https://x.com/_khrus/status/2118971805885239777",
-        "author": "@_khrus",
-        "status": "verified"
-      }
-    },
-    {
       "id": "plan-replayable-logging",
       "title": "Plan logging that can replay what the user experienced",
       "category": "Agent workflows and retrospectives",
