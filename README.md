@@ -1,6 +1,8 @@
-# prompt-collection
+# prompt-collectooor
 
-A feed of prompts collected from X, designed for RSS readers and bots that suggest useful prompts to a user.
+Verified one-shot prompts from X/Twitter, for when you got tokens to burn 🔥. Ahhh, I'm collectinggg!
+
+Designed for RSS readers and bots that suggest useful prompts to a user.
 
 Subscribe: [RSS](https://raw.githubusercontent.com/tomquirk/prompt-collection/main/feed.xml) · [JSON Feed](https://raw.githubusercontent.com/tomquirk/prompt-collection/main/feed.json)
 
