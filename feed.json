@@ -109,6 +109,48 @@
       ]
     },
     {
+      "id": "urn:prompt-collection:claude-code-api-cost-estimate",
+      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#claude-code-api-cost-estimate",
+      "title": "Estimate what your Claude Code usage would cost on the API",
+      "content_text": "Time frame: 30d\n\nWork out what my Claude Code sessions in this time frame would cost if I had paid for\nthem on the Claude API at Anthropic's list prices. Use only Python's standard library\nand do it in one script you write to a temporary folder. Do not send my logs or any\nresults anywhere.\n\n1. **Prices.** Fetch `https://platform.claude.com/docs/en/about-claude/pricing.md`\n   (the public pricing page, as Markdown). From the \"Model pricing\" table take, per\n   model, the USD per million tokens for: base input, 5-minute cache write, 1-hour\n   cache write, cache read and output. From the \"Fast mode pricing\" section take the\n   fast-mode input and output price per model; fast-mode cache prices are the base\n   cache prices scaled by fast input divided by base input. Take the web search price\n   per 1,000 searches. Never guess or hard-code a rate. If the page cannot be fetched,\n   stop and tell me.\n\n2. **Usage.** Read every `*.jsonl` file under `~/.claude/projects/`, recursively, so\n   subagent logs under `<project>/<session>/subagents/` count too and belong to their\n   parent project. Each line is JSON. Keep lines whose `message.usage` and\n   `message.model` are set, skipping the model `<synthetic>`. A reply is written as\n   several lines that stream, so its usage is only final on the last one: treat each\n   `(message.id, requestId)` pair as one reply and keep each usage field's largest\n   value across its lines, not the first line's. Use the first line's `timestamp`\n   (ISO, UTC) and keep only replies inside the time frame, counted back from now\n   (`all` means everything; a month is 30.44 days).\n\n   Claude Code deletes logs after its cleanup period (30 days by default). If the\n   time frame starts before the oldest log, estimate the missing days from\n   `~/.claude/stats-cache.json` (what /stats shows): `dailyModelTokens` has tokens\n   per day per model, `modelUsage` has each model's split by token type (use it to\n   split a day's tokens), `dailyActivity` has sessions per day. /stats adds up every\n   log line, so it counts each reply several times. Measure that overcount on the\n   full days that have both logs and cache (cache tokens divided by log tokens, all\n   types summed) and divide the missing days by it. Never hard-code the ratio. Price\n   the estimate's cache writes at the 5-minute rate, so it is a lower bound. If the\n   file is missing or no day has both, skip the estimate and say why.\n\n3. **Price each reply** at the rate of the model that wrote it. Map the model id to\n   the pricing table by dropping a trailing `[...]`, a leading `claude-`, any\n   `anthropic.`/`us.anthropic.` prefix and a date suffix (`claude-haiku-4-5-20251001`\n   is Haiku 4.5; old ids like `claude-3-5-haiku` are Haiku 3.5). From `usage`:\n   - `input_tokens` at the input rate, `output_tokens` at the output rate,\n     `cache_read_input_tokens` at the cache read rate;\n   - `cache_creation.ephemeral_5m_input_tokens` and `ephemeral_1h_input_tokens` at the\n     5-minute and 1-hour write rates; if both are missing, put all of\n     `cache_creation_input_tokens` at the 5-minute rate;\n   - `speed == \"fast\"` means fast-mode rates;\n   - `server_tool_use.web_search_requests` at the web search price.\n   A model with no list price is left out of the total and listed as unpriced.\n\n4. **Tell me:** the total API cost for the time frame, the number of sessions\n   (distinct `sessionId`) and replies, the split by cache reads, cache writes, output,\n   fresh input and web searches (tokens and dollars each), cost by model, the top six\n   projects (the project is the log's folder name under `~/.claude/projects/`), any\n   unpriced models, and the date the prices were fetched. If part of it is the\n   estimate, say how much, for which dates, and the overcount you divided by;\n   projects and per-day cover the logged days only.\n\n5. **Card.** Write the same figures as one self-contained HTML page to\n   `~/api-bill/api-bill-<timeframe>-<date>.html` and give me the path: the total in\n   large type, the itemised split as a receipt, bars for cost by model and by\n   project, a bar chart of cost per day, and a table of the prices used, and the\n   estimate (if any) marked as one. Start the page with `<!doctype html>`,\n   `<meta charset=\"utf-8\">` and a viewport meta tag, so symbols such as \"·\" and \"×\"\n   show correctly when opened locally. Make it readable on a phone and in dark mode. If you can publish Artifacts in this\n   session, offer to publish the card as a private page. It shows my project names,\n   so never make it public.\n\nDo not compare with my subscription price. This is what the same work would cost on\nthe API, nothing more.",
+      "summary": "The user wants a local, offline-safe report of what their Claude Code sessions over a time frame would have cost at Anthropic's API list prices, with an HTML summary card.",
+      "date_published": "2026-11-15T00:00:00+00:00",
+      "tags": [
+        "Agent workflows and retrospectives",
+        "claude-code",
+        "cost",
+        "usage",
+        "logs",
+        "report"
+      ],
+      "_prompt": {
+        "id": "claude-code-api-cost-estimate",
+        "category": "Agent workflows and retrospectives",
+        "use_when": "The user wants a local, offline-safe report of what their Claude Code sessions over a time frame would have cost at Anthropic's API list prices, with an HTML summary card.",
+        "scope": "machine",
+        "added_on": "2026-11-15",
+        "source": {
+          "url": "https://x.com/ZazaGDev/status/2121268144471695462",
+          "author": "@ZazaGDev",
+          "status": "verified",
+          "related_urls": [
+            {
+              "url": "https://github.com/ZazaGdev/AI-fun/blob/main/api-bill/prompt.md",
+              "label": "Full prompt (linked from the author's reply)",
+              "status": "verified"
+            }
+          ]
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/ZazaGDev/status/2121268144471695462",
+      "authors": [
+        {
+          "name": "@ZazaGDev"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:fix-happy-path-debt",
       "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fix-happy-path-debt",
       "title": "Find and fix happy-path debt in your app",
