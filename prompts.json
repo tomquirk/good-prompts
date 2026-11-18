@@ -747,6 +747,47 @@
         "author": "@Ananth7e",
         "status": "verified"
       }
+    },
+    {
+      "id": "audit-accounts-and-installed-software",
+      "title": "Audit your accounts and installed software after security news",
+      "category": "Security and system cleanup",
+      "tags": [
+        "security",
+        "audit",
+        "accounts",
+        "software"
+      ],
+      "use_when": "There has been security news and you want an agent with computer use to check your accounts and installed software and list the actions to take.",
+      "scope": "machine",
+      "added_on": "2026-11-18",
+      "prompt": "Given recent IT security news, can you please audit my various accounts and what I've got installed on the computer and let me know the actions I need to take?",
+      "source": {
+        "url": "https://x.com/emollick/status/2113361252173091114",
+        "author": "@emollick",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "review-google-linked-apps",
+      "title": "Review the apps linked to your Google account and suggest which to remove",
+      "category": "Security and system cleanup",
+      "tags": [
+        "privacy",
+        "security",
+        "accounts",
+        "permissions",
+        "browser"
+      ],
+      "use_when": "You have connected many apps to your Google account over the years and want an agent to suggest which to remove. Open the linked apps page in Chrome first and tell the agent the tab is open.",
+      "scope": "machine",
+      "added_on": "2026-11-18",
+      "prompt": "I have a lot of linked apps and tbh i think a huge amount of them should not be linked. please review the list and suggest apps to remove in a numbered list\n\nhttps://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.com%2Fsecurity",
+      "source": {
+        "url": "https://x.com/petergyang/status/2091331251211059468",
+        "author": "@petergyang",
+        "status": "verified"
+      }
     }
   ]
 }
