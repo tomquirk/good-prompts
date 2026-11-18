@@ -1,14 +1,14 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "prompt-collection",
+  "title": "prompt-collectooor",
   "description": "Prompts collected from X for context-aware suggestions.",
-  "home_page_url": "https://github.com/tomquirk/prompt-collection",
-  "feed_url": "https://raw.githubusercontent.com/tomquirk/prompt-collection/main/feed.json",
+  "home_page_url": "https://github.com/tomquirk/prompt-collectooor",
+  "feed_url": "https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.json",
   "language": "en",
   "items": [
     {
       "id": "urn:prompt-collection:plan-replayable-logging",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#plan-replayable-logging",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#plan-replayable-logging",
       "title": "Plan logging that can replay what the user experienced",
       "content_text": "help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes",
       "summary": "You want a program to produce logs good enough to later analyze for broken behavior and user friction.",
@@ -42,7 +42,7 @@
     },
     {
       "id": "urn:prompt-collection:review-agent-setup",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#review-agent-setup",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#review-agent-setup",
       "title": "Review your agent setup for guardrail gaps",
       "content_text": "Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.",
       "summary": "You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.",
@@ -76,7 +76,7 @@
     },
     {
       "id": "urn:prompt-collection:third-party-js-supply-chain-check",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#third-party-js-supply-chain-check",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#third-party-js-supply-chain-check",
       "title": "Check whether you load third-party JS that could be compromised",
       "content_text": "Read this incident: https://x.com/Scott_Helme/status/2122422157959471456\n\nHelp me understand what the root cause of this issue is.\nDo we load any third-party JS that would be susceptible to a similar attack (if that third-party JS provider were compromised)?",
       "summary": "A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.",
@@ -110,7 +110,7 @@
     },
     {
       "id": "urn:prompt-collection:claude-code-api-cost-estimate",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#claude-code-api-cost-estimate",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#claude-code-api-cost-estimate",
       "title": "Estimate what your Claude Code usage would cost on the API",
       "content_text": "Time frame: 30d\n\nWork out what my Claude Code sessions in this time frame would cost if I had paid for\nthem on the Claude API at Anthropic's list prices. Use only Python's standard library\nand do it in one script you write to a temporary folder. Do not send my logs or any\nresults anywhere.\n\n1. **Prices.** Fetch `https://platform.claude.com/docs/en/about-claude/pricing.md`\n   (the public pricing page, as Markdown). From the \"Model pricing\" table take, per\n   model, the USD per million tokens for: base input, 5-minute cache write, 1-hour\n   cache write, cache read and output. From the \"Fast mode pricing\" section take the\n   fast-mode input and output price per model; fast-mode cache prices are the base\n   cache prices scaled by fast input divided by base input. Take the web search price\n   per 1,000 searches. Never guess or hard-code a rate. If the page cannot be fetched,\n   stop and tell me.\n\n2. **Usage.** Read every `*.jsonl` file under `~/.claude/projects/`, recursively, so\n   subagent logs under `<project>/<session>/subagents/` count too and belong to their\n   parent project. Each line is JSON. Keep lines whose `message.usage` and\n   `message.model` are set, skipping the model `<synthetic>`. A reply is written as\n   several lines that stream, so its usage is only final on the last one: treat each\n   `(message.id, requestId)` pair as one reply and keep each usage field's largest\n   value across its lines, not the first line's. Use the first line's `timestamp`\n   (ISO, UTC) and keep only replies inside the time frame, counted back from now\n   (`all` means everything; a month is 30.44 days).\n\n   Claude Code deletes logs after its cleanup period (30 days by default). If the\n   time frame starts before the oldest log, estimate the missing days from\n   `~/.claude/stats-cache.json` (what /stats shows): `dailyModelTokens` has tokens\n   per day per model, `modelUsage` has each model's split by token type (use it to\n   split a day's tokens), `dailyActivity` has sessions per day. /stats adds up every\n   log line, so it counts each reply several times. Measure that overcount on the\n   full days that have both logs and cache (cache tokens divided by log tokens, all\n   types summed) and divide the missing days by it. Never hard-code the ratio. Price\n   the estimate's cache writes at the 5-minute rate, so it is a lower bound. If the\n   file is missing or no day has both, skip the estimate and say why.\n\n3. **Price each reply** at the rate of the model that wrote it. Map the model id to\n   the pricing table by dropping a trailing `[...]`, a leading `claude-`, any\n   `anthropic.`/`us.anthropic.` prefix and a date suffix (`claude-haiku-4-5-20251001`\n   is Haiku 4.5; old ids like `claude-3-5-haiku` are Haiku 3.5). From `usage`:\n   - `input_tokens` at the input rate, `output_tokens` at the output rate,\n     `cache_read_input_tokens` at the cache read rate;\n   - `cache_creation.ephemeral_5m_input_tokens` and `ephemeral_1h_input_tokens` at the\n     5-minute and 1-hour write rates; if both are missing, put all of\n     `cache_creation_input_tokens` at the 5-minute rate;\n   - `speed == \"fast\"` means fast-mode rates;\n   - `server_tool_use.web_search_requests` at the web search price.\n   A model with no list price is left out of the total and listed as unpriced.\n\n4. **Tell me:** the total API cost for the time frame, the number of sessions\n   (distinct `sessionId`) and replies, the split by cache reads, cache writes, output,\n   fresh input and web searches (tokens and dollars each), cost by model, the top six\n   projects (the project is the log's folder name under `~/.claude/projects/`), any\n   unpriced models, and the date the prices were fetched. If part of it is the\n   estimate, say how much, for which dates, and the overcount you divided by;\n   projects and per-day cover the logged days only.\n\n5. **Card.** Write the same figures as one self-contained HTML page to\n   `~/api-bill/api-bill-<timeframe>-<date>.html` and give me the path: the total in\n   large type, the itemised split as a receipt, bars for cost by model and by\n   project, a bar chart of cost per day, and a table of the prices used, and the\n   estimate (if any) marked as one. Start the page with `<!doctype html>`,\n   `<meta charset=\"utf-8\">` and a viewport meta tag, so symbols such as \"·\" and \"×\"\n   show correctly when opened locally. Make it readable on a phone and in dark mode. If you can publish Artifacts in this\n   session, offer to publish the card as a private page. It shows my project names,\n   so never make it public.\n\nDo not compare with my subscription price. This is what the same work would cost on\nthe API, nothing more.",
       "summary": "The user wants a local, offline-safe report of what their Claude Code sessions over a time frame would have cost at Anthropic's API list prices, with an HTML summary card.",
@@ -152,7 +152,7 @@
     },
     {
       "id": "urn:prompt-collection:fix-happy-path-debt",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fix-happy-path-debt",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#fix-happy-path-debt",
       "title": "Find and fix happy-path debt in your app",
       "content_text": "Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren't empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.",
       "summary": "An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.",
@@ -187,7 +187,7 @@
     },
     {
       "id": "urn:prompt-collection:fresh-eyes-domain-audit",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#fresh-eyes-domain-audit",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#fresh-eyes-domain-audit",
       "title": "Fresh-eyes due-diligence audit of a live domain",
       "content_text": "Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.",
       "summary": "The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.",
@@ -222,7 +222,7 @@
     },
     {
       "id": "urn:prompt-collection:browser-testing",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#browser-testing",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#browser-testing",
       "title": "Browser testing across widths, touch, and slow networks",
       "content_text": "Test this in the browser at different widths, with touch emulation, and on a throttled 3G connection. Fix anything that looks broken or feels off. Save a before and after screenshot for every fix and send me a summary afterwards.",
       "summary": "A web interface needs verification across screen sizes, touch input, and slow connections.",
@@ -257,7 +257,7 @@
     },
     {
       "id": "urn:prompt-collection:delete-and-simplify",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#delete-and-simplify",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#delete-and-simplify",
       "title": "Delete, simplify, optimize, automate",
       "content_text": "I want you to audit our codebase, is anything here unnecessary, overly complicated in our current setup, or based on weak assumptions? Challenge them.\n\n- What can be deleted entirely?\n- What can be simplified now that unnecessary pieces are gone?\n\nThen make the changes. Prefer deleting over simplifying, simplifying over optimizing, and optimizing over automating.\n\nThis product is being used by thousands of customers, do not cut any corners.",
       "summary": "Complexity or weak assumptions make a codebase harder to maintain.",
@@ -291,7 +291,7 @@
     },
     {
       "id": "urn:prompt-collection:document-state-machines",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#document-state-machines",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#document-state-machines",
       "title": "Document state machines and fix reachable bugs",
       "content_text": "Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.",
       "summary": "Reachable invalid states need evidence, documentation, and regression-tested fixes.",
@@ -325,7 +325,7 @@
     },
     {
       "id": "urn:prompt-collection:e2e-proof",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#e2e-proof",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#e2e-proof",
       "title": "End-to-end proof",
       "content_text": "test this e2e & give me irrefutable proof it works",
       "summary": "A completed feature needs end-to-end evidence that it works.",
@@ -358,7 +358,7 @@
     },
     {
       "id": "urn:prompt-collection:find-state-machines",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#find-state-machines",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#find-state-machines",
       "title": "Find implicit state machines",
       "content_text": "find all of the implicit state machines in my app",
       "summary": "An app has behavior that depends on changing state and events.",
@@ -391,7 +391,7 @@
     },
     {
       "id": "urn:prompt-collection:full-project-audit",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#full-project-audit",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#full-project-audit",
       "title": "Full project audit",
       "content_text": "Read this entire project and find everything that's broken, inconsistent, inefficient, or no longer needed. Fix what you're sure about and list the rest for me to review.",
       "summary": "A project needs a broad review of correctness, consistency, and unnecessary work.",
@@ -425,7 +425,7 @@
     },
     {
       "id": "urn:prompt-collection:jsonb-key-to-column",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#jsonb-key-to-column",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#jsonb-key-to-column",
       "title": "Promote hot JSONB keys to columns",
       "content_text": "find hot-path reads of a single key from a large jsonb column and promote that key to a real column",
       "summary": "A hot path repeatedly reads a single key from a large JSONB value.",
@@ -459,7 +459,7 @@
     },
     {
       "id": "urn:prompt-collection:macos-cleanup",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#macos-cleanup",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#macos-cleanup",
       "title": "Remove unused macOS software and permissions",
       "content_text": "remove all the apps, tcc/permission grants, login items, daemons, kexts, browser exts, homebrew packages, etc., that I don't need and use.",
       "summary": "The user explicitly wants to review and remove unused macOS software and permissions.",
@@ -493,7 +493,7 @@
     },
     {
       "id": "urn:prompt-collection:make-state-machines-explicit",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#make-state-machines-explicit",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#make-state-machines-explicit",
       "title": "Make useful state machines explicit",
       "content_text": "audit and find implicit state machines in this <codebase/directory/module> that would drive concrete improvements if made explicit. explain before/after of each one and discuss with me in lavish-axi. fewer words, big visuals",
       "summary": "Implicit state transitions may benefit from explicit modeling; the prompt references lavish-axi.",
@@ -526,7 +526,7 @@
     },
     {
       "id": "urn:prompt-collection:map-codebase-architecture",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#map-codebase-architecture",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#map-codebase-architecture",
       "title": "Map the codebase into ARCHITECTURE.md",
       "content_text": "Map this codebase for me. Show the folder structure, what each main file does, how data flows from UI to database, and the 5 riskiest files to touch. Write it all to ARCHITECTURE.md.",
       "summary": "A project has grown messy and you want a written map of its structure, data flow, and riskiest files.",
@@ -561,7 +561,7 @@
     },
     {
       "id": "urn:prompt-collection:minimal-semantic-model",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#minimal-semantic-model",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#minimal-semantic-model",
       "title": "Recover the minimal semantic model",
       "content_text": "Recover my program's minimal semantic model.\n\n1. State: every value that changes what the user sees\n2. Transitions: what commutes, what's idempotent, what's order-dependent\n3. Dependencies: what must be true before each effect fires\n\nThen find:\n→ nondeterminism in awaits, retries and event order\n→ invariants enforced by hope\n→ one fact stored in two places, drifting\n→ work that never reaches the screen\n\nLast, split my refactors into \"provably equivalent\" and \"trust me\". For each \"trust me\", give the smallest input that breaks it.",
       "summary": "Async behavior, duplicated state, or refactors need semantic analysis.",
@@ -595,7 +595,7 @@
     },
     {
       "id": "urn:prompt-collection:module-level-regexes",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#module-level-regexes",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#module-level-regexes",
       "title": "Compute regexes at module level",
       "content_text": "compute all regexes at the module level instead of inside functions and loops",
       "summary": "Regexes are repeatedly constructed in functions or loops.",
@@ -628,7 +628,7 @@
     },
     {
       "id": "urn:prompt-collection:parallel-async-calls",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#parallel-async-calls",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#parallel-async-calls",
       "title": "Remove unnecessary sequential async calls",
       "content_text": "do a deep scan of all hot paths and fix any unnecessary sequential async function calls",
       "summary": "Independent async operations appear to run sequentially on hot paths.",
@@ -662,7 +662,7 @@
     },
     {
       "id": "urn:prompt-collection:product-experience-coverage-audit",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#product-experience-coverage-audit",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#product-experience-coverage-audit",
       "title": "Product experience coverage audit (summary)",
       "content_text": "Assess the current product without modifying its repository. Establish its users, goals, and constraints from workspace evidence. Track coverage of screens, states, and complete journeys, combining code inspection with safe runtime observation. Focus on desktop and tablet, including keyboard, touch, accessibility, and recovery behavior; phone optimization is generally excluded.\n\nCoordinate bounded reviews, keeping shared browser sessions serialized. Support recommendations with concrete user consequences, screenshots where useful, implementation references, acceptance criteria, and validation needs. Check design-system ownership and only use competitor examples for demonstrated, contained gaps. Independently verify findings, record inaccessible or unverified areas, and prioritize small implementation slices with cross-functional handoffs.\n\nThis is an editorial summary. Read the linked gist for the complete workflow.",
       "summary": "You need a product-wide UX review with an actionable handoff for product, design, and engineering.",
@@ -705,7 +705,7 @@
     },
     {
       "id": "urn:prompt-collection:prune-old-agent-transcripts",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#prune-old-agent-transcripts",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#prune-old-agent-transcripts",
       "title": "Audit and prune old AI agent transcripts on macOS",
       "content_text": "Audit my Mac for AI agent transcripts (Claude, Codex, Cursor, Grok), SQLite session logs, and leftover editor dotfolders older than 30 days. Show me the sizes first, delete everything >30 days old, and add a daily 30-day auto-prune check.",
       "summary": "The user wants to review and remove old coding-agent transcripts, session logs, and leftover editor folders on a Mac.",
@@ -739,7 +739,7 @@
     },
     {
       "id": "urn:prompt-collection:read-only-codebase-simplification-audit",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#read-only-codebase-simplification-audit",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#read-only-codebase-simplification-audit",
       "title": "Read-only codebase simplification audit (summary)",
       "content_text": "Review the repository without changing it. Map its subsystems and boundaries, then examine each for worthwhile improvements to data structures, state representation, algorithms, control flow, and ownership. Use bounded, independent reviews where available. Keep a shared coverage record, including explicit decisions that no change is warranted.\n\nLimit each subsystem to two strong recommendations, supported by file references, proposed changes, scope, risks, validation needs, and confidence. Independently check findings, remove duplicates and weak abstractions, and review coverage before ranking recommendations by impact and dependencies. Do not implement changes or run tests during the audit.\n\nThis is an editorial summary. Read the linked gist for the complete workflow.",
       "summary": "You want evidence-backed simplification recommendations before authorizing code changes.",
@@ -781,7 +781,7 @@
     },
     {
       "id": "urn:prompt-collection:security-audit-dashboard",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#security-audit-dashboard",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#security-audit-dashboard",
       "title": "Security audit, remediation, and dashboard",
       "content_text": "Install Cloudflare’s security-audit skill globally and invoke its full audit workflow on this project.\n\ngithub.com/cloudflare/sec — https://t.co/PoZZnDNiPy\n\nPlease implement this skill for my project repos or globally in my projects.\n\nIndependently verify findings, implement targeted fixes for confirmed vulnerabilities, and run relevant tests. Preserve unrelated changes.\n\nBuild an interactive security dashboard covering frontend, APIs, authentication, databases, infrastructure and dependencies. Show:\n- Findings by severity and affected stack layer.\n- Open, fixed and verified remediation status.\n- Security posture before and after fixes.\n- Source evidence, code changes and test results.\n- Audit coverage, unverified areas and remaining priorities.\n\nBase posture assessments on evidence and clearly label coverage gaps.",
       "summary": "A project needs a security audit and evidence of remediation; the prompt references an external Cloudflare skill.",
@@ -815,7 +815,7 @@
     },
     {
       "id": "urn:prompt-collection:select-database-fields",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#select-database-fields",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#select-database-fields",
       "title": "Select only the database fields you need",
       "content_text": "find every place we load a whole row from the database just to read a couple of fields. instead, select only what we need",
       "summary": "Database queries fetch whole rows while using only a few fields.",
@@ -842,7 +842,7 @@
     },
     {
       "id": "urn:prompt-collection:simple-ux-dx-ax",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#simple-ux-dx-ax",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#simple-ux-dx-ax",
       "title": "Simplicity across UX, DX, and AX",
       "content_text": "I want this to be as perfect as Linear's website or Apple Notes: simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything.",
       "summary": "An interface or implementation feels cluttered or unnecessarily complex.",
@@ -877,7 +877,7 @@
     },
     {
       "id": "urn:prompt-collection:single-source-of-truth",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#single-source-of-truth",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#single-source-of-truth",
       "title": "Single source of truth audit",
       "content_text": "single source of truth audit",
       "summary": "The same fact or configuration may be maintained in multiple places.",
@@ -911,7 +911,7 @@
     },
     {
       "id": "urn:prompt-collection:unnecessary-url-parsing",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#unnecessary-url-parsing",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#unnecessary-url-parsing",
       "title": "Remove unnecessary URL parsing",
       "content_text": "remove all unnecessary `new URL()` parsing",
       "summary": "Repeated or redundant URL parsing may add unnecessary work.",
@@ -944,7 +944,7 @@
     },
     {
       "id": "urn:prompt-collection:weekly-session-review",
-      "url": "https://github.com/tomquirk/prompt-collection/blob/main/PROMPTS.md#weekly-session-review",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#weekly-session-review",
       "title": "Review last week's sessions and suggest improvements",
       "content_text": "look at last weeks sessions and suggest improvements",
       "summary": "Recent coding sessions are available and the user wants to identify ways to improve their workflow.",

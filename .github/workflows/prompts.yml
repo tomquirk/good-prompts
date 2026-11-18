@@ -1,0 +1,40 @@
+name: prompts
+
+# Contributors only edit prompts.json. This checks their PR, and after merge
+# regenerates feed.xml, feed.json and PROMPTS.md so nobody has to run the build.
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths: [prompts.json, scripts/**, feed-config.json]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate prompts.json and build feeds
+        run: python3 scripts/build.py
+
+      - name: Tests
+        run: python3 -m unittest discover -s tests
+
+      - name: Commit regenerated feeds
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet -- feed.xml feed.json PROMPTS.md; then
+            echo "Feeds already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed.xml feed.json PROMPTS.md
+          git commit -m "Rebuild feeds"
+          git push
