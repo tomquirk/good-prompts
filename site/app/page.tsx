@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata } from "next";
 import { CopyButton } from "@/components/copy-button";
 import { Mascot } from "@/components/mascot";
@@ -24,6 +26,9 @@ export const metadata: Metadata = {
 const RAW_JSON = `${REPO_URL.replace("github.com", "raw.githubusercontent.com")}/main/prompts.json`;
 const CURL = `curl -s ${RAW_JSON} | jq -r '.prompts[] | "\\(.id): \\(.title)"'`;
 
+// Repo-root setup-prompt.md: paste into any agent to get a prompt a day.
+const SETUP_PROMPT = readFileSync(join(process.cwd(), "..", "setup-prompt.md"), "utf8").trim();
+
 const link = "transition-colors hover:text-foreground";
 
 export default async function Home() {
@@ -45,6 +50,10 @@ export default async function Home() {
     [
       "What kinds of prompts are here?",
       `The prompts are grouped into ${categories.length} categories: ${categories.join(", ").toLowerCase()}. Most ask an agent to test, audit or simplify a codebase.`,
+    ],
+    [
+      "Can I get a prompt suggested every day?",
+      "Yes. Paste the setup prompt near the top of this page into Claude Code, Codex, Cursor or another agent. It installs the daily-prompt skill with npx skills and schedules it, and each morning it suggests one prompt that fits your project and asks whether to run it.",
     ],
     [
       "Can a script or bot read the collection?",
@@ -132,6 +141,18 @@ export default async function Home() {
                 updated <time dateTime={updated}>{formatDate(updated)}</time>
               </span>
             </p>
+
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl border bg-card/80 backdrop-blur-sm">
+              <div className="flex items-center justify-between border-b py-1.5 pr-2 pl-4">
+                <span className="text-xs text-muted-foreground">
+                  get one a day: paste this into your agent
+                </span>
+                <CopyButton text={SETUP_PROMPT} />
+              </div>
+              <pre className="whitespace-pre-wrap px-4 py-3 text-[13px] text-foreground/90">
+                {SETUP_PROMPT}
+              </pre>
+            </div>
           </div>
         </section>
 
