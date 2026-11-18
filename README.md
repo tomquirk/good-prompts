@@ -36,6 +36,10 @@ cd site && pnpm install && pnpm dev   # http://localhost:3000
 
 On Vercel, set Root Directory to `site`. Every push to `main` redeploys.
 
+## Get a prompt a day
+
+[`skills/daily-prompt`](skills/daily-prompt/SKILL.md) is a portable agent skill that picks one prompt from the feed each day to fit what you're working on, and never repeats one. Drop it into your agent's skills folder (Claude Code, Codex, Cursor and Grok Bot all read `SKILL.md`), then ask "give me today's prompt" or schedule it daily.
+
 ## Maintainer bot
 
-The bot that keeps this repo fed follows the skills in [`skills/`](skills): [`prompt-scan`](skills/prompt-scan/SKILL.md) finds prompts on X and opens PRs, and [`refresh-metrics`](skills/refresh-metrics/SKILL.md) updates `metrics.json` daily with [`scripts/refresh_metrics.py`](scripts/refresh_metrics.py).
+The bot that keeps this repo fed runs [`find-prompts`](skills/find-prompts/SKILL.md), a generic skill for finding one-shot coding prompts on X, then [`publish-prompts`](skills/publish-prompts/SKILL.md) to open a PR here. [`refresh-metrics`](skills/refresh-metrics/SKILL.md) updates `metrics.json` daily with [`scripts/refresh_metrics.py`](scripts/refresh_metrics.py).

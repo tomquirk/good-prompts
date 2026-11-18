@@ -1,32 +1,19 @@
 ---
-name: prompt-scan
-description: Scan X (the user's bookmarks plus public search) for one-shot AI coding prompts and open a clean pull request adding the good ones to prompts.json. Run four times a day.
+name: publish-prompts
+description: Take candidate prompts (for example from the find-prompts skill) and add the good ones to the prompt-collectooor collection through a pull request that merges cleanly.
 ---
 
-# Prompt scan
+# Publish prompts to prompt-collectooor
 
-Find reusable prompts for AI coding agents (Claude Code, Codex, Cursor and similar) on X and add the good ones to this repo through a pull request.
+Add new prompts to `prompts.json` in https://github.com/tomquirk/prompt-collectooor through a pull request. Run [`find-prompts`](../find-prompts/SKILL.md) first to get candidates, or start from a single post someone wants added.
 
-## Sources
+## Before you add anything
 
-1. **The owner's X bookmarks** (signed-in X tool, read only; never add, change or remove bookmarks). Page through until you reach bookmarks you've already considered. The owner bookmarks good ones on purpose, so a bookmark is a strong signal and doesn't need high engagement, but it still has to meet the quality bar.
-2. **Public X search** for popular posts sharing such prompts. Check engagement yourself (likes, bookmarks, quotes); search can't filter by it.
-
-Keep a durable list of every tweet ID and URL you've considered, with the decision and reason, so you never re-analyse a post or add a duplicate. This list is the running agent's own state and is not stored in this repo.
-
-If a post's text is truncated, read its full text (note_tweet), any image, or the linked source to get the whole prompt.
-
-## Quality bar
-
-Keep a prompt only if it is complete, useful and **one-shot**: something you can paste to a coding agent when you have tokens to spare, like asking it to audit and prune old agent transcripts on a Mac.
-
-Skip:
-- Standing rules or additions for AGENTS.md, CLAUDE.md or other always-on instruction files.
-- Vague advice, jokes, jailbreaks, malware, harmful instructions and thin self-promotion.
-- Non-coding prompts (resumes, trading, content farming and so on).
-- Anything already in `prompts.json`, including the same idea in different words.
-- Generic web-app security audits that overlap the existing `security-audit-dashboard` prompt, which the owner prefers.
-- Anything the owner previously removed (for example `deepen-modules-simplify-interfaces`).
+- Drop any candidate already in `prompts.json`, including the same idea in different words.
+- Collection-specific skips on top of the find-prompts quality bar:
+  - Generic web-app security audits that overlap the existing `security-audit-dashboard` prompt, which the maintainer prefers.
+  - Anything the maintainer previously removed (for example `deepen-modules-simplify-interfaces`).
+- Strip the candidate-only fields (`engagement`, `why`) before writing the entry.
 
 ## Adding prompts
 
@@ -56,6 +43,6 @@ On every run, do the same for any other open prompt PRs that have fallen behind 
 
 ## Reporting
 
-When a PR is ready, send the owner a very short note: the PR link, the author's post link, one line on what the prompt does, and then the full prompt text exactly as committed in a code block, so they can review and approve the merge from chat. If they say "merge", merge it with `gh pr merge --merge`.
+When a PR is ready, send the maintainer a very short note: the PR link, the author's post link, one line on what the prompt does, and then the full prompt text exactly as committed in a code block, so they can review and approve the merge from chat. If they say "merge", merge it with `gh pr merge --merge`.
 
 Also report a failed run. If nothing qualifies, stay silent.
