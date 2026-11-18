@@ -7,6 +7,306 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Audit your accounts and installed software after security news</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#audit-accounts-and-installed-software</link>
+      <guid isPermaLink="false">urn:prompt-collection:audit-accounts-and-installed-software</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;There has been security news and you want an agent with computer use to check your accounts and installed software and list the actions to take.&lt;/p&gt;&lt;pre&gt;Given recent IT security news, can you please audit my various accounts and what I&amp;#x27;ve got installed on the computer and let me know the actions I need to take?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emollick/status/2113361252173091114"&gt;@emollick&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Security and system cleanup</category>
+      <category>security</category>
+      <category>audit</category>
+      <category>accounts</category>
+      <category>software</category>
+    </item>
+    <item>
+      <title>Audit your agent history for wasted tool calls and tokens</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#audit-wasted-tool-calls</link>
+      <guid isPermaLink="false">urn:prompt-collection:audit-wasted-tool-calls</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want to see which paths in a repo cost your agents the most searching and backtracking.&lt;/p&gt;&lt;pre&gt;Look through my Claude Code chat history for this repo in ~/.claude/projects/.
+
+1. Find the files and folders agents visit most often.
+2. For each one, count how many tool calls it usually took to get there, and roughly how many tokens that used.
+3. Flag the paths where the agent searched, opened the wrong files, or backtracked before finding the right spot.
+4. Rank the 5 most wasteful paths by total tokens burned.
+5. Suggest the smallest CLAUDE.md edits that would send an agent straight there. Pointers, not paragraphs.
+
+Don&amp;#x27;t change any files yet. Show me the report first.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/JJEnglert/status/2102851496626757730"&gt;@JJEnglert&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>sessions</category>
+      <category>tokens</category>
+      <category>retrospective</category>
+      <category>read-only</category>
+    </item>
+    <item>
+      <title>Audit what wastes tokens in your Claude Code setup</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#claude-code-token-waste-audit</link>
+      <guid isPermaLink="false">urn:prompt-collection:claude-code-token-waste-audit</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;Your Claude Code setup burns tokens every turn and you want a measured, approve-first cleanup plan.&lt;/p&gt;&lt;pre&gt;## Opus 5.5 token audit
+
+Opus 5.5 is already priced low per token. Find what in this Claude Code setup still wastes tokens on every turn. Goal: the lowest cost per finished task. It must stay as thorough as it is now and keep taking on big tasks. Smaller requests don&amp;#x27;t count as a win if the task then takes more turns.
+
+### 1. Measure first, change nothing
+
+List everything that loads when a session starts:
+
+- Every CLAUDE.md that loads (global, project, nested) and the files it imports
+- Skill listings: every name and description the model sees
+- MCP servers: which are connected, and which tools load upfront
+- Hooks or scripts that inject text into the conversation
+- Settings: model, modelSettings, CLAUDE_CODE_EFFORT_LEVEL, CLAUDE_CODE_SUBAGENT_MODEL
+
+If I paste `/context` or `/usage` output, use those numbers. Otherwise ask once, then count lines and bytes yourself. Read each file in full. Repeated, conflicting and outdated rules are easy to miss in a summary.
+
+### 2. Check the Opus 5.5 settings
+
+**Effort**: report the level Opus 5.5 actually runs at and where it comes from. It starts at medium, and a top-level effortLevel in ~/.claude/settings.json doesn&amp;#x27;t count for it.
+**Checks**: list the test, build and typecheck commands this repo already has. A test run costs one turn. Higher effort adds thinking to every turn.
+**Subagents**: for each one, model, effort, and whether it writes code or only reads. With no model line it follows CLAUDE_CODE_SUBAGENT_MODEL, or the main model if that&amp;#x27;s unset.
+**Output**: an output token costs 100x a cache read, and thinking counts as output. Flag rules that make it write more than the task needs.
+
+### 3. Label every instruction line
+
+**Keep**: what it can&amp;#x27;t work out from the repo, like how this project ships and how I like to work, plus fixes for mistakes it has made in this project.
+**Move**: playbooks for one workflow into a skill, so they load only when used.
+**Cut**: what it already does by default, and rules that contradict each other.
+
+Keep each CLAUDE.md under ~200 lines.
+
+### 4. Protect the cache
+
+These make the next request re-read the whole session uncached: switching `/model`, turning on fast mode, connecting an MCP server whose tools load upfront, and a skill that pins another model.
+
+- If you need another model&amp;#x27;s opinion, hand that task to a subagent so the main session keeps its cache.
+- Compact between tasks. Start unrelated work with `/clear`.
+
+### 5. Keep long output out of the conversation
+
+- Test runs, builds, logs: return the failures plus the last few lines, and write the full log to a file it can grep. Cutting output at a fixed length can drop the error line it needed.
+- Progress notes: keep one short file and overwrite it. If it keeps growing, every later read costs more.
+
+### 6. Off-limits
+
+- Adding &amp;quot;be concise&amp;quot; or &amp;quot;save tokens&amp;quot; to any prompt. An agent told to save tokens can start shying away from big tasks.
+- Dropping effort on hard tasks, or changing models halfway through a task, to cut the bill.
+- Judging by tokens per request. Measure cost per finished task.
+
+### 7. Report, then wait
+
+1. Baseline: each source, its size, when it loads
+2. Changes, biggest saving first: what it saves and how you worked that out, what could get worse, how to reverse it
+3. The exact edits to each instruction file, each one tagged Keep, Move or Cut
+
+Back up every file before touching it. Apply nothing until I approve.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2103469567964254587"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>tokens</category>
+      <category>claude-code</category>
+      <category>configuration</category>
+      <category>audit</category>
+    </item>
+    <item>
+      <title>Stress-test a UI component in every state it will meet</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#component-state-stress-test</link>
+      <guid isPermaLink="false">urn:prompt-collection:component-state-stress-test</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;A key component only ever saw sample data and you want it checked against empty, long, failing and narrow-screen cases.&lt;/p&gt;&lt;pre&gt;/goal Check [COMPONENT NAME OR PATH] and make sure it survives the content and states it will encounter in real use.
+
+INSPECT ONLY THIS COMPONENT.
+
+Do not modify it yet. Read its actual props, slots, states, data sources, and where it is used. Based on what it really accepts, select the stress cases that apply.
+
+TEST THESE WHEN RELEVANT:
+
+→ No data, one item, and many items
+→ Loading, error, disabled, and permission-denied states
+→ Normal text, very long text, and an unbreakable string
+→ Missing images, very large numbers, and incomplete data
+→ A 320px viewport and any other widths the component supports
+→ Dark mode; skip it if the project does not support it
+
+Do not add irrelevant cases just to make the list longer.
+
+BUILD THE TEST PAGE:
+
+Create a temporary page inside the app. Import the real component and use the project’s existing fonts, styles, tokens, and layout context. Render every scenario side by side in one pass.
+
+Do not rebuild a lookalike component or connect to production data.
+
+Open the page and record only problems you can actually reproduce. Do not predict failures from the code or report personal taste as a bug.
+
+FIX ONLY CONFIRMED PROBLEMS:
+
+Fix them one at a time. After each change, rerender the original failing state and verify:
+
+→ Content no longer overflows or disappears
+→ Primary actions still work
+→ Keyboard and focus behavior did not regress
+→ States that already passed were not broken
+
+Do not use this as an excuse to redesign the component, change its public API, or touch functionality outside the test page.
+
+RETURN:
+
+→ Every state you tested
+→ Before-and-after screenshots
+→ What you fixed
+→ Anything still unresolved
+→ Relevant test and build results
+
+DONE WHEN:
+
+Every applicable state has been rendered, every confirmed problem has been fixed and retested, the existing tests pass, and the build succeeds.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2092688531705729210"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Testing and verification</category>
+      <category>ui</category>
+      <category>testing</category>
+      <category>responsive</category>
+      <category>states</category>
+    </item>
+    <item>
+      <title>Find and remove obsolete legacy code and bloated tests</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#delete-dead-code-and-bloated-tests</link>
+      <guid isPermaLink="false">urn:prompt-collection:delete-dead-code-and-bloated-tests</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;A repo has accumulated unused legacy code and low-value tests, and you want proof-backed removal.&lt;/p&gt;&lt;pre&gt;Run a deep test audit to find unused legacy code, using subagents where helpful.
+Prove code and tests are obsolete before removing them; fix genuine bugs instead of hiding failures.
+Preserve meaningful coverage, run relevant checks, and report changes and remaining blockers.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emanueledpt/status/2111457244311347691"&gt;@emanueledpt&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Codebase audits and simplification</category>
+      <category>cleanup</category>
+      <category>testing</category>
+      <category>dead-code</category>
+      <category>subagents</category>
+    </item>
+    <item>
+      <title>Find what is eating your disk space (list first, delete nothing)</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#find-storage-hogs</link>
+      <guid isPermaLink="false">urn:prompt-collection:find-storage-hogs</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;Your disk is full and you do not know why.&lt;/p&gt;&lt;pre&gt;scan my system to find what&amp;#x27;s eating up storage. look for large files, old installers, unused apps, cache folders, stale project folders, and anything else safe to clean up. list everything by category with size, and flag what&amp;#x27;s safe to auto delete vs what needs my review before deleting. don&amp;#x27;t delete anything yet, just give me the list first.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Ananth7e/status/2084333430280786115"&gt;@Ananth7e&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Security and system cleanup</category>
+      <category>cleanup</category>
+      <category>storage</category>
+      <category>read-only</category>
+    </item>
+    <item>
+      <title>Launch QA with five first-time-user subagents, then fix and re-verify</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#first-time-user-qa</link>
+      <guid isPermaLink="false">urn:prompt-collection:first-time-user-qa</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You are about to launch a web app and want realistic first-run friction found, fixed and proven fixed.&lt;/p&gt;&lt;pre&gt;&amp;lt;role&amp;gt;
+You&amp;#x27;re my launch QA lead. Send 5 first-time users through this app, one subagent each, find every spot where they get confused, stuck or annoyed, then fix it and prove it&amp;#x27;s fixed.
+&amp;lt;/role&amp;gt;
+
+&amp;lt;inputs&amp;gt;
+App: [local dev or staging URL]
+First success: [e.g. &amp;quot;created their first project&amp;quot;]
+Accounts: [5 pre-verified logins, or &amp;quot;sign up fresh&amp;quot; if there&amp;#x27;s no email verification]
+Subagents can&amp;#x27;t ask me anything, so settle these first. If first success is blank, propose one from the code and wait for my OK. If signup needs email verification and there aren&amp;#x27;t 5 accounts, tell me.
+&amp;lt;/inputs&amp;gt;
+
+&amp;lt;setup&amp;gt;
+- Chrome DevTools MCP: one new_page per user with its own isolatedContext. Each user only uses its own pageId and sets viewport, network and CPU in one emulate call.
+- Playwright MCP: run the users one at a time in clean sessions.
+- Mark anything you can&amp;#x27;t emulate &amp;quot;not tested&amp;quot;. Never fake it.
+- Ask me to allow the browser tools once before you spawn.
+- Local dev or staging only, test-mode payments, no real people&amp;#x27;s data.
+&amp;lt;/setup&amp;gt;
+
+&amp;lt;users&amp;gt;
+Spawn 5 in parallel. Each gets only the URL, its persona, its own login, first success, its folder qa/first-users/run-N/&amp;lt;id&amp;gt;/ and the &amp;lt;walkthrough&amp;gt; rules. No code, docs or hints.
+&amp;lt;user id=&amp;quot;impatient&amp;quot;&amp;gt;Skims, clicks the first button that looks like progress, gives each screen 10 seconds and quits at the first error, endless spinner or confusing field.&amp;lt;/user&amp;gt;
+&amp;lt;user id=&amp;quot;skeptic&amp;quot;&amp;gt;Reads pricing, terms and privacy first. Is the full price clear after the trial? Why is each signup field needed? Can I cancel or delete my account (find it, don&amp;#x27;t use it)? Would I trust this with my card?&amp;lt;/user&amp;gt;
+&amp;lt;user id=&amp;quot;mobile&amp;quot;&amp;gt;375px touch screen, Slow 3G, CPU slowed 4x. Flags blank loads, layout jumps, sideways scroll, tap targets under 44px, sticky bars over the main button and modals that won&amp;#x27;t close.&amp;lt;/user&amp;gt;
+&amp;lt;user id=&amp;quot;non-native&amp;quot;&amp;gt;English is their second language. Follows only what the UI literally says. Flags idioms, jargon, unlabeled icons, placeholder-only labels and errors that don&amp;#x27;t say how to fix them.&amp;lt;/user&amp;gt;
+&amp;lt;user id=&amp;quot;breaker&amp;quot;&amp;gt;Pastes junk into every field (empty, 5,000 characters, emoji, Arabic, O&amp;#x27;Brien, a script tag, a SQL injection string), hits back and refresh mid-submit, double-clicks everything, uses two tabs. Flags crashes, duplicates, lost input and unescaped output.&amp;lt;/user&amp;gt;
+&amp;lt;/users&amp;gt;
+
+&amp;lt;walkthrough&amp;gt;
+- Landing page to first success, alone, thinking aloud: what you expect before each action, what happened after.
+- Screenshot every screen as NN-slug.png. At each friction point, log a one-line quote, the URL, console errors, failed requests and a severity: 4 blocker (can&amp;#x27;t finish), 3 major, 2 minor, 1 cosmetic.
+- Stuck: try twice like a real person, then give up and record where.
+- Never delete, invite, message anyone or pay for real. Stop at first success or 60 actions.
+- Write only in your folder. Don&amp;#x27;t read code or other qa/ files.
+- End with: reached first success (yes/no), actions taken.
+&amp;lt;/walkthrough&amp;gt;
+
+&amp;lt;fix&amp;gt;
+Merge the reports into one list, one item per root cause: blockers first, then by how many users hit it, ties by severity. Add each item&amp;#x27;s likely cause (file:line).
+On branch qa/first-users-fixes, fix it all in one pass. Fix causes, not symptoms, and change nothing unlisted. Pricing, terms and privacy wording go on a &amp;quot;needs a human&amp;quot; list with a suggested rewrite. Run the existing tests.
+&amp;lt;/fix&amp;gt;
+
+&amp;lt;verify&amp;gt;
+Test the fixed build: run the branch locally, or ask me to deploy it to staging. Rerun all 5 as fresh subagents into run-2/. Then a judge subagent that did no fixing checks the run-1 list against both runs&amp;#x27; screenshots and marks each item fixed, not fixed, not reached or new. Fixed means a run-2 screenshot shows the user getting past it. Screenshots beat your notes.
+&amp;lt;/verify&amp;gt;
+
+&amp;lt;stop&amp;gt;
+Anything still open: one more fix pass, run-3 with all 5 users and a fresh judge. Stop after run 3 and list what&amp;#x27;s left for a human.
+&amp;lt;/stop&amp;gt;
+
+&amp;lt;output&amp;gt;
+qa/first-users/report.md: what you couldn&amp;#x27;t test, a run-1 vs final scoreboard per user, and the ranked list with status, screenshots and files changed. If the project uses Playwright Test, save each user&amp;#x27;s final path to tests/first-users/.
+&amp;lt;/output&amp;gt;&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/LimestoneHQ/status/2113961716686127275"&gt;@LimestoneHQ&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Testing and verification</category>
+      <category>qa</category>
+      <category>testing</category>
+      <category>subagents</category>
+      <category>browser</category>
+      <category>ux</category>
+    </item>
+    <item>
+      <title>List every assumption as verified or guessed before fixing</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#list-verified-vs-guessed-assumptions</link>
+      <guid isPermaLink="false">urn:prompt-collection:list-verified-vs-guessed-assumptions</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;An agent is about to change code in a codebase it may not fully understand, and you want its guesses surfaced first.&lt;/p&gt;&lt;pre&gt;List every assumption you&amp;#x27;re making about this codebase. Mark each one verified (you read the actual code) or guessed (you inferred it, and say why). Propose your highest confidence surgical fix for each, but don&amp;#x27;t apply it yet. Stop and wait for my manual review.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kloss_xyz/status/2104088147739242660"&gt;@kloss_xyz&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Agent workflows and retrospectives</category>
+      <category>assumptions</category>
+      <category>bugs</category>
+      <category>review</category>
+      <category>read-only</category>
+    </item>
+    <item>
+      <title>Measure, then make the app measurably faster</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#make-app-measurably-faster</link>
+      <guid isPermaLink="false">urn:prompt-collection:make-app-measurably-faster</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want performance work driven by before/after measurements of one core flow, not guesses.&lt;/p&gt;&lt;pre&gt;/goal Make this app measurably faster.
+
+Launch the real app and run through [CORE FLOW]. Record the current load time, interaction responsiveness, CPU usage, memory usage, and any visible stutters.
+
+Use those measurements to find the worst bottlenecks. Don’t guess.
+
+Change one thing at a time. After every change, rerun the exact same flow. Keep the change if the app gets faster. Revert it if nothing improves.
+
+Continue until the core flow no longer has any obvious bottlenecks.
+
+Finish with a simple before/after report:
+
+→ The original measurements
+→ What you changed
+→ The new measurements
+→ Any bottlenecks you didn’t address&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2091603024817062192"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Performance</category>
+      <category>performance</category>
+      <category>measurement</category>
+      <category>profiling</category>
+    </item>
+    <item>
+      <title>Review the apps linked to your Google account and suggest which to remove</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#review-google-linked-apps</link>
+      <guid isPermaLink="false">urn:prompt-collection:review-google-linked-apps</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You have connected many apps to your Google account over the years and want an agent to suggest which to remove. Open the linked apps page in Chrome first and tell the agent the tab is open.&lt;/p&gt;&lt;pre&gt;I have a lot of linked apps and tbh i think a huge amount of them should not be linked. please review the list and suggest apps to remove in a numbered list
+
+https://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.com%2Fsecurity&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/petergyang/status/2091331251211059468"&gt;@petergyang&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Security and system cleanup</category>
+      <category>privacy</category>
+      <category>security</category>
+      <category>accounts</category>
+      <category>permissions</category>
+      <category>browser</category>
+    </item>
+    <item>
       <title>Plan logging that can replay what the user experienced</title>
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#plan-replayable-logging</link>
       <guid isPermaLink="false">urn:prompt-collection:plan-replayable-logging</guid>

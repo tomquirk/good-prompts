@@ -28,6 +28,128 @@ test this e2e & give me irrefutable proof it works
 
 Source: [@thorstenball](https://x.com/thorstenball/status/2102623376196194763) (unverified)
 
+<a id="first-time-user-qa"></a>
+
+### Launch QA with five first-time-user subagents, then fix and re-verify
+
+You are about to launch a web app and want realistic first-run friction found, fixed and proven fixed.
+
+```text
+<role>
+You're my launch QA lead. Send 5 first-time users through this app, one subagent each, find every spot where they get confused, stuck or annoyed, then fix it and prove it's fixed.
+</role>
+
+<inputs>
+App: [local dev or staging URL]
+First success: [e.g. "created their first project"]
+Accounts: [5 pre-verified logins, or "sign up fresh" if there's no email verification]
+Subagents can't ask me anything, so settle these first. If first success is blank, propose one from the code and wait for my OK. If signup needs email verification and there aren't 5 accounts, tell me.
+</inputs>
+
+<setup>
+- Chrome DevTools MCP: one new_page per user with its own isolatedContext. Each user only uses its own pageId and sets viewport, network and CPU in one emulate call.
+- Playwright MCP: run the users one at a time in clean sessions.
+- Mark anything you can't emulate "not tested". Never fake it.
+- Ask me to allow the browser tools once before you spawn.
+- Local dev or staging only, test-mode payments, no real people's data.
+</setup>
+
+<users>
+Spawn 5 in parallel. Each gets only the URL, its persona, its own login, first success, its folder qa/first-users/run-N/<id>/ and the <walkthrough> rules. No code, docs or hints.
+<user id="impatient">Skims, clicks the first button that looks like progress, gives each screen 10 seconds and quits at the first error, endless spinner or confusing field.</user>
+<user id="skeptic">Reads pricing, terms and privacy first. Is the full price clear after the trial? Why is each signup field needed? Can I cancel or delete my account (find it, don't use it)? Would I trust this with my card?</user>
+<user id="mobile">375px touch screen, Slow 3G, CPU slowed 4x. Flags blank loads, layout jumps, sideways scroll, tap targets under 44px, sticky bars over the main button and modals that won't close.</user>
+<user id="non-native">English is their second language. Follows only what the UI literally says. Flags idioms, jargon, unlabeled icons, placeholder-only labels and errors that don't say how to fix them.</user>
+<user id="breaker">Pastes junk into every field (empty, 5,000 characters, emoji, Arabic, O'Brien, a script tag, a SQL injection string), hits back and refresh mid-submit, double-clicks everything, uses two tabs. Flags crashes, duplicates, lost input and unescaped output.</user>
+</users>
+
+<walkthrough>
+- Landing page to first success, alone, thinking aloud: what you expect before each action, what happened after.
+- Screenshot every screen as NN-slug.png. At each friction point, log a one-line quote, the URL, console errors, failed requests and a severity: 4 blocker (can't finish), 3 major, 2 minor, 1 cosmetic.
+- Stuck: try twice like a real person, then give up and record where.
+- Never delete, invite, message anyone or pay for real. Stop at first success or 60 actions.
+- Write only in your folder. Don't read code or other qa/ files.
+- End with: reached first success (yes/no), actions taken.
+</walkthrough>
+
+<fix>
+Merge the reports into one list, one item per root cause: blockers first, then by how many users hit it, ties by severity. Add each item's likely cause (file:line).
+On branch qa/first-users-fixes, fix it all in one pass. Fix causes, not symptoms, and change nothing unlisted. Pricing, terms and privacy wording go on a "needs a human" list with a suggested rewrite. Run the existing tests.
+</fix>
+
+<verify>
+Test the fixed build: run the branch locally, or ask me to deploy it to staging. Rerun all 5 as fresh subagents into run-2/. Then a judge subagent that did no fixing checks the run-1 list against both runs' screenshots and marks each item fixed, not fixed, not reached or new. Fixed means a run-2 screenshot shows the user getting past it. Screenshots beat your notes.
+</verify>
+
+<stop>
+Anything still open: one more fix pass, run-3 with all 5 users and a fresh judge. Stop after run 3 and list what's left for a human.
+</stop>
+
+<output>
+qa/first-users/report.md: what you couldn't test, a run-1 vs final scoreboard per user, and the ranked list with status, screenshots and files changed. If the project uses Playwright Test, save each user's final path to tests/first-users/.
+</output>
+```
+
+Source: [@LimestoneHQ](https://x.com/LimestoneHQ/status/2113961716686127275) (verified)
+
+<a id="component-state-stress-test"></a>
+
+### Stress-test a UI component in every state it will meet
+
+A key component only ever saw sample data and you want it checked against empty, long, failing and narrow-screen cases.
+
+```text
+/goal Check [COMPONENT NAME OR PATH] and make sure it survives the content and states it will encounter in real use.
+
+INSPECT ONLY THIS COMPONENT.
+
+Do not modify it yet. Read its actual props, slots, states, data sources, and where it is used. Based on what it really accepts, select the stress cases that apply.
+
+TEST THESE WHEN RELEVANT:
+
+→ No data, one item, and many items
+→ Loading, error, disabled, and permission-denied states
+→ Normal text, very long text, and an unbreakable string
+→ Missing images, very large numbers, and incomplete data
+→ A 320px viewport and any other widths the component supports
+→ Dark mode; skip it if the project does not support it
+
+Do not add irrelevant cases just to make the list longer.
+
+BUILD THE TEST PAGE:
+
+Create a temporary page inside the app. Import the real component and use the project’s existing fonts, styles, tokens, and layout context. Render every scenario side by side in one pass.
+
+Do not rebuild a lookalike component or connect to production data.
+
+Open the page and record only problems you can actually reproduce. Do not predict failures from the code or report personal taste as a bug.
+
+FIX ONLY CONFIRMED PROBLEMS:
+
+Fix them one at a time. After each change, rerender the original failing state and verify:
+
+→ Content no longer overflows or disappears
+→ Primary actions still work
+→ Keyboard and focus behavior did not regress
+→ States that already passed were not broken
+
+Do not use this as an excuse to redesign the component, change its public API, or touch functionality outside the test page.
+
+RETURN:
+
+→ Every state you tested
+→ Before-and-after screenshots
+→ What you fixed
+→ Anything still unresolved
+→ Relevant test and build results
+
+DONE WHEN:
+
+Every applicable state has been rendered, every confirmed problem has been fixed and retested, the existing tests pass, and the build succeeds.
+```
+
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2092688531705729210) (verified)
+
 ## Codebase audits and simplification
 
 <a id="single-source-of-truth"></a>
@@ -116,6 +238,20 @@ Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS rec
 ```
 
 Source: [@illyism](https://x.com/illyism/status/2121301002490192378) (verified)
+
+<a id="delete-dead-code-and-bloated-tests"></a>
+
+### Find and remove obsolete legacy code and bloated tests
+
+A repo has accumulated unused legacy code and low-value tests, and you want proof-backed removal.
+
+```text
+Run a deep test audit to find unused legacy code, using subagents where helpful.
+Prove code and tests are obsolete before removing them; fix genuine bugs instead of hiding failures.
+Preserve meaningful coverage, run relevant checks, and report changes and remaining blockers.
+```
+
+Source: [@emanueledpt](https://x.com/emanueledpt/status/2111457244311347691) (verified)
 
 ## State machines and semantics
 
@@ -287,6 +423,33 @@ do a deep scan of all hot paths and fix any unnecessary sequential async functio
 
 Source: [@_dylanga](https://x.com/_dylanga/status/2117099613022732412) (unverified)
 
+<a id="make-app-measurably-faster"></a>
+
+### Measure, then make the app measurably faster
+
+You want performance work driven by before/after measurements of one core flow, not guesses.
+
+```text
+/goal Make this app measurably faster.
+
+Launch the real app and run through [CORE FLOW]. Record the current load time, interaction responsiveness, CPU usage, memory usage, and any visible stutters.
+
+Use those measurements to find the worst bottlenecks. Don’t guess.
+
+Change one thing at a time. After every change, rerun the exact same flow. Keep the change if the app gets faster. Revert it if nothing improves.
+
+Continue until the core flow no longer has any obvious bottlenecks.
+
+Finish with a simple before/after report:
+
+→ The original measurements
+→ What you changed
+→ The new measurements
+→ Any bottlenecks you didn’t address
+```
+
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2091603024817062192) (verified)
+
 ## Security and system cleanup
 
 <a id="security-audit-dashboard"></a>
@@ -354,6 +517,44 @@ Do we load any third-party JS that would be susceptible to a similar attack (if 
 ```
 
 Source: [@beyang](https://x.com/beyang/status/2122480180128350443) (verified)
+
+<a id="find-storage-hogs"></a>
+
+### Find what is eating your disk space (list first, delete nothing)
+
+Your disk is full and you do not know why.
+
+```text
+scan my system to find what's eating up storage. look for large files, old installers, unused apps, cache folders, stale project folders, and anything else safe to clean up. list everything by category with size, and flag what's safe to auto delete vs what needs my review before deleting. don't delete anything yet, just give me the list first.
+```
+
+Source: [@Ananth7e](https://x.com/Ananth7e/status/2084333430280786115) (verified)
+
+<a id="audit-accounts-and-installed-software"></a>
+
+### Audit your accounts and installed software after security news
+
+There has been security news and you want an agent with computer use to check your accounts and installed software and list the actions to take.
+
+```text
+Given recent IT security news, can you please audit my various accounts and what I've got installed on the computer and let me know the actions I need to take?
+```
+
+Source: [@emollick](https://x.com/emollick/status/2113361252173091114) (verified)
+
+<a id="review-google-linked-apps"></a>
+
+### Review the apps linked to your Google account and suggest which to remove
+
+You have connected many apps to your Google account over the years and want an agent to suggest which to remove. Open the linked apps page in Chrome first and tell the agent the tab is open.
+
+```text
+I have a lot of linked apps and tbh i think a huge amount of them should not be linked. please review the list and suggest apps to remove in a numbered list
+
+https://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.com%2Fsecurity
+```
+
+Source: [@petergyang](https://x.com/petergyang/status/2091331251211059468) (verified)
 
 ## Agent workflows and retrospectives
 
@@ -475,3 +676,102 @@ the API, nothing more.
 Source: [@ZazaGDev](https://x.com/ZazaGDev/status/2121268144471695462) (verified)
 
 Full prompt (linked from the author's reply): [https://github.com/ZazaGdev/AI-fun/blob/main/api-bill/prompt.md](https://github.com/ZazaGdev/AI-fun/blob/main/api-bill/prompt.md) (verified)
+
+<a id="list-verified-vs-guessed-assumptions"></a>
+
+### List every assumption as verified or guessed before fixing
+
+An agent is about to change code in a codebase it may not fully understand, and you want its guesses surfaced first.
+
+```text
+List every assumption you're making about this codebase. Mark each one verified (you read the actual code) or guessed (you inferred it, and say why). Propose your highest confidence surgical fix for each, but don't apply it yet. Stop and wait for my manual review.
+```
+
+Source: [@kloss_xyz](https://x.com/kloss_xyz/status/2104088147739242660) (verified)
+
+<a id="audit-wasted-tool-calls"></a>
+
+### Audit your agent history for wasted tool calls and tokens
+
+You want to see which paths in a repo cost your agents the most searching and backtracking.
+
+```text
+Look through my Claude Code chat history for this repo in ~/.claude/projects/.
+
+1. Find the files and folders agents visit most often.
+2. For each one, count how many tool calls it usually took to get there, and roughly how many tokens that used.
+3. Flag the paths where the agent searched, opened the wrong files, or backtracked before finding the right spot.
+4. Rank the 5 most wasteful paths by total tokens burned.
+5. Suggest the smallest CLAUDE.md edits that would send an agent straight there. Pointers, not paragraphs.
+
+Don't change any files yet. Show me the report first.
+```
+
+Source: [@JJEnglert](https://x.com/JJEnglert/status/2102851496626757730) (verified)
+
+<a id="claude-code-token-waste-audit"></a>
+
+### Audit what wastes tokens in your Claude Code setup
+
+Your Claude Code setup burns tokens every turn and you want a measured, approve-first cleanup plan.
+
+```text
+## Opus 5.5 token audit
+
+Opus 5.5 is already priced low per token. Find what in this Claude Code setup still wastes tokens on every turn. Goal: the lowest cost per finished task. It must stay as thorough as it is now and keep taking on big tasks. Smaller requests don't count as a win if the task then takes more turns.
+
+### 1. Measure first, change nothing
+
+List everything that loads when a session starts:
+
+- Every CLAUDE.md that loads (global, project, nested) and the files it imports
+- Skill listings: every name and description the model sees
+- MCP servers: which are connected, and which tools load upfront
+- Hooks or scripts that inject text into the conversation
+- Settings: model, modelSettings, CLAUDE_CODE_EFFORT_LEVEL, CLAUDE_CODE_SUBAGENT_MODEL
+
+If I paste `/context` or `/usage` output, use those numbers. Otherwise ask once, then count lines and bytes yourself. Read each file in full. Repeated, conflicting and outdated rules are easy to miss in a summary.
+
+### 2. Check the Opus 5.5 settings
+
+**Effort**: report the level Opus 5.5 actually runs at and where it comes from. It starts at medium, and a top-level effortLevel in ~/.claude/settings.json doesn't count for it.
+**Checks**: list the test, build and typecheck commands this repo already has. A test run costs one turn. Higher effort adds thinking to every turn.
+**Subagents**: for each one, model, effort, and whether it writes code or only reads. With no model line it follows CLAUDE_CODE_SUBAGENT_MODEL, or the main model if that's unset.
+**Output**: an output token costs 100x a cache read, and thinking counts as output. Flag rules that make it write more than the task needs.
+
+### 3. Label every instruction line
+
+**Keep**: what it can't work out from the repo, like how this project ships and how I like to work, plus fixes for mistakes it has made in this project.
+**Move**: playbooks for one workflow into a skill, so they load only when used.
+**Cut**: what it already does by default, and rules that contradict each other.
+
+Keep each CLAUDE.md under ~200 lines.
+
+### 4. Protect the cache
+
+These make the next request re-read the whole session uncached: switching `/model`, turning on fast mode, connecting an MCP server whose tools load upfront, and a skill that pins another model.
+
+- If you need another model's opinion, hand that task to a subagent so the main session keeps its cache.
+- Compact between tasks. Start unrelated work with `/clear`.
+
+### 5. Keep long output out of the conversation
+
+- Test runs, builds, logs: return the failures plus the last few lines, and write the full log to a file it can grep. Cutting output at a fixed length can drop the error line it needed.
+- Progress notes: keep one short file and overwrite it. If it keeps growing, every later read costs more.
+
+### 6. Off-limits
+
+- Adding "be concise" or "save tokens" to any prompt. An agent told to save tokens can start shying away from big tasks.
+- Dropping effort on hard tasks, or changing models halfway through a task, to cut the bill.
+- Judging by tokens per request. Measure cost per finished task.
+
+### 7. Report, then wait
+
+1. Baseline: each source, its size, when it loads
+2. Changes, biggest saving first: what it saves and how you worked that out, what could get worse, how to reverse it
+3. The exact edits to each instruction file, each one tagged Keep, Move or Cut
+
+Back up every file before touching it. Apply nothing until I approve.
+```
+
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2103469567964254587) (verified)
