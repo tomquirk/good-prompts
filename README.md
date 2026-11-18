@@ -35,3 +35,7 @@ cd site && pnpm install && pnpm dev   # http://localhost:3000
 ```
 
 On Vercel, set Root Directory to `site`. Every push to `main` redeploys.
+
+## Maintainer bot
+
+The bot that keeps this repo fed follows the skills in [`skills/`](skills): [`prompt-scan`](skills/prompt-scan/SKILL.md) finds prompts on X and opens PRs, and [`refresh-metrics`](skills/refresh-metrics/SKILL.md) updates `metrics.json` daily with [`scripts/refresh_metrics.py`](scripts/refresh_metrics.py).
