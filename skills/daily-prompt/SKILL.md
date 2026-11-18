@@ -44,7 +44,7 @@ Keep it short:
 > <content_text exactly as written>
 > ```
 >
-> From <author> · <popularity> · [source](<external_url>) · More at https://github.com/tomquirk/prompt-collectooor
+> From <author> · <popularity> · [source](<external_url>) · More at https://prompt-collectooor.vercel.app
 >
 > Want me to run it?
 
