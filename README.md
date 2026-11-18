@@ -38,7 +38,13 @@ On Vercel, set Root Directory to `site`. Every push to `main` redeploys.
 
 ## Get a prompt a day
 
-[`skills/daily-prompt`](skills/daily-prompt/SKILL.md) is a portable agent skill that picks one prompt from the feed each day to fit what you're working on, and never repeats one. Drop it into your agent's skills folder (Claude Code, Codex, Cursor and Grok Bot all read `SKILL.md`), then ask "give me today's prompt" or schedule it daily.
+[`skills/daily-prompt`](skills/daily-prompt/SKILL.md) is a portable agent skill that picks one prompt from the feed each day to fit what you're working on, and never repeats one. Install it with the [skills CLI](https://skills.sh):
+
+```bash
+npx skills add tomquirk/prompt-collectooor --skill daily-prompt -g
+```
+
+That works for Claude Code, Codex, Cursor and 15+ other agents. Then ask "give me today's prompt", or schedule it daily. The generic X finder installs the same way with `--skill find-prompts`.
 
 ## Maintainer bot
 
