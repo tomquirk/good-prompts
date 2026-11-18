@@ -12,8 +12,7 @@ export function SiteHeader() {
         {SITE_NAME}
       </Link>
       <nav aria-label="Site" className="flex items-center gap-1 text-muted-foreground">
-        <a href="/feed.xml" className="hidden px-2 py-2 transition-colors hover:text-foreground sm:inline">rss</a>
-        <a href="/prompts.json" className="hidden px-2 py-2 transition-colors hover:text-foreground sm:inline">json</a>
+        <Link href="/#prompts" className="hidden px-2 py-2 transition-colors hover:text-foreground sm:inline">prompts</Link>
         <a
           href={REPO_URL}
           target="_blank"

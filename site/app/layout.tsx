@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const homeTitle = "Claude Code and Codex prompts, collected from X.com";
+const homeTitle = "God-tier one-shot prompts for Claude Code and Codex, from X.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

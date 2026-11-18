@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { getPrompts } from "@/lib/prompts";
 import { MascotArt, MASCOT_COLORS_STATIC } from "@/components/mascot-art";
 
-export const alt = "prompt-collectooor: prompts for coding agents, collected from X.com";
+export const alt = "prompt-collectooor: collecting god-tier dev prompts from X.com";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const dynamic = "force-static";
@@ -36,10 +36,10 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 76, lineHeight: 1.1, letterSpacing: -2, maxWidth: 760, display: "flex" }}>
-            Prompts for coding agents, collected from X.com
+            Collecting god-tier dev prompts from X.com
           </div>
           <div style={{ marginTop: 32, fontSize: 28, color: "#9c958c", display: "flex" }}>
-            {`${count} prompts, each shown next to the original post`}
+            {`${count} prompts for Claude Code, Codex & co, ranked by likes`}
           </div>
         </div>
       </div>

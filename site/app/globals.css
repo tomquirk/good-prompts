@@ -184,3 +184,29 @@
     animation: none !important;
   }
 }
+
+/* ---- Tweet marquee ---- */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  /* gap-4 sits between the two copies too, so -50% minus half a gap is one exact copy */
+  animation: marquee var(--marquee-duration, 120s) linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}

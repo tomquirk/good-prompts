@@ -1,6 +1,8 @@
 # prompt-collectooor
 
-One-shot prompts from X.com, for when you got tokens to burn 🔥. Ahhh, I'm collectinggg!
+God-tier one-shot prompts from viral X.com posts, ranked by likes. For when you got tokens to burn 🔥
+
+Ahhh, I'm collectinggg!
 
 [RSS](https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.xml) · [JSON Feed](https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.json) · [prompts.json](prompts.json)
 
@@ -36,25 +38,25 @@ cd site && pnpm install && pnpm dev   # http://localhost:3000
 
 On Vercel, set Root Directory to `site`. Every push to `main` redeploys.
 
-## Get a prompt a day
+## Get a prompt picked for your project
 
-[`skills/daily-prompt`](skills/daily-prompt/SKILL.md) is a portable agent skill that picks one prompt from the feed each day to fit what you're working on, and never repeats one. Install it with the [skills CLI](https://skills.sh):
+[`skills/daily-prompt`](skills/daily-prompt/SKILL.md) is a portable agent skill: ask it for a one-shot prompt and it picks one from the feed that fits what you're working on, never repeating one. Install it with the [skills CLI](https://skills.sh):
 
-```bash
+```sh
 npx skills add tomquirk/prompt-collectooor --skill daily-prompt -g
 ```
 
-That works for Claude Code, Codex, Cursor and 15+ other agents. Then ask "give me today's prompt". It suggests one prompt and asks before running it.
-
-To have your agent install it and schedule it every morning, paste this ([`setup-prompt.md`](setup-prompt.md)):
+Or paste this into your agent ([`setup-prompt.md`](setup-prompt.md)). It installs the skill, runs it once and offers to put it on a schedule:
 
 ```text
-Set up a daily coding prompt for me from prompt-collectooor.
+Set up prompt-collectooor for me: one-shot coding prompts from X.com, picked to fit my project.
 
 1. Install the daily-prompt skill by running `npx skills add tomquirk/prompt-collectooor --skill daily-prompt -g`. If you can't run that, save https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/skills/daily-prompt/SKILL.md into your skills folder as `daily-prompt/SKILL.md`.
-2. Use your own scheduling (a routine, automation, scheduled task or cron job) to run this every weekday at 9am my local time: "Use the daily-prompt skill to suggest today's prompt for my current project." If you can't schedule anything, tell me so and tell me how to run it by hand.
-3. Run it once now so I can see what it looks like.
-``` The generic X finder installs the same way with `--skill find-prompts`.
+2. Run it once now: "Use the daily-prompt skill to find me a one-shot prompt to try on this project."
+3. Ask me whether I'd like one suggested on a schedule, for example every weekday at 9am my local time. If I say yes, set it up with your own scheduling (a routine, automation, scheduled task or cron job). If you can't schedule anything, tell me how to run it by hand instead.
+```
+
+The generic X finder installs the same way with `--skill find-prompts`.
 
 ## Maintainer bot
 

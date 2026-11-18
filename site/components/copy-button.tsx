@@ -14,10 +14,15 @@ const hidden = "opacity-0 scale-25 blur-[4px]";
 export function CopyButton({
   text,
   label = "copy",
+  primary = false,
+  onCopied,
   className,
 }: {
   text: string;
   label?: string;
+  /** The page's main call to action: large, filled orange. */
+  primary?: boolean;
+  onCopied?: () => void;
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
@@ -30,17 +35,22 @@ export function CopyButton({
 
   return (
     <Button
-      variant="ghost"
-      size="xs"
+      variant={primary ? "default" : "ghost"}
+      size={primary ? "lg" : "xs"}
       aria-label={copied ? "Copied" : label}
       className={cn(
-        // after: extends the 24px button to a ~40px tall hit area
-        "relative font-mono text-muted-foreground hover:text-foreground after:absolute after:-inset-x-1 after:-inset-y-2",
-        copied && "text-burn hover:text-burn",
+        primary
+          ? "h-11 gap-2 rounded-xl bg-burn px-5 font-mono text-sm text-background hover:bg-burn/90"
+          : // after: extends the 24px button to a ~40px tall hit area
+            "relative font-mono text-muted-foreground hover:text-foreground after:absolute after:-inset-x-1 after:-inset-y-2",
+        !primary && copied && "text-burn hover:text-burn",
         className,
       )}
       onClick={async () => {
-        if (await copyText(text)) setCopied(true);
+        if (await copyText(text)) {
+          setCopied(true);
+          onCopied?.();
+        }
       }}
     >
       <span className="relative grid size-3.5 place-items-center">

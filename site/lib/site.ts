@@ -7,7 +7,7 @@ export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   : "http://localhost:3000";
 
 export const SITE_DESCRIPTION =
-  "Copy-paste prompts for Claude Code, Codex and other coding agents, collected from developers' posts on X.com and shown next to the original post.";
+  "God-tier one-shot prompts for Claude Code, Codex and other coding agents, from viral X.com posts and ranked by likes. For when you got tokens to burn.";
 
 /** Feed links, repeated wherever a page sets its own `alternates`. */
 export const FEED_TYPES = {

@@ -1,13 +1,19 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
+import { EyeIcon, HeartIcon } from "lucide-react";
+import { AgentIcon, AgentLogos } from "@/components/agent-logos";
 import { CopyButton } from "@/components/copy-button";
+import { SetupCta } from "@/components/setup-cta";
+import { DailyDemo } from "@/components/daily-demo";
 import { Mascot } from "@/components/mascot";
+import { MascotArt } from "@/components/mascot-art";
 import { PromptCard } from "@/components/prompt-card";
 import { PromptList } from "@/components/prompt-list";
+import { TweetMarquee } from "@/components/tweet-marquee";
 import { getMetrics } from "@/lib/metrics";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { EDIT_URL, getPrompts, REPO_URL } from "@/lib/prompts";
+import { EDIT_URL, getPrompts } from "@/lib/prompts";
 import {
   absolute,
   FEED_TYPES,
@@ -23,17 +29,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/", types: FEED_TYPES },
 };
 
-const RAW_JSON = `${REPO_URL.replace("github.com", "raw.githubusercontent.com")}/main/prompts.json`;
-const CURL = `curl -s ${RAW_JSON} | jq -r '.prompts[] | "\\(.id): \\(.title)"'`;
-
 // Repo-root setup-prompt.md: paste into any agent to get a prompt a day.
 const SETUP_PROMPT = readFileSync(join(process.cwd(), "..", "setup-prompt.md"), "utf8").trim();
+// The bare install command, lifted from the setup prompt so the two never drift.
+const INSTALL = SETUP_PROMPT.match(/`(npx skills add [^`]+)`/)?.[1];
+const SKILL_URL = "https://github.com/tomquirk/prompt-collectooor/blob/main/skills/daily-prompt/SKILL.md";
 
 const link = "transition-colors hover:text-foreground";
+const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+
 
 export default async function Home() {
   const prompts = getPrompts();
   const metrics = await Promise.all(prompts.map((p) => getMetrics(p.source)));
+  // Reach of the source posts, each post counted once even if it holds several prompts.
+  const reach = new Map<string, { likes: number; views: number }>();
+  prompts.forEach((p, i) => {
+    if (p.source.url && metrics[i]) {
+      reach.set(p.source.url, { likes: metrics[i]!.likes ?? 0, views: metrics[i]!.views ?? 0 });
+    }
+  });
+  const totalLikes = [...reach.values()].reduce((n, r) => n + r.likes, 0);
+  const totalViews = [...reach.values()].reduce((n, r) => n + r.views, 0);
+  const authorCount = new Set(prompts.map((p) => p.source.author).filter(Boolean)).size;
 
   const updated = lastUpdated(prompts);
   const categories = [...new Set(prompts.map((p) => p.category))];
@@ -52,8 +70,8 @@ export default async function Home() {
       `The prompts are grouped into ${categories.length} categories: ${categories.join(", ").toLowerCase()}. Most ask an agent to test, audit or simplify a codebase.`,
     ],
     [
-      "Can I get a prompt suggested every day?",
-      "Yes. Paste the setup prompt near the top of this page into Claude Code, Codex, Cursor or another agent. It installs the daily-prompt skill with npx skills and schedules it, and each morning it suggests one prompt that fits your project and asks whether to run it.",
+      "Can my agent pick a prompt for me?",
+      "Yes. Paste the setup prompt near the top of this page into Claude Code, Codex, Cursor or another agent. It installs the daily-prompt skill with npx skills, which picks one prompt that fits your project whenever you ask and checks with you before running it. The setup prompt also offers to put it on a schedule, for example every weekday morning.",
     ],
     [
       "Can a script or bot read the collection?",
@@ -106,57 +124,105 @@ export default async function Home() {
       <SiteHeader />
 
       <main>
-        <section className="relative pt-16 pb-14 sm:pt-24 sm:pb-20">
+        <section className="relative grid gap-12 pt-14 pb-16 sm:pt-20 sm:pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-12">
           <div className="dot-grid pointer-events-none absolute inset-0 -mx-4 sm:-mx-6" aria-hidden />
-          <div className="relative">
-            <Mascot
-              count={prompts.length}
-              className="mb-2 ml-auto w-28 lg:absolute lg:top-0 lg:right-10 lg:mb-0 lg:w-56"
-            />
-            <h1 className="max-w-3xl text-3xl lg:max-w-[calc(100%-18rem)] leading-[1.15] font-medium tracking-tight text-balance sm:text-5xl">
-              One-shot prompts from X.com, for when you got tokens to burn 🔥
-            </h1>
-            <p className="mt-5 text-sm text-muted-foreground sm:text-base">
-              {prompts.length} prompts for Claude Code, Codex &amp; co. Copy, paste, burn.
-            </p>
 
-            <div className="mt-10 max-w-3xl overflow-hidden rounded-xl border bg-card/80 backdrop-blur-sm">
-              <div className="flex items-center justify-between border-b py-1.5 pr-2 pl-4">
-                <span className="text-xs text-muted-foreground">for your bots</span>
-                <CopyButton text={CURL} />
-              </div>
-              <pre className="overflow-x-auto [scrollbar-width:none] px-4 py-3 text-[13px] text-foreground/90">
-                <span className="text-burn select-none">$ </span>
-                {CURL}
-              </pre>
-            </div>
-            <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-              <a className={link} href="/feed.xml">rss</a>
-              <a className={link} href="/feed.json">json feed</a>
-              <a className={link} href="/llms.txt">llms.txt</a>
-              <a className={link} href={EDIT_URL} target="_blank" rel="noreferrer">
-                add a prompt ↗
-              </a>
-              <span>
-                updated <time dateTime={updated}>{formatDate(updated)}</time>
+          <div className="relative min-w-0">
+            {/* Who does the collecting: Grok Bot finds the prompts and opens the PRs. */}
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border bg-card/80 py-1 pr-3 pl-1.5 text-xs text-muted-foreground backdrop-blur-sm">
+              <span className="grid size-5 place-items-center rounded-full bg-foreground text-background">
+                <AgentIcon icon="grok" className="size-3.5" />
               </span>
+              powered by <span className="text-foreground">Grok Bot</span>
+            </p>
+            <h1 className="text-3xl leading-[1.15] font-medium tracking-tight text-balance sm:text-5xl">
+              Collecting <span className="whitespace-nowrap">god-tier</span> dev prompts from X.com 🔥
+            </h1>
+            {/* The angle: every prompt comes from a post that already took off. */}
+            <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5 text-foreground" title={`${totalLikes.toLocaleString("en")} likes`}>
+                <HeartIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden />
+                <span className="tabular-nums">{compact.format(totalLikes)}</span>
+                <span className="sr-only">likes</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-foreground" title={`${totalViews.toLocaleString("en")} views`}>
+                <EyeIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden />
+                <span className="tabular-nums">{compact.format(totalViews)}</span>
+                <span className="sr-only">views</span>
+              </span>
+              <span>from viral X.com posts</span>
+            </p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-pretty text-muted-foreground sm:text-base">
+              The best one-shot prompts from X.com that audit, de-slop and improve your codebase. Got tokens to burn? Let your agents rip.
             </p>
 
-            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl border bg-card/80 backdrop-blur-sm">
-              <div className="flex items-center justify-between border-b py-1.5 pr-2 pl-4">
-                <span className="text-xs text-muted-foreground">
-                  get one a day: paste this into your agent
-                </span>
-                <CopyButton text={SETUP_PROMPT} />
-              </div>
-              <pre className="whitespace-pre-wrap px-4 py-3 text-[13px] text-foreground/90">
+            <div className="mt-8">
+              <SetupCta prompt={SETUP_PROMPT} count={prompts.length} />
+            </div>
+            {/* One quiet line; the setup prompt and the bare install command fold away. */}
+            <details className="group mt-1 max-w-lg text-xs text-muted-foreground">
+              <summary className="cursor-pointer list-none transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+                free · open source · asks before running ·{" "}
+                <span className="text-burn group-open:hidden">what&apos;s in it?</span>
+              </summary>
+              <pre className="mt-3 rounded-xl border bg-card px-4 py-3 text-[12.5px] leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] text-foreground/80">
                 {SETUP_PROMPT}
               </pre>
+              {INSTALL && (
+                <>
+                  <p className="mt-4">
+                    or just install the skill ·{" "}
+                    <a className={link} href={SKILL_URL} target="_blank" rel="noreferrer">
+                      read SKILL.md ↗
+                    </a>
+                  </p>
+                  <div className="mt-2 flex items-center gap-2 rounded-xl border bg-card py-1.5 pr-2 pl-4">
+                    <code className="min-w-0 flex-1 py-1 text-[12.5px] leading-relaxed text-foreground/90 [overflow-wrap:anywhere]">
+                      <span className="text-burn select-none">$ </span>
+                      {INSTALL}
+                    </code>
+                    <CopyButton text={INSTALL} />
+                  </div>
+                </>
+              )}
+            </details>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-xs text-muted-foreground">works with</span>
+              <AgentLogos iconsOnly />
             </div>
+          </div>
+
+          {/* The mascot perches on the mock, speech bubble and all. */}
+          {/* Padding is the mascot's height minus ~12px, so he rests on the card's top edge. */}
+          <div className="relative min-w-0 pt-[5.6rem] sm:pt-[6.5rem]">
+            <Mascot count={prompts.length} className="absolute top-0 right-8 z-10 w-24 sm:w-28" />
+            <DailyDemo
+              buildDate={new Date().toISOString().slice(0, 10)}
+              items={prompts.map((p, i) => ({
+                title: p.title,
+                prompt: p.prompt,
+                useWhen: p.use_when,
+                author: p.source.author,
+                href: promptPath(p.id),
+                metrics: metrics[i],
+              }))}
+            />
           </div>
         </section>
 
-        <PromptList
+        <section aria-labelledby="proof-heading" className="border-t py-10">
+          <h2 id="proof-heading" className="mb-6 text-center text-xs text-muted-foreground">
+            straight from {authorCount} devs on X.com
+          </h2>
+          <TweetMarquee prompts={prompts} />
+        </section>
+
+        <section id="prompts" aria-labelledby="prompts-heading" className="border-t pt-14 sm:pt-20">
+          <h2 id="prompts-heading" className="mb-6 text-2xl font-medium tracking-tight sm:text-3xl">
+            Browse all prompts
+          </h2>
+          <PromptList
           items={prompts.map((p, i) => ({
             id: p.id,
             category: p.category,
@@ -166,7 +232,34 @@ export default async function Home() {
               .toLowerCase(),
             node: <PromptCard prompt={p} metrics={metrics[i]} />,
           }))}
-        />
+          />
+        </section>
+
+        <section aria-labelledby="cta-heading" className="flex flex-col items-center border-t py-16 text-center sm:py-24">
+          <MascotArt className="w-16" />
+          <h2 id="cta-heading" className="mt-5 text-2xl font-medium tracking-tight text-balance sm:text-3xl">
+            Got tokens to burn?
+          </h2>
+          <p className="mt-3 max-w-md text-sm text-pretty text-muted-foreground">
+            Paste the setup prompt into your agent once. Then ask for a prompt whenever you like,
+            or have it suggest one every morning.
+          </p>
+          <div className="mt-7">
+            <SetupCta prompt={SETUP_PROMPT} />
+          </div>
+        </section>
+
+        <p className="flex flex-wrap gap-x-4 gap-y-1 border-t py-6 text-xs text-muted-foreground">
+          <span className="text-foreground/70">for bots</span>
+          <a className={link} href="/prompts.json">prompts.json</a>
+          <a className={link} href="/feed.xml">rss</a>
+          <a className={link} href="/feed.json">json feed</a>
+          <a className={link} href="/llms.txt">llms.txt</a>
+          <a className={link} href={EDIT_URL} target="_blank" rel="noreferrer">add a prompt ↗</a>
+          <span>
+            updated <time dateTime={updated}>{formatDate(updated)}</time>
+          </span>
+        </p>
 
         <section aria-labelledby="faq-heading" className="border-t py-10">
           <h2 id="faq-heading" className="text-sm font-medium">
