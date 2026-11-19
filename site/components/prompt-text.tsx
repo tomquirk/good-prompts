@@ -13,13 +13,13 @@ export function PromptText({ text, collapsible = true }: { text: string; collaps
     <div className="relative">
       <pre
         className={
-          "px-4 py-3.5 text-[13px] leading-relaxed whitespace-pre-wrap break-words text-foreground/90 " +
+          "px-4 py-3.5 text-sm leading-relaxed whitespace-pre-wrap break-words text-foreground " +
           (open ? "" : "max-h-72 overflow-hidden")
         }
       >
         {text}
       </pre>
-      {long && (
+      {long ? (
         <div
           className={
             open
@@ -35,7 +35,7 @@ export function PromptText({ text, collapsible = true }: { text: string; collaps
             {open ? "Collapse" : `Show full prompt (${text.length.toLocaleString()} characters)`}
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

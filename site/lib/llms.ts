@@ -1,6 +1,21 @@
 import "server-only";
-import { getPrompts, REPO_URL } from "@/lib/prompts";
-import { absolute, formatDate, lastUpdated, promptPath, scopeLabel, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { getPrompts, type Prompt, REPO_URL } from "@/lib/prompts";
+import { absolute, formatDate, lastUpdated, promptPath, SITE_DESCRIPTION, SITE_NAME, scopeLabel } from "@/lib/site";
+
+/** One prompt's lines: a link and summary, plus the full text when `full`. */
+function entry(p: Prompt, full: boolean): string[] {
+  const by = p.source.author ? `, posted by ${p.source.author}` : "";
+  const lines = [`- [${p.title}](${absolute(promptPath(p.id))}): ${p.use_when} (${scopeLabel(p)}${by})`];
+  if (!full) {
+    return lines;
+  }
+  const label = p.text_kind === "summary" ? "Summary (full prompt at the source)" : "Prompt";
+  lines.push("", `  ${label}:`, "", ...p.prompt.split("\n").map((l) => (l ? `    ${l}` : "")), "");
+  if (p.source.url) {
+    lines.push(`  Source: ${p.source.url}`, "");
+  }
+  return lines;
+}
 
 /** llms.txt (https://llmstxt.org); `full` inlines every prompt's text. */
 export function llmsTxt(full: boolean) {
@@ -23,16 +38,10 @@ export function llmsTxt(full: boolean) {
   for (const [category, items] of byCategory) {
     out.push("", `## ${category}`, "");
     for (const p of items) {
-      const by = p.source.author ? `, posted by ${p.source.author}` : "";
-      out.push(`- [${p.title}](${absolute(promptPath(p.id))}): ${p.use_when} (${scopeLabel(p)}${by})`);
-      if (full) {
-        const label = p.text_kind === "summary" ? "Summary (full prompt at the source)" : "Prompt";
-        out.push("", `  ${label}:`, "", ...p.prompt.split("\n").map((l) => (l ? `    ${l}` : "")), "");
-        if (p.source.url) out.push(`  Source: ${p.source.url}`, "");
-      }
+      out.push(...entry(p, full));
     }
   }
-  return out.join("\n") + "\n";
+  return `${out.join("\n")}\n`;
 }
 
 export const textResponse = (body: string) =>

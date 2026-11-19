@@ -52,6 +52,8 @@ def validate(data):
                 raise ValueError(f"Source must have an absolute HTTPS URL: {p['id']}")
             if not isinstance(source.get("author"), str) or not source["author"].strip():
                 raise ValueError(f"Source must have an author: {p['id']}")
+            if source["author"].startswith("@") and not re.fullmatch(r"@\w{1,15}", source["author"]):
+                raise ValueError(f"Invalid X handle: {p['id']}")
         related_urls = source.get("related_urls", [])
         if not isinstance(related_urls, list):
             raise ValueError("related_urls must be a list")

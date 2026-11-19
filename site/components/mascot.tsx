@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { EYE_CENTRES, EYES_REST, MascotArt, VIEW, type Eyes } from "@/components/mascot-art";
+import { EYE_CENTRES, EYES_REST, type Eyes, MascotArt, VIEW } from "@/components/mascot-art";
 import { cn } from "@/lib/utils";
 
 // In the 120×120 viewBox: how far the gaze travels, and the circle the eyes
@@ -28,21 +28,26 @@ export function Mascot({ count, className }: { count: number; className?: string
   const [spaz, setSpaz] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
     const onMove = (e: PointerEvent) => {
       pointer.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener("pointermove", onMove, { passive: true });
+    globalThis.addEventListener("pointermove", onMove, { passive: true });
 
     // Both eyes aim at the pointer together, each with its own tremor, and
     // every so often the gaze darts somewhere random.
     const tick = setInterval(() => {
       const svg = ref.current?.querySelector("svg");
-      if (!svg) return;
+      if (!svg) {
+        return;
+      }
       const box = svg.getBoundingClientRect();
       const scale = box.width / VIEW.w;
-      let gx: number, gy: number;
+      let gx: number;
+      let gy: number;
       if (Math.random() < 0.07 || !pointer.current) {
         const a = Math.random() * Math.PI * 2;
         [gx, gy] = [Math.cos(a) * REACH, Math.sin(a) * REACH];
@@ -69,13 +74,15 @@ export function Mascot({ count, className }: { count: number; className?: string
     }, 110);
 
     return () => {
-      window.removeEventListener("pointermove", onMove);
+      globalThis.removeEventListener("pointermove", onMove);
       clearInterval(tick);
     };
   }, []);
 
   useEffect(() => {
-    if (!spaz) return;
+    if (!spaz) {
+      return;
+    }
     const t = setTimeout(() => setSpaz(false), 650);
     return () => clearTimeout(t);
   }, [spaz]);
@@ -84,11 +91,11 @@ export function Mascot({ count, className }: { count: number; className?: string
     <div className={cn("relative", className)}>
       <p
         aria-live="polite"
-        className="absolute right-0 bottom-[calc(100%-0.25rem)] z-10 w-max max-w-48 rounded-lg border bg-card px-2.5 py-1.5 text-[11px] leading-snug text-pretty text-foreground shadow-lg sm:max-w-52 sm:text-xs"
+        className="absolute right-0 bottom-[calc(100%-0.25rem)] z-10 w-max max-w-48 rounded-xl border bg-card px-2.5 py-1.5 text-xs leading-snug text-pretty text-foreground shadow-lg sm:max-w-52"
       >
         {lines[line]}
         <span
-          aria-hidden
+          aria-hidden={true}
           className="absolute right-8 -bottom-[5px] size-2.5 rotate-45 border-r border-b bg-card"
         />
       </p>
@@ -100,7 +107,7 @@ export function Mascot({ count, className }: { count: number; className?: string
           setSpaz(true);
           setLine((l) => (l + 1) % lines.length);
         }}
-        className={cn("mascot block w-full cursor-pointer rounded-2xl", spaz && "mascot-spaz")}
+        className={cn("mascot block w-full cursor-pointer rounded-xl", spaz && "mascot-spaz")}
       >
         <MascotArt eyes={eyes} squint={spaz} className="block h-auto w-full overflow-visible" />
       </button>

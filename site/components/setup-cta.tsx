@@ -13,7 +13,7 @@ export function SetupCta({ prompt, count }: { prompt: string; count?: number }) 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <CopyButton primary text={prompt} label="copy setup prompt" onCopied={() => setCopied(true)} />
+        <CopyButton primary={true} text={prompt} label="copy setup prompt" onCopied={() => setCopied(true)} />
         {count !== undefined && (
           <a href="#prompts" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             or browse {count} prompts ↓

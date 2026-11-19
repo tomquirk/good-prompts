@@ -458,7 +458,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#browser-testing</link>
       <guid isPermaLink="false">urn:prompt-collection:browser-testing</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;A web interface needs verification across screen sizes, touch input, and slow connections.&lt;/p&gt;&lt;pre&gt;Test this in the browser at different widths, with touch emulation, and on a throttled 3G connection. Fix anything that looks broken or feels off. Save a before and after screenshot for every fix and send me a summary afterwards.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emilkowalski/status/2120508498236596597"&gt;@emilkowalski&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;A web interface needs verification across screen sizes, touch input, and slow connections.&lt;/p&gt;&lt;pre&gt;Test this in the browser at different widths, with touch emulation, and on a throttled 3G connection. Fix anything that looks broken or feels off. Save a before and after screenshot for every fix and send me a summary afterwards.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emilkowalski/status/2120508498236596597"&gt;@emilkowalski&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Testing and verification</category>
       <category>browser</category>
       <category>responsive</category>
@@ -478,7 +478,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
 
 Then make the changes. Prefer deleting over simplifying, simplifying over optimizing, and optimizing over automating.
 
-This product is being used by thousands of customers, do not cut any corners.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/anthonyriera/status/2119870644514893997"&gt;@anthonyriera&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+This product is being used by thousands of customers, do not cut any corners.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/anthonyriera/status/2119870644514893997"&gt;@anthonyriera&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Codebase audits and simplification</category>
       <category>audit</category>
       <category>architecture</category>
@@ -490,7 +490,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#document-state-machines</link>
       <guid isPermaLink="false">urn:prompt-collection:document-state-machines</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Reachable invalid states need evidence, documentation, and regression-tested fixes.&lt;/p&gt;&lt;pre&gt;Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/trevin/status/2118690987153186845"&gt;@trevin&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Reachable invalid states need evidence, documentation, and regression-tested fixes.&lt;/p&gt;&lt;pre&gt;Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/trevin/status/2118690987153186845"&gt;@trevin&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>State machines and semantics</category>
       <category>state-machines</category>
       <category>concurrency</category>
@@ -502,7 +502,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#e2e-proof</link>
       <guid isPermaLink="false">urn:prompt-collection:e2e-proof</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;A completed feature needs end-to-end evidence that it works.&lt;/p&gt;&lt;pre&gt;test this e2e &amp;amp; give me irrefutable proof it works&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/thorstenball/status/2102623376196194763"&gt;@thorstenball&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;A completed feature needs end-to-end evidence that it works.&lt;/p&gt;&lt;pre&gt;test this e2e &amp;amp; give me irrefutable proof it works&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/thorstenball/status/2102623376196194763"&gt;@thorstenball&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Testing and verification</category>
       <category>testing</category>
       <category>e2e</category>
@@ -513,7 +513,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#find-state-machines</link>
       <guid isPermaLink="false">urn:prompt-collection:find-state-machines</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;An app has behavior that depends on changing state and events.&lt;/p&gt;&lt;pre&gt;find all of the implicit state machines in my app&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/steveruizok/status/2116552016218710389"&gt;@steveruizok&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;An app has behavior that depends on changing state and events.&lt;/p&gt;&lt;pre&gt;find all of the implicit state machines in my app&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/steveruizok/status/2116552016218710389"&gt;@steveruizok&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>State machines and semantics</category>
       <category>state-machines</category>
       <category>state</category>
@@ -524,7 +524,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#full-project-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:full-project-audit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;A project needs a broad review of correctness, consistency, and unnecessary work.&lt;/p&gt;&lt;pre&gt;Read this entire project and find everything that&amp;#x27;s broken, inconsistent, inefficient, or no longer needed. Fix what you&amp;#x27;re sure about and list the rest for me to review.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;A project needs a broad review of correctness, consistency, and unnecessary work.&lt;/p&gt;&lt;pre&gt;Read this entire project and find everything that&amp;#x27;s broken, inconsistent, inefficient, or no longer needed. Fix what you&amp;#x27;re sure about and list the rest for me to review.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Codebase audits and simplification</category>
       <category>audit</category>
       <category>bugs</category>
@@ -548,7 +548,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#macos-cleanup</link>
       <guid isPermaLink="false">urn:prompt-collection:macos-cleanup</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;The user explicitly wants to review and remove unused macOS software and permissions.&lt;/p&gt;&lt;pre&gt;remove all the apps, tcc/permission grants, login items, daemons, kexts, browser exts, homebrew packages, etc., that I don&amp;#x27;t need and use.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/sqs/status/2120113139996086409"&gt;@sqs&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;The user explicitly wants to review and remove unused macOS software and permissions.&lt;/p&gt;&lt;pre&gt;remove all the apps, tcc/permission grants, login items, daemons, kexts, browser exts, homebrew packages, etc., that I don&amp;#x27;t need and use.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/sqs/status/2120113139996086409"&gt;@sqs&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Security and system cleanup</category>
       <category>macos</category>
       <category>cleanup</category>
@@ -560,7 +560,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#make-state-machines-explicit</link>
       <guid isPermaLink="false">urn:prompt-collection:make-state-machines-explicit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Implicit state transitions may benefit from explicit modeling; the prompt references lavish-axi.&lt;/p&gt;&lt;pre&gt;audit and find implicit state machines in this &amp;lt;codebase/directory/module&amp;gt; that would drive concrete improvements if made explicit. explain before/after of each one and discuss with me in lavish-axi. fewer words, big visuals&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2119924895060795492"&gt;@kunchenguid&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Implicit state transitions may benefit from explicit modeling; the prompt references lavish-axi.&lt;/p&gt;&lt;pre&gt;audit and find implicit state machines in this &amp;lt;codebase/directory/module&amp;gt; that would drive concrete improvements if made explicit. explain before/after of each one and discuss with me in lavish-axi. fewer words, big visuals&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2119924895060795492"&gt;@kunchenguid&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>State machines and semantics</category>
       <category>state-machines</category>
       <category>refactoring</category>
@@ -571,7 +571,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#map-codebase-architecture</link>
       <guid isPermaLink="false">urn:prompt-collection:map-codebase-architecture</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;A project has grown messy and you want a written map of its structure, data flow, and riskiest files.&lt;/p&gt;&lt;pre&gt;Map this codebase for me. Show the folder structure, what each main file does, how data flows from UI to database, and the 5 riskiest files to touch. Write it all to ARCHITECTURE.md.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/mdjunaidap/status/2119844974019973308"&gt;@mdjunaidap&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;A project has grown messy and you want a written map of its structure, data flow, and riskiest files.&lt;/p&gt;&lt;pre&gt;Map this codebase for me. Show the folder structure, what each main file does, how data flows from UI to database, and the 5 riskiest files to touch. Write it all to ARCHITECTURE.md.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/mdjunaidap/status/2119844974019973308"&gt;@mdjunaidap&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Codebase audits and simplification</category>
       <category>architecture</category>
       <category>documentation</category>
@@ -596,7 +596,7 @@ Then find:
 → one fact stored in two places, drifting
 → work that never reaches the screen
 
-Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;quot;trust me&amp;quot;. For each &amp;quot;trust me&amp;quot;, give the smallest input that breaks it.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/infinterenders/status/2119676620680339490"&gt;@infinterenders&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;quot;trust me&amp;quot;. For each &amp;quot;trust me&amp;quot;, give the smallest input that breaks it.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/infinterenders/status/2119676620680339490"&gt;@infinterenders&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>State machines and semantics</category>
       <category>state</category>
       <category>concurrency</category>
@@ -619,7 +619,7 @@ Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;q
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#parallel-async-calls</link>
       <guid isPermaLink="false">urn:prompt-collection:parallel-async-calls</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Independent async operations appear to run sequentially on hot paths.&lt;/p&gt;&lt;pre&gt;do a deep scan of all hot paths and fix any unnecessary sequential async function calls&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117099613022732412"&gt;@_dylanga&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Independent async operations appear to run sequentially on hot paths.&lt;/p&gt;&lt;pre&gt;do a deep scan of all hot paths and fix any unnecessary sequential async function calls&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117099613022732412"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Performance</category>
       <category>performance</category>
       <category>async</category>
@@ -693,7 +693,7 @@ Build an interactive security dashboard covering frontend, APIs, authentication,
 - Source evidence, code changes and test results.
 - Audit coverage, unverified areas and remaining priorities.
 
-Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/thejoegardiner/status/2118119394517950725"&gt;@thejoegardiner&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/thejoegardiner/status/2118119394517950725"&gt;@thejoegardiner&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Security and system cleanup</category>
       <category>security</category>
       <category>audit</category>
@@ -705,7 +705,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#select-database-fields</link>
       <guid isPermaLink="false">urn:prompt-collection:select-database-fields</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Database queries fetch whole rows while using only a few fields.&lt;/p&gt;&lt;pre&gt;find every place we load a whole row from the database just to read a couple of fields. instead, select only what we need&lt;/pre&gt;&lt;p&gt;Source: not provided.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Database queries fetch whole rows while using only a few fields.&lt;/p&gt;&lt;pre&gt;find every place we load a whole row from the database just to read a couple of fields. instead, select only what we need&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Performance</category>
       <category>database</category>
       <category>queries</category>
@@ -716,7 +716,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#simple-ux-dx-ax</link>
       <guid isPermaLink="false">urn:prompt-collection:simple-ux-dx-ax</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;An interface or implementation feels cluttered or unnecessarily complex.&lt;/p&gt;&lt;pre&gt;I want this to be as perfect as Linear&amp;#x27;s website or Apple Notes: simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2117281830449942825"&gt;@Voxyz_ai&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;An interface or implementation feels cluttered or unnecessarily complex.&lt;/p&gt;&lt;pre&gt;I want this to be as perfect as Linear&amp;#x27;s website or Apple Notes: simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2117281830449942825"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Design and experience</category>
       <category>design</category>
       <category>ux</category>
@@ -729,7 +729,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#single-source-of-truth</link>
       <guid isPermaLink="false">urn:prompt-collection:single-source-of-truth</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;The same fact or configuration may be maintained in multiple places.&lt;/p&gt;&lt;pre&gt;single source of truth audit&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kitlangton/status/2120341112959455559"&gt;@kitlangton&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;The same fact or configuration may be maintained in multiple places.&lt;/p&gt;&lt;pre&gt;single source of truth audit&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kitlangton/status/2120341112959455559"&gt;@kitlangton&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Codebase audits and simplification</category>
       <category>audit</category>
       <category>state</category>
@@ -741,7 +741,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#unnecessary-url-parsing</link>
       <guid isPermaLink="false">urn:prompt-collection:unnecessary-url-parsing</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Repeated or redundant URL parsing may add unnecessary work.&lt;/p&gt;&lt;pre&gt;remove all unnecessary `new URL()` parsing&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Repeated or redundant URL parsing may add unnecessary work.&lt;/p&gt;&lt;pre&gt;remove all unnecessary `new URL()` parsing&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Performance</category>
       <category>performance</category>
       <category>url</category>
@@ -752,7 +752,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#weekly-session-review</link>
       <guid isPermaLink="false">urn:prompt-collection:weekly-session-review</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Recent coding sessions are available and the user wants to identify ways to improve their workflow.&lt;/p&gt;&lt;pre&gt;look at last weeks sessions and suggest improvements&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/nateberkopec/status/2114842635743674790"&gt;@nateberkopec&lt;/a&gt; (unverified)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Recent coding sessions are available and the user wants to identify ways to improve their workflow.&lt;/p&gt;&lt;pre&gt;look at last weeks sessions and suggest improvements&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/nateberkopec/status/2114842635743674790"&gt;@nateberkopec&lt;/a&gt; (verified)&lt;/p&gt;</description>
       <category>Agent workflows and retrospectives</category>
       <category>sessions</category>
       <category>retrospective</category>

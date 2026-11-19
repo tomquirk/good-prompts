@@ -1,3 +1,4 @@
+import process from "node:process";
 import type { Prompt } from "@/lib/prompts";
 
 export const SITE_NAME = "prompt-collectooor";
@@ -7,7 +8,7 @@ export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   : "http://localhost:3000";
 
 export const SITE_DESCRIPTION =
-  "God-tier one-shot prompts for Claude Code, Codex and other coding agents, from viral X.com posts and ranked by likes. For when you got tokens to burn.";
+  "Good one-shot prompts for Claude Code, Codex and other coding agents, from viral X.com posts and ranked by likes. For when you got tokens to burn.";
 
 /** Feed links, repeated wherever a page sets its own `alternates`. */
 export const FEED_TYPES = {
@@ -39,5 +40,11 @@ export function formatDate(iso: string) {
 
 /** Latest `added_on` across the collection. */
 export function lastUpdated(prompts: Pick<Prompt, "added_on">[]) {
-  return prompts.reduce((max, p) => (p.added_on > max ? p.added_on : max), "");
+  // ISO dates sort as strings.
+  return (
+    prompts
+      .map((p) => p.added_on)
+      .toSorted((a, b) => a.localeCompare(b))
+      .at(-1) ?? ""
+  );
 }

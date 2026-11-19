@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { Input } from "@/components/ui/input";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { MascotArt } from "@/components/mascot-art";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export type ListItem = {
@@ -22,7 +22,9 @@ export function PromptList({ items }: { items: ListItem[] }) {
 
   const categories = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const i of items) counts.set(i.category, (counts.get(i.category) ?? 0) + 1);
+    for (const i of items) {
+      counts.set(i.category, (counts.get(i.category) ?? 0) + 1);
+    }
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [items]);
 
@@ -44,62 +46,56 @@ export function PromptList({ items }: { items: ListItem[] }) {
         inputRef.current?.blur();
       }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    globalThis.addEventListener("keydown", onKey);
+    return () => globalThis.removeEventListener("keydown", onKey);
   }, []);
 
   return (
     <>
       <div className="sticky top-0 z-10 -mx-4 border-b bg-background/80 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
         <div className="relative">
-          <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-burn">
-            &gt;
-          </span>
+          <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-base text-burn">&gt;</span>
           <Input
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search prompts"
             aria-label="Search prompts"
-            className="h-9 pl-7 pr-10 font-mono"
+            className="h-12 rounded-xl bg-secondary pr-12 pl-9 font-mono text-base shadow-lg shadow-black/30 focus-visible:border-burn focus-visible:ring-burn/25 dark:bg-secondary md:text-base"
           />
-          <kbd className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 rounded border px-1.5 text-[11px] text-muted-foreground">
+          <kbd className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 rounded-md border border-input px-1.5 text-xs text-muted-foreground">
             /
           </kbd>
         </div>
         <div className="mt-0.5 -mb-1.5 flex items-center gap-2">
-        {/* py-2 contains the chips' enlarged hit areas inside the scroller */}
-        <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
-          <Chip active={!category} onClick={() => setCategory(null)} count={items.length}>
-            all
-          </Chip>
-          {categories.map(([c, n]) => (
-            <Chip
-              key={c}
-              active={category === c}
-              onClick={() => setCategory(category === c ? null : c)}
-              count={n}
-            >
-              {c}
+          {/* py-2 contains the chips' enlarged hit areas inside the scroller */}
+          <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
+            <Chip active={!category} onClick={() => setCategory(null)} count={items.length}>
+              all
             </Chip>
-          ))}
-        </div>
-        <div role="group" aria-label="Sort" className="flex shrink-0 gap-1 border-l pl-2">
-          {(["top", "new"] as const).map((s) => (
-            <button
-              key={s}
-              type="button"
-              aria-pressed={sort === s}
-              onClick={() => setSort(s)}
-              className={cn(
-                "relative rounded-md px-2 py-1 text-xs transition-colors after:absolute after:inset-x-0 after:-inset-y-2",
-                sort === s ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+            {categories.map(([c, n]) => (
+              <Chip key={c} active={category === c} onClick={() => setCategory(category === c ? null : c)} count={n}>
+                {c}
+              </Chip>
+            ))}
+          </div>
+          <fieldset className="flex shrink-0 gap-1 border-l pl-2">
+            <legend className="sr-only">Sort</legend>
+            {(["top", "new"] as const).map((s) => (
+              <button
+                key={s}
+                type="button"
+                aria-pressed={sort === s}
+                onClick={() => setSort(s)}
+                className={cn(
+                  "relative rounded-lg px-2 py-1 text-xs transition-colors after:absolute after:inset-x-0 after:-inset-y-2",
+                  sort === s ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {s}
+              </button>
+            ))}
+          </fieldset>
         </div>
       </div>
 
@@ -139,16 +135,12 @@ function Chip({
       aria-pressed={active}
       className={cn(
         // after: grows the hit area vertically without overlapping neighbours
-        "relative shrink-0 rounded-md px-2 py-1 text-xs whitespace-nowrap transition-colors after:absolute after:inset-x-0 after:-inset-y-2",
-        active
-          ? "bg-secondary text-foreground"
-          : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+        "relative shrink-0 rounded-lg px-2 py-1 text-xs whitespace-nowrap transition-colors after:absolute after:inset-x-0 after:-inset-y-2",
+        active ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary hover:text-foreground",
       )}
     >
       {children}
-      <span className={cn("ml-1.5 tabular-nums", active ? "text-burn" : "opacity-50")}>
-        {count}
-      </span>
+      <span className={cn("ml-1.5 tabular-nums", active ? "text-burn" : "text-muted-foreground")}>{count}</span>
     </button>
   );
 }

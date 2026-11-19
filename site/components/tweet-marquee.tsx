@@ -1,5 +1,5 @@
 import { BadgeCheckIcon, HeartIcon } from "lucide-react";
-import { tweetId, type Prompt } from "@/lib/prompts";
+import { type Prompt, tweetId } from "@/lib/prompts";
 import { fetchTweet } from "@/lib/tweets";
 
 const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
@@ -19,21 +19,27 @@ type Card = {
 function cleanText(text: string, range?: [number, number]) {
   const chars = Array.from(text);
   const shown = range ? chars.slice(range[0], range[1]).join("") : text;
-  return shown.replace(/\s*https:\/\/t\.co\/\S+/g, "").trim();
+  return shown.replace(/\s*https:\/\/t\.co\/\S+/gu, "").trim();
 }
 
 async function cards(prompts: Prompt[]): Promise<Card[]> {
-  const seen = new Set<string>();
-  const out: Card[] = [];
+  // One card per post, even when it holds several prompts.
+  const posts = new Map<string, string>();
   for (const p of prompts) {
     const id = tweetId(p.source.url);
-    if (!id || seen.has(id)) continue; // one card per post, even when it holds several prompts
-    seen.add(id);
-    const t = await fetchTweet(id);
-    if (!t) continue; // private or deleted
+    if (id !== null && p.source.url !== null && !posts.has(id)) {
+      posts.set(id, p.source.url);
+    }
+  }
+  const fetched = await Promise.all([...posts].map(async ([id, url]) => ({ id, url, t: await fetchTweet(id) })));
+  const out: Card[] = [];
+  for (const { id, url, t } of fetched) {
+    if (!t) {
+      continue; // private or deleted
+    }
     out.push({
       id,
-      url: p.source.url!,
+      url,
       name: t.user.name,
       handle: t.user.screen_name,
       avatar: t.user.profile_image_url_https.replace("_normal.", "_bigger."),
@@ -51,7 +57,9 @@ async function cards(prompts: Prompt[]): Promise<Card[]> {
  */
 export async function TweetMarquee({ prompts }: { prompts: Prompt[] }) {
   const list = await cards(prompts);
-  if (!list.length) return null;
+  if (list.length === 0) {
+    return null;
+  }
 
   const row = (hidden: boolean) =>
     list.map((c) => (
@@ -61,10 +69,10 @@ export async function TweetMarquee({ prompts }: { prompts: Prompt[] }) {
           target="_blank"
           rel="noreferrer"
           tabIndex={hidden ? -1 : undefined}
-          className="flex h-full flex-col rounded-xl border bg-card p-4 text-[13px] transition-colors hover:border-foreground/20"
+          className="flex h-full flex-col rounded-xl border bg-card p-4 text-sm transition-colors hover:border-foreground/20"
         >
           <div className="flex items-center gap-2.5">
-            {/* eslint-disable-next-line @next/next/no-img-element -- remote avatars in a static export */}
+            {/* biome-ignore lint/performance/noImgElement: remote avatars in a static export, where next/image cannot optimise */}
             <img
               src={c.avatar}
               alt=""
@@ -76,14 +84,16 @@ export async function TweetMarquee({ prompts }: { prompts: Prompt[] }) {
             <div className="min-w-0 leading-tight">
               <div className="flex items-center gap-1 truncate font-sans font-semibold text-foreground">
                 <span className="truncate">{c.name}</span>
-                {c.verified && <BadgeCheckIcon className="size-4 shrink-0 fill-sky-500 text-background" aria-label="verified" />}
+                {c.verified ? (
+                  <BadgeCheckIcon className="size-4 shrink-0 fill-sky-500 text-background" aria-label="verified" />
+                ) : null}
               </div>
               <div className="truncate text-xs text-muted-foreground">@{c.handle}</div>
             </div>
           </div>
-          <p className="mt-3 line-clamp-3 font-sans text-pretty whitespace-pre-line text-foreground/85">{c.text}</p>
+          <p className="mt-3 line-clamp-3 font-sans text-pretty whitespace-pre-line text-foreground">{c.text}</p>
           <div className="mt-auto flex items-center gap-1.5 pt-3 text-xs text-muted-foreground">
-            <HeartIcon strokeWidth={1.5} className="size-3.5" aria-hidden />
+            <HeartIcon strokeWidth={1.5} className="size-3.5" aria-hidden={true} />
             <span className="tabular-nums">{compact.format(c.likes)}</span>
           </div>
         </a>
@@ -91,7 +101,10 @@ export async function TweetMarquee({ prompts }: { prompts: Prompt[] }) {
     ));
 
   return (
-    <div className="marquee group relative -mx-4 overflow-hidden sm:-mx-6" style={{ "--marquee-duration": `${list.length * 5}s` } as React.CSSProperties}>
+    <div
+      className="marquee group relative -mx-4 overflow-hidden sm:-mx-6"
+      style={{ "--marquee-duration": `${list.length * 5}s` } as React.CSSProperties}
+    >
       <ul className="marquee-track flex w-max gap-4 py-1">
         {row(false)}
         {row(true)}

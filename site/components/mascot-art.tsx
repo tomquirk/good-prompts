@@ -11,10 +11,10 @@ export type Eyes = { l: { x: number; y: number }; r: { x: number; y: number } };
 export const MASCOT_COLORS = {
   blob: "var(--burn)",
   eye: "var(--background)",
-  iris: "#8a4b16",
-  shine: "#fff",
-  blush: "#ff5f7e",
-  tongue: "#ff7f91",
+  iris: "oklch(0.48 0.106 55.497)",
+  shine: "oklch(1 0 0)",
+  blush: "oklch(0.701 0.195 12.034)",
+  tongue: "oklch(0.747 0.156 12.811)",
 };
 
 // Literal colors for contexts without CSS variables (next/og, favicon).
@@ -82,9 +82,7 @@ export function MascotArt({
     );
   };
 
-  const blush = (cx: number) => (
-    <ellipse cx={cx} cy="68" rx="8" ry="4" fill={colors.blush} fillOpacity="0.3" />
-  );
+  const blush = (cx: number) => <ellipse cx={cx} cy="68" rx="8" ry="4" fill={colors.blush} fillOpacity="0.3" />;
 
   return (
     <svg
@@ -92,7 +90,7 @@ export function MascotArt({
       width={size}
       height={size ? (size * VIEW.h) / VIEW.w : undefined}
       className={className}
-      aria-hidden
+      aria-hidden={true}
     >
       {/* sparkles */}
       <g fill={colors.blob} fillOpacity="0.8">

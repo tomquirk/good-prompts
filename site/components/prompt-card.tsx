@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { CopyButton } from "@/components/copy-button";
-import { PromptText } from "@/components/prompt-text";
 import { MetricsRow } from "@/components/metrics-row";
+import { PromptText } from "@/components/prompt-text";
 import { SourceTweet } from "@/components/source-tweet";
 import type { Metrics } from "@/lib/metrics";
 import type { Prompt } from "@/lib/prompts";
@@ -18,10 +18,7 @@ export function PromptCard({ prompt, metrics }: { prompt: Prompt; metrics: Metri
     >
       <div className="min-w-0">
         <h2 className="group text-lg font-medium tracking-tight text-balance">
-          <Link
-            href={promptPath(prompt.id)}
-            className="underline-offset-4 decoration-foreground/25 hover:underline"
-          >
+          <Link href={promptPath(prompt.id)} className="underline-offset-4 decoration-foreground/25 hover:underline">
             {prompt.title}
           </Link>
           <a
@@ -47,8 +44,8 @@ export function PromptCard({ prompt, metrics }: { prompt: Prompt; metrics: Metri
           <PromptText text={prompt.prompt} />
         </div>
 
-        <p className="mt-4 text-[13px] leading-relaxed text-pretty text-muted-foreground">
-          <span className="text-foreground/70">Use when:</span> {prompt.use_when}
+        <p className="mt-4 text-sm leading-relaxed text-pretty text-muted-foreground">
+          <span className="text-foreground">Use when:</span> {prompt.use_when}
         </p>
       </div>
 

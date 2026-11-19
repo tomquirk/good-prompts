@@ -1,19 +1,20 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { Metadata } from "next";
+import process from "node:process";
 import { EyeIcon, HeartIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { AgentDemo } from "@/components/agent-demo";
 import { AgentIcon, AgentLogos } from "@/components/agent-logos";
 import { CopyButton } from "@/components/copy-button";
-import { SetupCta } from "@/components/setup-cta";
-import { DailyDemo } from "@/components/daily-demo";
 import { Mascot } from "@/components/mascot";
 import { MascotArt } from "@/components/mascot-art";
 import { PromptCard } from "@/components/prompt-card";
 import { PromptList } from "@/components/prompt-list";
+import { SetupCta } from "@/components/setup-cta";
+import { JsonLd, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { TweetMarquee } from "@/components/tweet-marquee";
 import { getMetrics } from "@/lib/metrics";
-import { JsonLd, SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { EDIT_URL, getPrompts } from "@/lib/prompts";
+import { EDIT_URL, getPrompt, getPrompts } from "@/lib/prompts";
 import {
   absolute,
   FEED_TYPES,
@@ -32,21 +33,26 @@ export const metadata: Metadata = {
 // Repo-root setup-prompt.md: paste into any agent to get a prompt a day.
 const SETUP_PROMPT = readFileSync(join(process.cwd(), "..", "setup-prompt.md"), "utf8").trim();
 // The bare install command, lifted from the setup prompt so the two never drift.
-const INSTALL = SETUP_PROMPT.match(/`(npx skills add [^`]+)`/)?.[1];
+const { command: INSTALL } = SETUP_PROMPT.match(/`(?<command>npx skills add [^`]+)`/u)?.groups ?? {};
 const SKILL_URL = "https://github.com/tomquirk/prompt-collectooor/blob/main/skills/daily-prompt/SKILL.md";
 
 const link = "transition-colors hover:text-foreground";
 const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
 
-
 export default async function Home() {
   const prompts = getPrompts();
   const metrics = await Promise.all(prompts.map((p) => getMetrics(p.source)));
+  // The demo always shows the best-known prompt in the collection.
+  const pick = getPrompt("find-state-machines") ?? prompts[0];
+  if (!pick) {
+    throw new Error("prompts.json has no prompts");
+  }
+  const demo = { title: pick.title, prompt: pick.prompt, author: pick.source.author, href: promptPath(pick.id) };
   // Reach of the source posts, each post counted once even if it holds several prompts.
   const reach = new Map<string, { likes: number; views: number }>();
   prompts.forEach((p, i) => {
     if (p.source.url && metrics[i]) {
-      reach.set(p.source.url, { likes: metrics[i]!.likes ?? 0, views: metrics[i]!.views ?? 0 });
+      reach.set(p.source.url, { likes: metrics[i]?.likes ?? 0, views: metrics[i]?.views ?? 0 });
     }
   });
   const totalLikes = [...reach.values()].reduce((n, r) => n + r.likes, 0);
@@ -75,7 +81,7 @@ export default async function Home() {
     ],
     [
       "Can a script or bot read the collection?",
-      `Yes. The full list is at /prompts.json, with RSS at /feed.xml, a JSON Feed at /feed.json and a plain-text summary for language models at /llms.txt. New prompts are added by pull request to prompts.json on GitHub.`,
+      "Yes. The full list is at /prompts.json, with RSS at /feed.xml, a JSON Feed at /feed.json and a plain-text summary for language models at /llms.txt. New prompts are added by pull request to prompts.json on GitHub.",
     ],
   ];
 
@@ -124,36 +130,43 @@ export default async function Home() {
       <SiteHeader />
 
       <main>
-        <section className="relative grid gap-12 pt-14 pb-16 sm:pt-20 sm:pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-12">
-          <div className="dot-grid pointer-events-none absolute inset-0 -mx-4 sm:-mx-6" aria-hidden />
+        <section className="relative grid gap-12 pt-14 pb-16 sm:pt-20 sm:pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center lg:gap-12">
+          <div className="dot-grid pointer-events-none absolute inset-0 -mx-4 sm:-mx-6" aria-hidden={true} />
 
           <div className="relative min-w-0">
             {/* Who does the collecting: Grok Bot finds the prompts and opens the PRs. */}
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border bg-card/80 py-1 pr-3 pl-1.5 text-xs text-muted-foreground backdrop-blur-sm">
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border bg-card py-1 pr-3 pl-1.5 text-xs text-muted-foreground backdrop-blur-sm">
               <span className="grid size-5 place-items-center rounded-full bg-foreground text-background">
                 <AgentIcon icon="grok" className="size-3.5" />
               </span>
               powered by <span className="text-foreground">Grok Bot</span>
             </p>
             <h1 className="text-3xl leading-[1.15] font-medium tracking-tight text-balance sm:text-5xl">
-              Collecting <span className="whitespace-nowrap">god-tier</span> dev prompts from X.com 🔥
+              Auto-collecting good dev prompts from X.com 🔥
             </h1>
             {/* The angle: every prompt comes from a post that already took off. */}
             <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 text-foreground" title={`${totalLikes.toLocaleString("en")} likes`}>
-                <HeartIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden />
+              <span
+                className="inline-flex items-center gap-1.5 text-foreground"
+                title={`${totalLikes.toLocaleString("en")} likes`}
+              >
+                <HeartIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden={true} />
                 <span className="tabular-nums">{compact.format(totalLikes)}</span>
                 <span className="sr-only">likes</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 text-foreground" title={`${totalViews.toLocaleString("en")} views`}>
-                <EyeIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden />
+              <span
+                className="inline-flex items-center gap-1.5 text-foreground"
+                title={`${totalViews.toLocaleString("en")} views`}
+              >
+                <EyeIcon strokeWidth={1.5} className="size-4 text-burn" aria-hidden={true} />
                 <span className="tabular-nums">{compact.format(totalViews)}</span>
                 <span className="sr-only">views</span>
               </span>
               <span>from viral X.com posts</span>
             </p>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-pretty text-muted-foreground sm:text-base">
-              The best one-shot prompts from X.com that audit, de-slop and improve your codebase. Got tokens to burn? Let your agents rip.
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-pretty text-muted-foreground sm:text-base">
+              The best one-shot prompts from X.com that audit, de-slop and improve your codebase. Got tokens to burn?
+              Let your agents rip.
             </p>
 
             <div className="mt-8">
@@ -165,10 +178,10 @@ export default async function Home() {
                 free · open source · asks before running ·{" "}
                 <span className="text-burn group-open:hidden">what&apos;s in it?</span>
               </summary>
-              <pre className="mt-3 rounded-xl border bg-card px-4 py-3 text-[12.5px] leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] text-foreground/80">
+              <pre className="mt-3 rounded-xl border bg-card px-4 py-3 text-xs leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] text-foreground">
                 {SETUP_PROMPT}
               </pre>
-              {INSTALL && (
+              {INSTALL !== undefined && (
                 <>
                   <p className="mt-4">
                     or just install the skill ·{" "}
@@ -177,7 +190,7 @@ export default async function Home() {
                     </a>
                   </p>
                   <div className="mt-2 flex items-center gap-2 rounded-xl border bg-card py-1.5 pr-2 pl-4">
-                    <code className="min-w-0 flex-1 py-1 text-[12.5px] leading-relaxed text-foreground/90 [overflow-wrap:anywhere]">
+                    <code className="min-w-0 flex-1 py-1 text-xs leading-relaxed text-foreground [overflow-wrap:anywhere]">
                       <span className="text-burn select-none">$ </span>
                       {INSTALL}
                     </code>
@@ -189,7 +202,7 @@ export default async function Home() {
 
             <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
               <span className="text-xs text-muted-foreground">works with</span>
-              <AgentLogos iconsOnly />
+              <AgentLogos iconsOnly={true} />
             </div>
           </div>
 
@@ -197,52 +210,57 @@ export default async function Home() {
           {/* Padding is the mascot's height minus ~12px, so he rests on the card's top edge. */}
           <div className="relative min-w-0 pt-[5.6rem] sm:pt-[6.5rem]">
             <Mascot count={prompts.length} className="absolute top-0 right-8 z-10 w-24 sm:w-28" />
-            <DailyDemo
-              buildDate={new Date().toISOString().slice(0, 10)}
-              items={prompts.map((p, i) => ({
-                title: p.title,
-                prompt: p.prompt,
-                useWhen: p.use_when,
-                author: p.source.author,
-                href: promptPath(p.id),
-                metrics: metrics[i],
-              }))}
-            />
+            <AgentDemo prompt={demo} />
           </div>
         </section>
 
         <section aria-labelledby="proof-heading" className="border-t py-10">
-          <h2 id="proof-heading" className="mb-6 text-center text-xs text-muted-foreground">
-            straight from {authorCount} devs on X.com
+          <h2
+            id="proof-heading"
+            className="mb-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm text-muted-foreground"
+          >
+            <span className="inline-flex items-center gap-2 text-foreground">
+              <span className="relative flex size-2" aria-hidden={true}>
+                <span className="absolute inline-flex size-full rounded-full bg-burn opacity-75 motion-safe:animate-ping" />
+                <span className="relative inline-flex size-2 rounded-full bg-burn" />
+              </span>
+              New prompts every day
+            </span>
+            <span aria-hidden={true}>·</span>
+            <span>from {authorCount} devs on X.com</span>
           </h2>
           <TweetMarquee prompts={prompts} />
         </section>
 
         <section id="prompts" aria-labelledby="prompts-heading" className="border-t pt-14 sm:pt-20">
-          <h2 id="prompts-heading" className="mb-6 text-2xl font-medium tracking-tight sm:text-3xl">
+          <h2
+            id="prompts-heading"
+            className="mb-10 text-center text-3xl leading-[1.15] font-medium tracking-tight text-balance sm:text-5xl"
+          >
             Browse all prompts
           </h2>
           <PromptList
-          items={prompts.map((p, i) => ({
-            id: p.id,
-            category: p.category,
-            likes: metrics[i]?.likes ?? -1,
-            haystack: [p.title, p.prompt, p.use_when, p.category, p.source.author, ...p.tags]
-              .join(" ")
-              .toLowerCase(),
-            node: <PromptCard prompt={p} metrics={metrics[i]} />,
-          }))}
+            items={prompts.map((p, i) => ({
+              id: p.id,
+              category: p.category,
+              likes: metrics[i]?.likes ?? -1,
+              haystack: [p.title, p.prompt, p.use_when, p.category, p.source.author, ...p.tags].join(" ").toLowerCase(),
+              node: <PromptCard prompt={p} metrics={metrics[i] ?? null} />,
+            }))}
           />
         </section>
 
-        <section aria-labelledby="cta-heading" className="flex flex-col items-center border-t py-16 text-center sm:py-24">
+        <section
+          aria-labelledby="cta-heading"
+          className="flex flex-col items-center border-t py-16 text-center sm:py-24"
+        >
           <MascotArt className="w-16" />
           <h2 id="cta-heading" className="mt-5 text-2xl font-medium tracking-tight text-balance sm:text-3xl">
             Got tokens to burn?
           </h2>
           <p className="mt-3 max-w-md text-sm text-pretty text-muted-foreground">
-            Paste the setup prompt into your agent once. Then ask for a prompt whenever you like,
-            or have it suggest one every morning.
+            Paste the setup prompt into your agent once. Then ask for a prompt whenever you like, or have it suggest one
+            every morning.
           </p>
           <div className="mt-7">
             <SetupCta prompt={SETUP_PROMPT} />
@@ -250,12 +268,22 @@ export default async function Home() {
         </section>
 
         <p className="flex flex-wrap gap-x-4 gap-y-1 border-t py-6 text-xs text-muted-foreground">
-          <span className="text-foreground/70">for bots</span>
-          <a className={link} href="/prompts.json">prompts.json</a>
-          <a className={link} href="/feed.xml">rss</a>
-          <a className={link} href="/feed.json">json feed</a>
-          <a className={link} href="/llms.txt">llms.txt</a>
-          <a className={link} href={EDIT_URL} target="_blank" rel="noreferrer">add a prompt ↗</a>
+          <span className="text-foreground">for bots</span>
+          <a className={link} href="/prompts.json">
+            prompts.json
+          </a>
+          <a className={link} href="/feed.xml">
+            rss
+          </a>
+          <a className={link} href="/feed.json">
+            json feed
+          </a>
+          <a className={link} href="/llms.txt">
+            llms.txt
+          </a>
+          <a className={link} href={EDIT_URL} target="_blank" rel="noreferrer">
+            add a prompt ↗
+          </a>
           <span>
             updated <time dateTime={updated}>{formatDate(updated)}</time>
           </span>
@@ -270,7 +298,9 @@ export default async function Home() {
               <details key={q} className="group py-3">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-muted-foreground transition-colors hover:text-foreground group-open:text-foreground [&::-webkit-details-marker]:hidden">
                   {q}
-                  <span aria-hidden className="text-burn transition-transform group-open:rotate-45">+</span>
+                  <span aria-hidden={true} className="text-burn transition-transform group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
                 <p className="mt-2 max-w-2xl text-pretty text-muted-foreground">{a}</p>
               </details>

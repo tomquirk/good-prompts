@@ -47,12 +47,12 @@
   --secondary: oklch(0.22 0.004 60);
   --secondary-foreground: var(--foreground);
   --muted: oklch(0.22 0.004 60);
-  --muted-foreground: oklch(0.64 0.008 70);
+  --muted-foreground: oklch(0.77 0.008 70);
   --accent: oklch(0.22 0.004 60);
   --accent-foreground: var(--foreground);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 13%);
+  --input: oklch(1 0 0 / 35%);
   --ring: oklch(0.78 0.16 62 / 60%);
   --burn: oklch(0.78 0.16 62);
   --radius: 0.5rem;
@@ -76,11 +76,7 @@
 
 /* Dotted backdrop behind the hero, fading out downwards. */
 .dot-grid {
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    oklch(1 0 0 / 11%) 1px,
-    transparent 0
-  );
+  background-image: radial-gradient(circle at 1px 1px, oklch(1 0 0 / 11%) 1px, transparent 0);
   background-size: 18px 18px;
   mask-image: linear-gradient(to bottom, black 20%, transparent 95%);
 }
@@ -153,35 +149,71 @@
 }
 
 @keyframes mascot-hop {
-  0%, 52%, 100% { transform: none; }
+  0%,
+  52%,
+  100% {
+    transform: none;
+  }
   /* crouch, leap, land, settle */
-  8% { transform: scale(1.03, 0.96); }
-  20% { transform: translateY(-5%) scale(0.98, 1.02); }
-  32% { transform: scale(1.02, 0.98); }
-  40% { transform: none; }
+  8% {
+    transform: scale(1.03, 0.96);
+  }
+  20% {
+    transform: translateY(-5%) scale(0.98, 1.02);
+  }
+  32% {
+    transform: scale(1.02, 0.98);
+  }
+  40% {
+    transform: none;
+  }
   /* small happy sway */
-  66% { transform: rotate(-2.5deg); }
-  78% { transform: rotate(2.5deg); }
-  88% { transform: none; }
+  66% {
+    transform: rotate(-2.5deg);
+  }
+  78% {
+    transform: rotate(2.5deg);
+  }
+  88% {
+    transform: none;
+  }
 }
 @keyframes mascot-blink {
-  0%, 100% { transform: none; }
-  92% { transform: scaleY(0.12); }
-  95% { transform: none; }
+  0%,
+  100% {
+    transform: none;
+  }
+  92% {
+    transform: scaleY(0.12);
+  }
+  95% {
+    transform: none;
+  }
 }
 @keyframes mascot-twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.75); }
-  50% { opacity: 1; transform: scale(1); }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 @keyframes mascot-jiggle {
-  0% { transform: translate(-3px, 1px) rotate(-3deg); }
-  100% { transform: translate(3px, -2px) rotate(3deg); }
+  0% {
+    transform: translate(-3px, 1px) rotate(-3deg);
+  }
+  100% {
+    transform: translate(3px, -2px) rotate(3deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mascot *,
   .mascot-spaz svg {
-    animation: none !important;
+    animation: none;
   }
 }
 

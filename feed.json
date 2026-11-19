@@ -584,7 +584,7 @@
         "source": {
           "url": "https://x.com/emilkowalski/status/2120508498236596597",
           "author": "@emilkowalski",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -618,7 +618,7 @@
         "source": {
           "url": "https://x.com/anthonyriera/status/2119870644514893997",
           "author": "@anthonyriera",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -652,7 +652,7 @@
         "source": {
           "url": "https://x.com/trevin/status/2118690987153186845",
           "author": "@trevin",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -685,7 +685,7 @@
         "source": {
           "url": "https://x.com/thorstenball/status/2102623376196194763",
           "author": "@thorstenball",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -718,7 +718,7 @@
         "source": {
           "url": "https://x.com/steveruizok/status/2116552016218710389",
           "author": "@steveruizok",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -752,7 +752,7 @@
         "source": {
           "url": "https://x.com/chenchengpro/status/2120040764243894547",
           "author": "@chenchengpro",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -820,7 +820,7 @@
         "source": {
           "url": "https://x.com/sqs/status/2120113139996086409",
           "author": "@sqs",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -853,7 +853,7 @@
         "source": {
           "url": "https://x.com/kunchenguid/status/2119924895060795492",
           "author": "@kunchenguid",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -888,7 +888,7 @@
         "source": {
           "url": "https://x.com/mdjunaidap/status/2119844974019973308",
           "author": "@mdjunaidap",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -922,7 +922,7 @@
         "source": {
           "url": "https://x.com/infinterenders/status/2119676620680339490",
           "author": "@infinterenders",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -989,7 +989,7 @@
         "source": {
           "url": "https://x.com/_dylanga/status/2117099613022732412",
           "author": "@_dylanga",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -1142,7 +1142,7 @@
         "source": {
           "url": "https://x.com/thejoegardiner/status/2118119394517950725",
           "author": "@thejoegardiner",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -1173,12 +1173,18 @@
         "scope": "project",
         "added_on": "2026-11-12",
         "source": {
-          "url": null,
-          "author": null,
-          "status": "missing"
+          "url": "https://x.com/_dylanga/status/2117400205314421058",
+          "author": "@_dylanga",
+          "status": "verified"
         },
         "text_kind": "collected"
-      }
+      },
+      "external_url": "https://x.com/_dylanga/status/2117400205314421058",
+      "authors": [
+        {
+          "name": "@_dylanga"
+        }
+      ]
     },
     {
       "id": "urn:prompt-collection:simple-ux-dx-ax",
@@ -1204,7 +1210,7 @@
         "source": {
           "url": "https://x.com/Voxyz_ai/status/2117281830449942825",
           "author": "@Voxyz_ai",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -1238,7 +1244,7 @@
         "source": {
           "url": "https://x.com/kitlangton/status/2120341112959455559",
           "author": "@kitlangton",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -1271,7 +1277,7 @@
         "source": {
           "url": "https://x.com/_dylanga/status/2117400205314421058",
           "author": "@_dylanga",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },
@@ -1305,7 +1311,7 @@
         "source": {
           "url": "https://x.com/nateberkopec/status/2114842635743674790",
           "author": "@nateberkopec",
-          "status": "unverified"
+          "status": "verified"
         },
         "text_kind": "collected"
       },

@@ -35,8 +35,8 @@ class FeedTests(unittest.TestCase):
 
     def test_shared_tweet_has_distinct_ids(self):
         items = [i for i in self.feed["items"] if i.get("external_url", "").endswith("2117400205314421058")]
-        self.assertEqual(len(items), 3)
-        self.assertEqual(len({i["id"] for i in items}), 3)
+        self.assertEqual(len(items), 4)
+        self.assertEqual(len({i["id"] for i in items}), 4)
 
     def test_linked_workflow_keeps_summary_label_and_both_sources(self):
         item = next(i for i in self.feed["items"] if i["_prompt"]["id"] == "read-only-codebase-simplification-audit")

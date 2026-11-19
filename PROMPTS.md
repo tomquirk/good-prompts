@@ -14,7 +14,7 @@ A web interface needs verification across screen sizes, touch input, and slow co
 Test this in the browser at different widths, with touch emulation, and on a throttled 3G connection. Fix anything that looks broken or feels off. Save a before and after screenshot for every fix and send me a summary afterwards.
 ```
 
-Source: [@emilkowalski](https://x.com/emilkowalski/status/2120508498236596597) (unverified)
+Source: [@emilkowalski](https://x.com/emilkowalski/status/2120508498236596597) (verified)
 
 <a id="e2e-proof"></a>
 
@@ -26,7 +26,7 @@ A completed feature needs end-to-end evidence that it works.
 test this e2e & give me irrefutable proof it works
 ```
 
-Source: [@thorstenball](https://x.com/thorstenball/status/2102623376196194763) (unverified)
+Source: [@thorstenball](https://x.com/thorstenball/status/2102623376196194763) (verified)
 
 <a id="first-time-user-qa"></a>
 
@@ -162,7 +162,7 @@ The same fact or configuration may be maintained in multiple places.
 single source of truth audit
 ```
 
-Source: [@kitlangton](https://x.com/kitlangton/status/2120341112959455559) (unverified)
+Source: [@kitlangton](https://x.com/kitlangton/status/2120341112959455559) (verified)
 
 <a id="full-project-audit"></a>
 
@@ -174,7 +174,7 @@ A project needs a broad review of correctness, consistency, and unnecessary work
 Read this entire project and find everything that's broken, inconsistent, inefficient, or no longer needed. Fix what you're sure about and list the rest for me to review.
 ```
 
-Source: [@chenchengpro](https://x.com/chenchengpro/status/2120040764243894547) (unverified)
+Source: [@chenchengpro](https://x.com/chenchengpro/status/2120040764243894547) (verified)
 
 <a id="delete-and-simplify"></a>
 
@@ -193,7 +193,7 @@ Then make the changes. Prefer deleting over simplifying, simplifying over optimi
 This product is being used by thousands of customers, do not cut any corners.
 ```
 
-Source: [@anthonyriera](https://x.com/anthonyriera/status/2119870644514893997) (unverified)
+Source: [@anthonyriera](https://x.com/anthonyriera/status/2119870644514893997) (verified)
 
 <a id="read-only-codebase-simplification-audit"></a>
 
@@ -225,7 +225,7 @@ A project has grown messy and you want a written map of its structure, data flow
 Map this codebase for me. Show the folder structure, what each main file does, how data flows from UI to database, and the 5 riskiest files to touch. Write it all to ARCHITECTURE.md.
 ```
 
-Source: [@mdjunaidap](https://x.com/mdjunaidap/status/2119844974019973308) (unverified)
+Source: [@mdjunaidap](https://x.com/mdjunaidap/status/2119844974019973308) (verified)
 
 <a id="fresh-eyes-domain-audit"></a>
 
@@ -265,7 +265,7 @@ An app has behavior that depends on changing state and events.
 find all of the implicit state machines in my app
 ```
 
-Source: [@steveruizok](https://x.com/steveruizok/status/2116552016218710389) (unverified)
+Source: [@steveruizok](https://x.com/steveruizok/status/2116552016218710389) (verified)
 
 <a id="make-state-machines-explicit"></a>
 
@@ -277,7 +277,7 @@ Implicit state transitions may benefit from explicit modeling; the prompt refere
 audit and find implicit state machines in this <codebase/directory/module> that would drive concrete improvements if made explicit. explain before/after of each one and discuss with me in lavish-axi. fewer words, big visuals
 ```
 
-Source: [@kunchenguid](https://x.com/kunchenguid/status/2119924895060795492) (unverified)
+Source: [@kunchenguid](https://x.com/kunchenguid/status/2119924895060795492) (verified)
 
 <a id="minimal-semantic-model"></a>
 
@@ -301,7 +301,7 @@ Then find:
 Last, split my refactors into "provably equivalent" and "trust me". For each "trust me", give the smallest input that breaks it.
 ```
 
-Source: [@infinterenders](https://x.com/infinterenders/status/2119676620680339490) (unverified)
+Source: [@infinterenders](https://x.com/infinterenders/status/2119676620680339490) (verified)
 
 <a id="document-state-machines"></a>
 
@@ -313,7 +313,7 @@ Reachable invalid states need evidence, documentation, and regression-tested fix
 Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.
 ```
 
-Source: [@trevin](https://x.com/trevin/status/2118690987153186845) (unverified)
+Source: [@trevin](https://x.com/trevin/status/2118690987153186845) (verified)
 
 ## Design and experience
 
@@ -327,7 +327,7 @@ An interface or implementation feels cluttered or unnecessarily complex.
 I want this to be as perfect as Linear's website or Apple Notes: simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything.
 ```
 
-Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2117281830449942825) (unverified)
+Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2117281830449942825) (verified)
 
 <a id="product-experience-coverage-audit"></a>
 
@@ -373,7 +373,7 @@ Database queries fetch whole rows while using only a few fields.
 find every place we load a whole row from the database just to read a couple of fields. instead, select only what we need
 ```
 
-Source: not provided.
+Source: [@_dylanga](https://x.com/_dylanga/status/2117400205314421058) (verified)
 
 <a id="unnecessary-url-parsing"></a>
 
@@ -385,7 +385,7 @@ Repeated or redundant URL parsing may add unnecessary work.
 remove all unnecessary `new URL()` parsing
 ```
 
-Source: [@_dylanga](https://x.com/_dylanga/status/2117400205314421058) (unverified)
+Source: [@_dylanga](https://x.com/_dylanga/status/2117400205314421058) (verified)
 
 <a id="module-level-regexes"></a>
 
@@ -421,7 +421,7 @@ Independent async operations appear to run sequentially on hot paths.
 do a deep scan of all hot paths and fix any unnecessary sequential async function calls
 ```
 
-Source: [@_dylanga](https://x.com/_dylanga/status/2117099613022732412) (unverified)
+Source: [@_dylanga](https://x.com/_dylanga/status/2117099613022732412) (verified)
 
 <a id="make-app-measurably-faster"></a>
 
@@ -477,7 +477,7 @@ Build an interactive security dashboard covering frontend, APIs, authentication,
 Base posture assessments on evidence and clearly label coverage gaps.
 ```
 
-Source: [@thejoegardiner](https://x.com/thejoegardiner/status/2118119394517950725) (unverified)
+Source: [@thejoegardiner](https://x.com/thejoegardiner/status/2118119394517950725) (verified)
 
 <a id="macos-cleanup"></a>
 
@@ -489,7 +489,7 @@ The user explicitly wants to review and remove unused macOS software and permiss
 remove all the apps, tcc/permission grants, login items, daemons, kexts, browser exts, homebrew packages, etc., that I don't need and use.
 ```
 
-Source: [@sqs](https://x.com/sqs/status/2120113139996086409) (unverified)
+Source: [@sqs](https://x.com/sqs/status/2120113139996086409) (verified)
 
 <a id="prune-old-agent-transcripts"></a>
 
@@ -568,7 +568,7 @@ Recent coding sessions are available and the user wants to identify ways to impr
 look at last weeks sessions and suggest improvements
 ```
 
-Source: [@nateberkopec](https://x.com/nateberkopec/status/2114842635743674790) (unverified)
+Source: [@nateberkopec](https://x.com/nateberkopec/status/2114842635743674790) (verified)
 
 <a id="plan-replayable-logging"></a>
 

@@ -1,7 +1,8 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { tweetId, type Source } from "@/lib/prompts";
+import process from "node:process";
+import { type Source, tweetId } from "@/lib/prompts";
 import { fetchTweet } from "@/lib/tweets";
 
 export type Metrics = {
@@ -31,7 +32,9 @@ const FILE = readFile();
  */
 export async function getMetrics(source: Source): Promise<Metrics | null> {
   const id = tweetId(source.url);
-  if (!id) return null;
+  if (!id) {
+    return null;
+  }
   const tweet = await fetchTweet(id);
   const out: Metrics = {};
   if (tweet) {
@@ -41,7 +44,9 @@ export async function getMetrics(source: Source): Promise<Metrics | null> {
   const stored = FILE[id] ?? {};
   for (const k of KEYS) {
     const v = stored[k];
-    if (typeof v === "number" && Number.isFinite(v) && v >= 0) out[k] = v;
+    if (typeof v === "number" && Number.isFinite(v) && v >= 0) {
+      out[k] = v;
+    }
   }
-  return Object.keys(out).length ? out : null;
+  return Object.keys(out).length > 0 ? out : null;
 }

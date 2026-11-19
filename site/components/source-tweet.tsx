@@ -1,7 +1,9 @@
-import { EmbeddedTweet } from "react-tweet";
 import { ArrowUpRightIcon } from "lucide-react";
-import { tweetId, type Source } from "@/lib/prompts";
+import { EmbeddedTweet } from "react-tweet";
+import { type Source, tweetId } from "@/lib/prompts";
 import { fetchTweet } from "@/lib/tweets";
+
+const WWW = /^www\./u;
 
 /**
  * Renders the source tweet statically at build time. Falls back to a plain
@@ -24,14 +26,10 @@ export async function SourceTweet({ source }: { source: Source }) {
 
 function SourceFallback({ source, isTweet }: { source: Source; isTweet: boolean }) {
   if (!source.url) {
-    return (
-      <div className="rounded-xl border border-dashed p-5 text-xs text-muted-foreground">
-        Source unknown.
-      </div>
-    );
+    return <div className="rounded-xl border border-dashed p-5 text-xs text-muted-foreground">Source unknown.</div>;
   }
 
-  const host = new URL(source.url).hostname.replace(/^www\./, "");
+  const host = new URL(source.url).hostname.replace(WWW, "");
   return (
     <a
       href={source.url}
@@ -41,7 +39,10 @@ function SourceFallback({ source, isTweet }: { source: Source; isTweet: boolean 
     >
       <div className="flex items-center justify-between text-muted-foreground">
         <span>{host}</span>
-        <ArrowUpRightIcon strokeWidth={1.5} className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        <ArrowUpRightIcon
+          strokeWidth={1.5}
+          className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        />
       </div>
       <div className="mt-3 text-sm text-foreground">{source.author ?? "source"}</div>
       <div className="mt-1 text-muted-foreground">

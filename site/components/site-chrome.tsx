@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
+import Link from "next/link";
 import { MascotArt } from "@/components/mascot-art";
-import { EDIT_URL, REPO_URL } from "@/lib/prompts";
+import { rawHtml } from "@/lib/html";
+import { EDIT_URL, REPO_URL, SKILLS_SH_URL } from "@/lib/prompts";
 import { SITE_NAME } from "@/lib/site";
 
 export function SiteHeader() {
@@ -12,7 +13,17 @@ export function SiteHeader() {
         {SITE_NAME}
       </Link>
       <nav aria-label="Site" className="flex items-center gap-1 text-muted-foreground">
-        <Link href="/#prompts" className="hidden px-2 py-2 transition-colors hover:text-foreground sm:inline">prompts</Link>
+        <Link href="/#prompts" className="hidden px-2 py-2 transition-colors hover:text-foreground sm:inline">
+          prompts
+        </Link>
+        <a
+          href={SKILLS_SH_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-0.5 px-2 py-2 transition-colors hover:text-foreground"
+        >
+          skill <ArrowUpRightIcon strokeWidth={1.5} className="size-3.5" />
+        </a>
         <a
           href={REPO_URL}
           target="_blank"
@@ -29,9 +40,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="flex flex-col gap-2 border-t py-10 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-      <span className="text-pretty">
-        Prompts belong to whoever posted them. Mostly unverified.
-      </span>
+      <span className="text-pretty">Prompts belong to whoever posted them. Mostly unverified.</span>
       <a
         href={EDIT_URL}
         target="_blank"
@@ -44,12 +53,15 @@ export function SiteFooter() {
   );
 }
 
+const LT = /</gu;
+
 /** Inline JSON-LD; `<` is escaped so prompt text can't close the script tag. */
 export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD must be raw; `<` is escaped so it can't close the tag
+      dangerouslySetInnerHTML={rawHtml(JSON.stringify(data).replace(LT, "\\u003c"))}
     />
   );
 }

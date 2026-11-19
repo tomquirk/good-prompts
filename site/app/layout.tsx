@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FEED_TYPES, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const homeTitle = "God-tier one-shot prompts for Claude Code and Codex, from X.com";
+const homeTitle = "Good one-shot prompts for Claude Code and Codex, from X.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,11 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} antialiased`}
-      data-theme="dark"
-    >
+    <html lang="en" className={`dark ${geistSans.variable} ${geistMono.variable} antialiased`} data-theme="dark">
       <body className="min-h-dvh">
         {children}
         <Analytics />

@@ -1,25 +1,16 @@
-import Link from "next/link";
+import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { ArrowLeftIcon } from "lucide-react";
 import { CopyButton } from "@/components/copy-button";
+import { MetricsRow } from "@/components/metrics-row";
 import { PromptText } from "@/components/prompt-text";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { MetricsRow } from "@/components/metrics-row";
 import { SourceTweet } from "@/components/source-tweet";
 import { getMetrics } from "@/lib/metrics";
 import { EDIT_URL, getPrompt, getPrompts, type Prompt } from "@/lib/prompts";
-import {
-  absolute,
-  authorUrl,
-  FEED_TYPES,
-  formatDate,
-  promptPath,
-  scopeLabel,
-  SITE_NAME,
-  SITE_URL,
-} from "@/lib/site";
+import { absolute, authorUrl, FEED_TYPES, formatDate, promptPath, SITE_NAME, SITE_URL, scopeLabel } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -34,13 +25,19 @@ function describe(p: Prompt) {
     p.source.author ? `Posted by ${p.source.author} on X.` : "",
   ];
   let out = p.use_when;
-  for (const e of extras) if (e && out.length + e.length + 1 <= 160) out += ` ${e}`;
+  for (const e of extras) {
+    if (e && out.length + e.length + 1 <= 160) {
+      out += ` ${e}`;
+    }
+  }
   return out;
 }
 
 export async function generateMetadata({ params }: PageProps<"/prompts/[id]">): Promise<Metadata> {
   const p = getPrompt((await params).id);
-  if (!p) return {};
+  if (!p) {
+    return {};
+  }
   // Add the query people search for only when the title stays near 60 characters.
   const suffix = " (coding agent prompt)";
   const title = p.title.length + suffix.length <= 62 ? p.title + suffix : p.title;
@@ -61,7 +58,9 @@ const link =
 
 export default async function PromptPage({ params }: PageProps<"/prompts/[id]">) {
   const p = getPrompt((await params).id);
-  if (!p) notFound();
+  if (!p) {
+    notFound();
+  }
 
   const summary = p.text_kind === "summary";
   const related = getPrompts().filter((r) => r.category === p.category && r.id !== p.id);
@@ -114,26 +113,26 @@ export default async function PromptPage({ params }: PageProps<"/prompts/[id]">)
                 All prompts
               </Link>
             </li>
-            <li aria-hidden>/</li>
+            <li aria-hidden={true}>/</li>
             <li>{p.category}</li>
           </ol>
         </nav>
 
         <article className="grid gap-8 pt-6 pb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12">
           <div className="min-w-0">
-            <h1 className="text-2xl leading-tight font-medium tracking-tight text-balance sm:text-3xl">
-              {p.title}
-            </h1>
+            <h1 className="text-2xl leading-tight font-medium tracking-tight text-balance sm:text-3xl">{p.title}</h1>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-pretty text-muted-foreground sm:text-base">
               {p.use_when}
             </p>
             <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
               <div className="flex gap-1">
                 <dt>Posted by</dt>
-                <dd className="text-foreground/80">
+                <dd className="text-foreground">
                   {p.source.author ? (
                     profile ? (
-                      <a className={link} href={profile} target="_blank" rel="noreferrer">{p.source.author}</a>
+                      <a className={link} href={profile} target="_blank" rel="noreferrer">
+                        {p.source.author}
+                      </a>
                     ) : (
                       p.source.author
                     )
@@ -144,13 +143,15 @@ export default async function PromptPage({ params }: PageProps<"/prompts/[id]">)
               </div>
               <div className="flex gap-1">
                 <dt>Added</dt>
-                <dd className="text-foreground/80">
+                <dd className="text-foreground">
                   <time dateTime={p.added_on}>{formatDate(p.added_on)}</time>
                 </dd>
               </div>
               <div className="flex gap-1">
                 <dt className="sr-only">Scope</dt>
-                <dd>{p.category} · {scopeLabel(p)}</dd>
+                <dd>
+                  {p.category} · {scopeLabel(p)}
+                </dd>
               </div>
             </dl>
             <MetricsRow metrics={await getMetrics(p.source)} className="mt-3" />
@@ -168,8 +169,7 @@ export default async function PromptPage({ params }: PageProps<"/prompts/[id]">)
             </section>
 
             <p className="mt-6 text-xs leading-relaxed text-pretty text-muted-foreground">
-              {p.source.status === "verified" ? "verified" : p.source.url ? "unverified" : "no known source"}
-              {" · "}
+              {p.source.status === "verified" ? "verified" : p.source.url ? "unverified" : "no known source"}·
               <a className={link} href={EDIT_URL} target="_blank" rel="noreferrer">
                 fix it on github
               </a>

@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { CheckIcon, CopyIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 // Both icons stay mounted and cross-fade, so the swap animates in and out.
-const icon =
-  "size-3.5 transition-[opacity,scale,filter] duration-200 ease-[cubic-bezier(0.2,0,0,1)]";
+const icon = "size-3.5 transition-[opacity,scale,filter] duration-200 ease-[cubic-bezier(0.2,0,0,1)]";
 const shown = "opacity-100 scale-100 blur-[0px]";
 const hidden = "opacity-0 scale-25 blur-[4px]";
 
@@ -28,7 +27,9 @@ export function CopyButton({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!copied) return;
+    if (!copied) {
+      return;
+    }
     const t = setTimeout(() => setCopied(false), 1400);
     return () => clearTimeout(t);
   }, [copied]);

@@ -1,6 +1,6 @@
 # prompt-collectooor
 
-God-tier one-shot prompts from viral X.com posts, ranked by likes. For when you got tokens to burn 🔥
+Good one-shot prompts from viral X.com posts, ranked by likes. For when you got tokens to burn 🔥
 
 Ahhh, I'm collectinggg!
 
@@ -34,6 +34,7 @@ Read `feed.json` (JSON Feed 1.1, with a `_prompt` extension holding `category`, 
 
 ```sh
 cd site && pnpm install && pnpm dev   # http://localhost:3000
+pnpm check                            # Biome + strict TypeScript, as CI runs it
 ```
 
 On Vercel, set Root Directory to `site`. Every push to `main` redeploys.
