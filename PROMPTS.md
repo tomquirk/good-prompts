@@ -361,6 +361,18 @@ Find all the happy-path debt in my app: every screen that only works when data l
 
 Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2120864199324889469) (verified)
 
+<a id="origin-aware-animations"></a>
+
+### Make popovers and menus animate from their trigger
+
+Dropdowns, popovers or menus in your app scale from their center instead of from the element that opened them.
+
+```text
+Make all trigger-based UI elements in this app animate from their trigger, not their center.
+```
+
+Source: [@emilkowalski](https://x.com/emilkowalski/status/2123029498694410401) (verified)
+
 ## Performance
 
 <a id="select-database-fields"></a>

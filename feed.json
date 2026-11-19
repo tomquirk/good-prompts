@@ -7,6 +7,40 @@
   "language": "en",
   "items": [
     {
+      "id": "urn:prompt-collection:origin-aware-animations",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#origin-aware-animations",
+      "title": "Make popovers and menus animate from their trigger",
+      "content_text": "Make all trigger-based UI elements in this app animate from their trigger, not their center.",
+      "summary": "Dropdowns, popovers or menus in your app scale from their center instead of from the element that opened them.",
+      "date_published": "2026-11-20T00:00:00+00:00",
+      "tags": [
+        "Design and experience",
+        "ui",
+        "animation",
+        "css",
+        "polish"
+      ],
+      "_prompt": {
+        "id": "origin-aware-animations",
+        "category": "Design and experience",
+        "use_when": "Dropdowns, popovers or menus in your app scale from their center instead of from the element that opened them.",
+        "scope": "project",
+        "added_on": "2026-11-20",
+        "source": {
+          "url": "https://x.com/emilkowalski/status/2123029498694410401",
+          "author": "@emilkowalski",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/emilkowalski/status/2123029498694410401",
+      "authors": [
+        {
+          "name": "@emilkowalski"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:audit-accounts-and-installed-software",
       "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#audit-accounts-and-installed-software",
       "title": "Audit your accounts and installed software after security news",
