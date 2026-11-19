@@ -788,6 +788,26 @@
         "author": "@petergyang",
         "status": "verified"
       }
+    },
+    {
+      "id": "origin-aware-animations",
+      "title": "Make popovers and menus animate from their trigger",
+      "category": "Design and experience",
+      "tags": [
+        "ui",
+        "animation",
+        "css",
+        "polish"
+      ],
+      "use_when": "Dropdowns, popovers or menus in your app scale from their center instead of from the element that opened them.",
+      "scope": "project",
+      "added_on": "2026-11-20",
+      "prompt": "Make all trigger-based UI elements in this app animate from their trigger, not their center.",
+      "source": {
+        "url": "https://x.com/emilkowalski/status/2123029498694410401",
+        "author": "@emilkowalski",
+        "status": "verified"
+      }
     }
   ]
 }
