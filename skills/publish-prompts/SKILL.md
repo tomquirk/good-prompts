@@ -41,8 +41,16 @@ Right before reporting a PR, fetch origin again and bring the branch up to date:
 
 On every run, do the same for any other open prompt PRs that have fallen behind main.
 
+## Metrics for new prompts
+
+Before reporting a PR, pull X engagement for its new prompts into `metrics.json` on `main`, so the maintainer never has to ask:
+
+1. On a local `main` at `origin/main`, temporarily copy the PR branch's `prompts.json` over main's (`git show <branch>:prompts.json > prompts.json`).
+2. Follow `skills/refresh-metrics/SKILL.md` steps 2 to 4 for every ID that `scripts/refresh_metrics.py ids` prints, existing ones included, because `write` drops any tweet missing from the responses.
+3. Restore main's file (`git checkout -- prompts.json`), then commit only `metrics.json` with the message `Refresh metrics` and push to `main`. The PR itself still changes only `prompts.json`.
+
 ## Reporting
 
-When a PR is ready, send the maintainer a very short note: the PR link, the author's post link, one line on what the prompt does, and then the full prompt text exactly as committed in a code block, so they can review and approve the merge from chat. If they say "merge", merge it with `gh pr merge --merge`.
+When a PR is ready, send the maintainer a very short note: the PR link, the author's post link with its likes and views, one line on what the prompt does, and then the full prompt text exactly as committed in a code block, so they can review and approve the merge from chat. If they say "merge", merge it with `gh pr merge --merge`.
 
 Also report a failed run. If nothing qualifies, stay silent.
