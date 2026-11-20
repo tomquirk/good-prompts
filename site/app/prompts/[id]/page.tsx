@@ -42,14 +42,23 @@ export async function generateMetadata({ params }: PageProps<"/prompts/[id]">): 
   const suffix = " (coding agent prompt)";
   const title = p.title.length + suffix.length <= 62 ? p.title + suffix : p.title;
   const description = describe(p);
+  const image = { url: `${promptPath(p.id)}/og.png`, width: 1200, height: 630, alt: p.title, type: "image/png" };
   return {
     title: { absolute: title },
     description,
     keywords: [...p.tags, "Claude Code", "Codex", "coding agent prompt"],
     authors: p.source.author ? [{ name: p.source.author, url: authorUrl(p.source.author) ?? undefined }] : undefined,
     alternates: { canonical: promptPath(p.id), types: FEED_TYPES },
-    openGraph: { type: "article", title, description, url: promptPath(p.id), publishedTime: p.added_on, tags: p.tags },
-    twitter: { card: "summary_large_image", title, description },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: promptPath(p.id),
+      publishedTime: p.added_on,
+      tags: p.tags,
+      images: [image],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }
 

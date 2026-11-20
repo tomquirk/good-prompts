@@ -14,6 +14,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const OG_IMAGE = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "prompt-collectooor: auto-collecting good dev prompts from X.com",
+  type: "image/png",
+};
+
 const homeTitle = "Good one-shot prompts for Claude Code and Codex, from X.com";
 
 export const metadata: Metadata = {
@@ -21,8 +29,15 @@ export const metadata: Metadata = {
   title: { default: `${homeTitle} | ${SITE_NAME}`, template: `%s | ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  openGraph: { siteName: SITE_NAME, title: homeTitle, description: SITE_DESCRIPTION, type: "website", locale: "en" },
-  twitter: { card: "summary_large_image", title: homeTitle, description: SITE_DESCRIPTION },
+  openGraph: {
+    siteName: SITE_NAME,
+    title: homeTitle,
+    description: SITE_DESCRIPTION,
+    type: "website",
+    locale: "en",
+    images: [OG_IMAGE],
+  },
+  twitter: { card: "summary_large_image", title: homeTitle, description: SITE_DESCRIPTION, images: [OG_IMAGE] },
   alternates: { types: FEED_TYPES },
 };
 
