@@ -462,6 +462,41 @@ Finish with a simple before/after report:
 
 Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2091603024817062192) (verified)
 
+<a id="ci-under-two-minutes"></a>
+
+### Get CI under 2 minutes without hiding failures
+
+Your PR checks take too long and you want an agent to audit and cut CI time with measured, reversible changes.
+
+```text
+Make this repo's CI as fast as possible without letting it lie. Target: a PR gets its result in under 2 minutes at the median and under 3 at p95.
+
+Two rules outrank speed:
+- The full suite runs before anything reaches main, in a merge queue. Selection only narrows PR feedback.
+- Never get faster by hiding failures. No retries, wider timeouts or skipped tests. A check that needs a retry has a bug; find it.
+
+First, audit. Pull the last 150 runs and split every job into waiting, setup and running, at p50 and p95. Fix the biggest bucket first. It is rarely the tests, so don't spend time deleting them.
+
+Then hit these budgets:
+- Waiting, under 10 seconds: move every job off GitHub's hosted runners to Blacksmith, even the 5-second ones. A 5-second job that queues 10 minutes is a 10-minute job. Cancel a branch's in-progress run when a new commit lands.
+- Setup, under 30 seconds: get PR cache hits above 95% by seeding caches from main. Cache node_modules itself, not just the package cache. Use a blobless clone ('filter: blob:none'), not a shallow one.
+- Lint, under 5 seconds: oxlint. Delete ESLint, and turn on every rule you can.
+- Typecheck, under 5 seconds: `bun check`. Fall back to TypeScript 7 if it can't check this repo. Use tsrs locally.
+- Format: oxfmt. Delete Prettier.
+- Install and scripts: bun. Delete npm, yarn or pnpm.
+- Tests, under 60 seconds per shard: stop reloading the app per test file (Vitest `isolate: false`), reset state after every file, and write the cleanup rules into AGENTS.md. Run in random order to flush out leaks. Shard by measured duration onto 8-core machines, each with its own database. Buy cores before shards, and match concurrency to cores.
+- Shape: run lint, typecheck, build and tests in parallel. Then move migration checks and other apps' tests out of the slowest job into their own.
+- Selection: on PRs, run only what the diff can reach (`nx affected` or `turbo --affected`). Then hide a real change from it on purpose and confirm CI goes red, not green.
+- Local, under 9 seconds: a pre-push hook that runs format, lint and typecheck on changed files. A hook, not a line in AGENTS.md, because agents skip steps.
+- Keep it fast: fail any job that exceeds its budget.
+
+The tools above are defaults; you need a measured reason to keep an old one. Take anything newer that is faster on this repo. Before each switch, run old and new side by side and list anything the new one misses.
+
+One small PR per change, with before and after numbers from real runs. Do everything you can without me first; bring anything that needs an account, a secret or a bigger bill as one list with expected monthly cost. End with total CI time and cost, before and after.
+```
+
+Source: [@pontusab](https://x.com/pontusab/status/2121990184816484483) (verified)
+
 ## Security and system cleanup
 
 <a id="security-audit-dashboard"></a>
