@@ -828,6 +828,25 @@
         "author": "@pontusab",
         "status": "verified"
       }
+    },
+    {
+      "id": "customer-feedback-what-to-fix-next",
+      "title": "What have customers told me? What should I fix next?",
+      "category": "Product",
+      "tags": [
+        "product",
+        "feedback",
+        "prioritization"
+      ],
+      "use_when": "You have customer feedback in connected tools (support, email, chat, CRM) and want the agent to surface what to fix next.",
+      "scope": "machine",
+      "added_on": "2026-11-22",
+      "prompt": "what have customers told me? what should I be fixing next?",
+      "source": {
+        "url": "https://x.com/bentlegen/status/2124330026023743617",
+        "author": "@bentlegen",
+        "status": "verified"
+      }
     }
   ]
 }
