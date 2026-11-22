@@ -822,3 +822,17 @@ Back up every file before touching it. Apply nothing until I approve.
 ```
 
 Source: [@Voxyz_ai](https://x.com/Voxyz_ai/status/2103469567964254587) (verified)
+
+## Product
+
+<a id="customer-feedback-what-to-fix-next"></a>
+
+### What have customers told me? What should I fix next?
+
+You have customer feedback in connected tools (support, email, chat, CRM) and want the agent to surface what to fix next.
+
+```text
+what have customers told me? what should I be fixing next?
+```
+
+Source: [@bentlegen](https://x.com/bentlegen/status/2124330026023743617) (verified)

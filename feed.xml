@@ -7,6 +7,17 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>What have customers told me? What should I fix next?</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#customer-feedback-what-to-fix-next</link>
+      <guid isPermaLink="false">urn:prompt-collection:customer-feedback-what-to-fix-next</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You have customer feedback in connected tools (support, email, chat, CRM) and want the agent to surface what to fix next.&lt;/p&gt;&lt;pre&gt;what have customers told me? what should I be fixing next?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/bentlegen/status/2124330026023743617"&gt;@bentlegen&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Product</category>
+      <category>product</category>
+      <category>feedback</category>
+      <category>prioritization</category>
+    </item>
+    <item>
       <title>Get CI under 2 minutes without hiding failures</title>
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#ci-under-two-minutes</link>
       <guid isPermaLink="false">urn:prompt-collection:ci-under-two-minutes</guid>
