@@ -497,6 +497,18 @@ One small PR per change, with before and after numbers from real runs. Do everyt
 
 Source: [@pontusab](https://x.com/pontusab/status/2121990184816484483) (verified)
 
+<a id="hillclimb-app-latency-bytes-lag"></a>
+
+### Hillclimb app latency, bytes transferred and lag
+
+You want an agent to autonomously drive the app's latency, payload size and lag as low as possible, even redesigning infrastructure.
+
+```text
+/goal Hillclimb the latency, bytes transferred, and overall lag of my app. Make it lightning fast. Track all metrics and get each of them as low as possible. Feel free to redesign core infrastructure if it makes the app faster overall.
+```
+
+Source: [@PatrickToulme](https://x.com/PatrickToulme/status/2124562528738988251) (verified)
+
 ## Security and system cleanup
 
 <a id="security-audit-dashboard"></a>

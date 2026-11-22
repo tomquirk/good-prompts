@@ -7,6 +7,17 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Hillclimb app latency, bytes transferred and lag</title>
+      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#hillclimb-app-latency-bytes-lag</link>
+      <guid isPermaLink="false">urn:prompt-collection:hillclimb-app-latency-bytes-lag</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want an agent to autonomously drive the app&amp;#x27;s latency, payload size and lag as low as possible, even redesigning infrastructure.&lt;/p&gt;&lt;pre&gt;/goal Hillclimb the latency, bytes transferred, and overall lag of my app. Make it lightning fast. Track all metrics and get each of them as low as possible. Feel free to redesign core infrastructure if it makes the app faster overall.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/PatrickToulme/status/2124562528738988251"&gt;@PatrickToulme&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Performance</category>
+      <category>performance</category>
+      <category>latency</category>
+      <category>optimization</category>
+    </item>
+    <item>
       <title>Audit your repo and dev setup for agent-harm risks</title>
       <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#ai-codebase-safety-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:ai-codebase-safety-audit</guid>
