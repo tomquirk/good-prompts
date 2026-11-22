@@ -866,6 +866,25 @@
         "author": "@jdpruettt",
         "status": "verified"
       }
+    },
+    {
+      "id": "hillclimb-app-latency-bytes-lag",
+      "title": "Hillclimb app latency, bytes transferred and lag",
+      "category": "Performance",
+      "tags": [
+        "performance",
+        "latency",
+        "optimization"
+      ],
+      "use_when": "You want an agent to autonomously drive the app's latency, payload size and lag as low as possible, even redesigning infrastructure.",
+      "scope": "project",
+      "added_on": "2026-11-23",
+      "prompt": "/goal Hillclimb the latency, bytes transferred, and overall lag of my app. Make it lightning fast. Track all metrics and get each of them as low as possible. Feel free to redesign core infrastructure if it makes the app faster overall.",
+      "source": {
+        "url": "https://x.com/PatrickToulme/status/2124562528738988251",
+        "author": "@PatrickToulme",
+        "status": "verified"
+      }
     }
   ]
 }
