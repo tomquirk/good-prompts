@@ -7,6 +7,39 @@
   "language": "en",
   "items": [
     {
+      "id": "urn:prompt-collection:diagnose-wifi-home-network",
+      "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#diagnose-wifi-home-network",
+      "title": "Diagnose and fix Wi-Fi and home network bottlenecks",
+      "content_text": "Diagnose my Wi-Fi and home network, identify the real bottlenecks behind slow speeds or instability, and guide me through fixing them.\n\nRun these checks sequentially (do NOT run ping in parallel with throughput tests, so idle latency isn't polluted by load):\n\n1. Wi-Fi link & RF congestion:\n   - Inspect my active Wi-Fi PHY mode (802.11ac/ax/be), band (2.4 / 5 / 6 GHz), channel, channel width (20 / 40 / 80 / 160 MHz), signal/noise (SNR), transmit rate / MCS, and interface packet errors.\n   - Scan nearby Wi-Fi networks and count competing APs per channel/band to find the cleanest channels in my environment.\n\n2. Hop-by-hop latency & stability (while idle):\n   - Ping my default gateway (30 packets) and `1.1.1.1` (30 packets, plus IPv6 if active), and run a 5-hop traceroute to separate Wi-Fi/LAN jitter from ISP latency.\n   - Check for active local bandwidth hogs, VPNs, proxies, or recent Wi-Fi disconnect/roam events.\n\n3. DNS latency:\n   - Check my current DNS servers and compare uncached lookup latency against `1.1.1.1`, `8.8.8.8`, and my router.\n\n4. Throughput & bufferbloat under load:\n   - Run macOS `networkQuality -v` (or equivalent on Linux/Windows) to measure downlink, uplink, idle latency, loaded latency / responsiveness (RPM), and ECN/L4S status.\n\nThen give me:\n- A concise baseline summary with the exact measurements.\n- The top real bottlenecks ranked by impact (skip placebo OS tweaks).\n- Safe local quick wins (e.g., faster DNS order) vs. router/modem fixes:\n  - Unlocking 80/160 MHz width on 5/6 GHz, enabling Wi-Fi 6/OFDMA/WMM, and disabling band steering / Smart Connect if it degrades stability.\n  - Exact cleanest 5 GHz and 2.4 GHz (1/6/11 only) channels based on my local RF scan.\n  - Disabling unused guest SSIDs and checking cable/ISP modem signal health (power, SNR, uncorrectable errors) or SQM for bufferbloat.\n- Ask for my router model (or a paste/screenshot of its Wireless Settings page) so you can give exact click-by-click settings.\n\nAfter I apply the changes, re-run the exact same sequential benchmark and output a Before vs. After comparison table.",
+      "summary": "Your Wi-Fi feels slow or flaky and you want the agent to measure it, find the real bottlenecks, and walk you through router fixes with a before/after comparison.",
+      "date_published": "2026-11-24T00:00:00+00:00",
+      "tags": [
+        "Security and system cleanup",
+        "network",
+        "wifi",
+        "diagnostics"
+      ],
+      "_prompt": {
+        "id": "diagnose-wifi-home-network",
+        "category": "Security and system cleanup",
+        "use_when": "Your Wi-Fi feels slow or flaky and you want the agent to measure it, find the real bottlenecks, and walk you through router fixes with a before/after comparison.",
+        "scope": "machine",
+        "added_on": "2026-11-24",
+        "source": {
+          "url": "https://x.com/brunovolpato/status/2124706066516885709",
+          "author": "@brunovolpato",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/brunovolpato/status/2124706066516885709",
+      "authors": [
+        {
+          "name": "@brunovolpato"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:hillclimb-app-latency-bytes-lag",
       "url": "https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#hillclimb-app-latency-bytes-lag",
       "title": "Hillclimb app latency, bytes transferred and lag",
