@@ -7,6 +7,24 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/good-prompts/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Audit your app's buttons for icons, chevrons and ellipses</title>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-app-buttons</link>
+      <guid isPermaLink="false">urn:prompt-collection:audit-app-buttons</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;You want consistent button treatment: a trailing chevron for navigation or options, a leading icon only when it helps, an ellipsis when more input is needed, and plain text otherwise.&lt;/p&gt;&lt;pre&gt;Audit my app&amp;#x27;s buttons. First match wins:
+
+1. opens options or navigates → trailing chevron
+2. familiar symbol → leading icon
+3. in a group of actions → leading icon
+4. needs more input → ellipsis…
+5. anything else → plain text&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/tomquirkdev/status/2125360401995153538"&gt;@tomquirkdev&lt;/a&gt; (verified)&lt;/p&gt;&lt;p&gt;Quoted post: &lt;a href="https://x.com/calebporzio/status/2125275327073001658"&gt;https://x.com/calebporzio/status/2125275327073001658&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Design and experience</category>
+      <category>ui</category>
+      <category>buttons</category>
+      <category>icons</category>
+      <category>design</category>
+    </item>
+    <item>
       <title>Diagnose and fix Wi-Fi and home network bottlenecks</title>
       <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#diagnose-wifi-home-network</link>
       <guid isPermaLink="false">urn:prompt-collection:diagnose-wifi-home-network</guid>

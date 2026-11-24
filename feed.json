@@ -7,6 +7,47 @@
   "language": "en",
   "items": [
     {
+      "id": "urn:prompt-collection:audit-app-buttons",
+      "url": "https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-app-buttons",
+      "title": "Audit your app's buttons for icons, chevrons and ellipses",
+      "content_text": "Audit my app's buttons. First match wins:\n\n1. opens options or navigates → trailing chevron\n2. familiar symbol → leading icon\n3. in a group of actions → leading icon\n4. needs more input → ellipsis…\n5. anything else → plain text",
+      "summary": "You want consistent button treatment: a trailing chevron for navigation or options, a leading icon only when it helps, an ellipsis when more input is needed, and plain text otherwise.",
+      "date_published": "2026-11-25T00:00:00+00:00",
+      "tags": [
+        "Design and experience",
+        "ui",
+        "buttons",
+        "icons",
+        "design"
+      ],
+      "_prompt": {
+        "id": "audit-app-buttons",
+        "category": "Design and experience",
+        "use_when": "You want consistent button treatment: a trailing chevron for navigation or options, a leading icon only when it helps, an ellipsis when more input is needed, and plain text otherwise.",
+        "scope": "project",
+        "added_on": "2026-11-25",
+        "source": {
+          "url": "https://x.com/tomquirkdev/status/2125360401995153538",
+          "author": "@tomquirkdev",
+          "status": "verified",
+          "related_urls": [
+            {
+              "url": "https://x.com/calebporzio/status/2125275327073001658",
+              "label": "Quoted post",
+              "status": "verified"
+            }
+          ]
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/tomquirkdev/status/2125360401995153538",
+      "authors": [
+        {
+          "name": "@tomquirkdev"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:diagnose-wifi-home-network",
       "url": "https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#diagnose-wifi-home-network",
       "title": "Diagnose and fix Wi-Fi and home network bottlenecks",

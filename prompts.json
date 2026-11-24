@@ -904,6 +904,33 @@
         "author": "@brunovolpato",
         "status": "verified"
       }
+    },
+    {
+      "id": "audit-app-buttons",
+      "title": "Audit your app's buttons for icons, chevrons and ellipses",
+      "category": "Design and experience",
+      "tags": [
+        "ui",
+        "buttons",
+        "icons",
+        "design"
+      ],
+      "use_when": "You want consistent button treatment: a trailing chevron for navigation or options, a leading icon only when it helps, an ellipsis when more input is needed, and plain text otherwise.",
+      "scope": "project",
+      "added_on": "2026-11-25",
+      "prompt": "Audit my app's buttons. First match wins:\n\n1. opens options or navigates → trailing chevron\n2. familiar symbol → leading icon\n3. in a group of actions → leading icon\n4. needs more input → ellipsis…\n5. anything else → plain text",
+      "source": {
+        "url": "https://x.com/tomquirkdev/status/2125360401995153538",
+        "author": "@tomquirkdev",
+        "status": "verified",
+        "related_urls": [
+          {
+            "url": "https://x.com/calebporzio/status/2125275327073001658",
+            "label": "Quoted post",
+            "status": "verified"
+          }
+        ]
+      }
     }
   ]
 }
