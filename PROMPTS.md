@@ -373,6 +373,26 @@ Make all trigger-based UI elements in this app animate from their trigger, not t
 
 Source: [@emilkowalski](https://x.com/emilkowalski/status/2123029498694410401) (verified)
 
+<a id="audit-app-buttons"></a>
+
+### Audit your app's buttons for icons, chevrons and ellipses
+
+You want consistent button treatment: a trailing chevron for navigation or options, a leading icon only when it helps, an ellipsis when more input is needed, and plain text otherwise.
+
+```text
+Audit my app's buttons. First match wins:
+
+1. opens options or navigates → trailing chevron
+2. familiar symbol → leading icon
+3. in a group of actions → leading icon
+4. needs more input → ellipsis…
+5. anything else → plain text
+```
+
+Source: [@tomquirkdev](https://x.com/tomquirkdev/status/2125360401995153538) (verified)
+
+Quoted post: [https://x.com/calebporzio/status/2125275327073001658](https://x.com/calebporzio/status/2125275327073001658) (verified)
+
 ## Performance
 
 <a id="select-database-fields"></a>
