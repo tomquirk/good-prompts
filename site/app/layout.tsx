@@ -18,7 +18,7 @@ const OG_IMAGE = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "prompt-collectooor: auto-collecting good dev prompts from X.com",
+  alt: "Good Prompts: auto-collecting good dev prompts from X.com",
   type: "image/png",
 };
 

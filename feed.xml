@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>prompt-collectooor</title>
-    <link>https://github.com/tomquirk/prompt-collectooor</link>
+    <title>Good Prompts</title>
+    <link>https://github.com/tomquirk/good-prompts</link>
     <description>Prompts collected from X for context-aware suggestions.</description>
     <language>en</language>
-    <atom:link href="https://raw.githubusercontent.com/tomquirk/prompt-collectooor/main/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://raw.githubusercontent.com/tomquirk/good-prompts/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Diagnose and fix Wi-Fi and home network bottlenecks</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#diagnose-wifi-home-network</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#diagnose-wifi-home-network</link>
       <guid isPermaLink="false">urn:prompt-collection:diagnose-wifi-home-network</guid>
       <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Your Wi-Fi feels slow or flaky and you want the agent to measure it, find the real bottlenecks, and walk you through router fixes with a before/after comparison.&lt;/p&gt;&lt;pre&gt;Diagnose my Wi-Fi and home network, identify the real bottlenecks behind slow speeds or instability, and guide me through fixing them.
@@ -46,7 +46,7 @@ After I apply the changes, re-run the exact same sequential benchmark and output
     </item>
     <item>
       <title>Hillclimb app latency, bytes transferred and lag</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#hillclimb-app-latency-bytes-lag</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#hillclimb-app-latency-bytes-lag</link>
       <guid isPermaLink="false">urn:prompt-collection:hillclimb-app-latency-bytes-lag</guid>
       <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You want an agent to autonomously drive the app&amp;#x27;s latency, payload size and lag as low as possible, even redesigning infrastructure.&lt;/p&gt;&lt;pre&gt;/goal Hillclimb the latency, bytes transferred, and overall lag of my app. Make it lightning fast. Track all metrics and get each of them as low as possible. Feel free to redesign core infrastructure if it makes the app faster overall.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/PatrickToulme/status/2124562528738988251"&gt;@PatrickToulme&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -57,7 +57,7 @@ After I apply the changes, re-run the exact same sequential benchmark and output
     </item>
     <item>
       <title>Audit your repo and dev setup for agent-harm risks</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#ai-codebase-safety-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#ai-codebase-safety-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:ai-codebase-safety-audit</guid>
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Before giving an agent broad access to a repo or dev environment; audits first, changes nothing until you approve.&lt;/p&gt;&lt;pre&gt;Audit this repo and my dev setup for the issues I list below.
@@ -104,7 +104,7 @@ Finally: for any risky command that must stay, add a warning in its output that 
     </item>
     <item>
       <title>What have customers told me? What should I fix next?</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#customer-feedback-what-to-fix-next</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#customer-feedback-what-to-fix-next</link>
       <guid isPermaLink="false">urn:prompt-collection:customer-feedback-what-to-fix-next</guid>
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You have customer feedback in connected tools (support, email, chat, CRM) and want the agent to surface what to fix next.&lt;/p&gt;&lt;pre&gt;what have customers told me? what should I be fixing next?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/bentlegen/status/2124330026023743617"&gt;@bentlegen&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -115,7 +115,7 @@ Finally: for any risky command that must stay, add a warning in its output that 
     </item>
     <item>
       <title>Get CI under 2 minutes without hiding failures</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#ci-under-two-minutes</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#ci-under-two-minutes</link>
       <guid isPermaLink="false">urn:prompt-collection:ci-under-two-minutes</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Your PR checks take too long and you want an agent to audit and cut CI time with measured, reversible changes.&lt;/p&gt;&lt;pre&gt;Make this repo&amp;#x27;s CI as fast as possible without letting it lie. Target: a PR gets its result in under 2 minutes at the median and under 3 at p95.
@@ -150,7 +150,7 @@ One small PR per change, with before and after numbers from real runs. Do everyt
     </item>
     <item>
       <title>Make popovers and menus animate from their trigger</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#origin-aware-animations</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#origin-aware-animations</link>
       <guid isPermaLink="false">urn:prompt-collection:origin-aware-animations</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Dropdowns, popovers or menus in your app scale from their center instead of from the element that opened them.&lt;/p&gt;&lt;pre&gt;Make all trigger-based UI elements in this app animate from their trigger, not their center.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emilkowalski/status/2123029498694410401"&gt;@emilkowalski&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -162,7 +162,7 @@ One small PR per change, with before and after numbers from real runs. Do everyt
     </item>
     <item>
       <title>Audit your accounts and installed software after security news</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#audit-accounts-and-installed-software</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-accounts-and-installed-software</link>
       <guid isPermaLink="false">urn:prompt-collection:audit-accounts-and-installed-software</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;There has been security news and you want an agent with computer use to check your accounts and installed software and list the actions to take.&lt;/p&gt;&lt;pre&gt;Given recent IT security news, can you please audit my various accounts and what I&amp;#x27;ve got installed on the computer and let me know the actions I need to take?&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emollick/status/2113361252173091114"&gt;@emollick&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -174,7 +174,7 @@ One small PR per change, with before and after numbers from real runs. Do everyt
     </item>
     <item>
       <title>Audit your agent history for wasted tool calls and tokens</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#audit-wasted-tool-calls</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-wasted-tool-calls</link>
       <guid isPermaLink="false">urn:prompt-collection:audit-wasted-tool-calls</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You want to see which paths in a repo cost your agents the most searching and backtracking.&lt;/p&gt;&lt;pre&gt;Look through my Claude Code chat history for this repo in ~/.claude/projects/.
@@ -194,7 +194,7 @@ Don&amp;#x27;t change any files yet. Show me the report first.&lt;/pre&gt;&lt;p&
     </item>
     <item>
       <title>Audit what wastes tokens in your Claude Code setup</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#claude-code-token-waste-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#claude-code-token-waste-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:claude-code-token-waste-audit</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Your Claude Code setup burns tokens every turn and you want a measured, approve-first cleanup plan.&lt;/p&gt;&lt;pre&gt;## Opus 5.5 token audit
@@ -261,7 +261,7 @@ Back up every file before touching it. Apply nothing until I approve.&lt;/pre&gt
     </item>
     <item>
       <title>Stress-test a UI component in every state it will meet</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#component-state-stress-test</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#component-state-stress-test</link>
       <guid isPermaLink="false">urn:prompt-collection:component-state-stress-test</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A key component only ever saw sample data and you want it checked against empty, long, failing and narrow-screen cases.&lt;/p&gt;&lt;pre&gt;/goal Check [COMPONENT NAME OR PATH] and make sure it survives the content and states it will encounter in real use.
@@ -319,7 +319,7 @@ Every applicable state has been rendered, every confirmed problem has been fixed
     </item>
     <item>
       <title>Find and remove obsolete legacy code and bloated tests</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#delete-dead-code-and-bloated-tests</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#delete-dead-code-and-bloated-tests</link>
       <guid isPermaLink="false">urn:prompt-collection:delete-dead-code-and-bloated-tests</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A repo has accumulated unused legacy code and low-value tests, and you want proof-backed removal.&lt;/p&gt;&lt;pre&gt;Run a deep test audit to find unused legacy code, using subagents where helpful.
@@ -333,7 +333,7 @@ Preserve meaningful coverage, run relevant checks, and report changes and remain
     </item>
     <item>
       <title>Find what is eating your disk space (list first, delete nothing)</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#find-storage-hogs</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#find-storage-hogs</link>
       <guid isPermaLink="false">urn:prompt-collection:find-storage-hogs</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Your disk is full and you do not know why.&lt;/p&gt;&lt;pre&gt;scan my system to find what&amp;#x27;s eating up storage. look for large files, old installers, unused apps, cache folders, stale project folders, and anything else safe to clean up. list everything by category with size, and flag what&amp;#x27;s safe to auto delete vs what needs my review before deleting. don&amp;#x27;t delete anything yet, just give me the list first.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Ananth7e/status/2084333430280786115"&gt;@Ananth7e&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -344,7 +344,7 @@ Preserve meaningful coverage, run relevant checks, and report changes and remain
     </item>
     <item>
       <title>Launch QA with five first-time-user subagents, then fix and re-verify</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#first-time-user-qa</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#first-time-user-qa</link>
       <guid isPermaLink="false">urn:prompt-collection:first-time-user-qa</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You are about to launch a web app and want realistic first-run friction found, fixed and proven fixed.&lt;/p&gt;&lt;pre&gt;&amp;lt;role&amp;gt;
@@ -409,7 +409,7 @@ qa/first-users/report.md: what you couldn&amp;#x27;t test, a run-1 vs final scor
     </item>
     <item>
       <title>List every assumption as verified or guessed before fixing</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#list-verified-vs-guessed-assumptions</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#list-verified-vs-guessed-assumptions</link>
       <guid isPermaLink="false">urn:prompt-collection:list-verified-vs-guessed-assumptions</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;An agent is about to change code in a codebase it may not fully understand, and you want its guesses surfaced first.&lt;/p&gt;&lt;pre&gt;List every assumption you&amp;#x27;re making about this codebase. Mark each one verified (you read the actual code) or guessed (you inferred it, and say why). Propose your highest confidence surgical fix for each, but don&amp;#x27;t apply it yet. Stop and wait for my manual review.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kloss_xyz/status/2104088147739242660"&gt;@kloss_xyz&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -421,7 +421,7 @@ qa/first-users/report.md: what you couldn&amp;#x27;t test, a run-1 vs final scor
     </item>
     <item>
       <title>Measure, then make the app measurably faster</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#make-app-measurably-faster</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#make-app-measurably-faster</link>
       <guid isPermaLink="false">urn:prompt-collection:make-app-measurably-faster</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You want performance work driven by before/after measurements of one core flow, not guesses.&lt;/p&gt;&lt;pre&gt;/goal Make this app measurably faster.
@@ -447,7 +447,7 @@ Finish with a simple before/after report:
     </item>
     <item>
       <title>Review the apps linked to your Google account and suggest which to remove</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#review-google-linked-apps</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#review-google-linked-apps</link>
       <guid isPermaLink="false">urn:prompt-collection:review-google-linked-apps</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You have connected many apps to your Google account over the years and want an agent to suggest which to remove. Open the linked apps page in Chrome first and tell the agent the tab is open.&lt;/p&gt;&lt;pre&gt;I have a lot of linked apps and tbh i think a huge amount of them should not be linked. please review the list and suggest apps to remove in a numbered list
@@ -462,7 +462,7 @@ https://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.
     </item>
     <item>
       <title>Plan logging that can replay what the user experienced</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#plan-replayable-logging</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#plan-replayable-logging</link>
       <guid isPermaLink="false">urn:prompt-collection:plan-replayable-logging</guid>
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You want a program to produce logs good enough to later analyze for broken behavior and user friction.&lt;/p&gt;&lt;pre&gt;help me plan comprehensive logging such that we can replay what the user experienced, meaningful internal operations, and visible outcomes&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2114772499686998221"&gt;@kunchenguid&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -474,7 +474,7 @@ https://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.
     </item>
     <item>
       <title>Review your agent setup for guardrail gaps</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#review-agent-setup</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#review-agent-setup</link>
       <guid isPermaLink="false">urn:prompt-collection:review-agent-setup</guid>
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;You want a one-off review of your AGENTS.md, skills, hooks, permissions and MCP setup.&lt;/p&gt;&lt;pre&gt;Review my entire agent setup: AGENTS.md, CLAUDE.md, skills, commands, subagents, hooks, settings/permissions, and MCP servers. Check for gaps in guardrails and whether it follows current best practices for Fable 5.2.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -486,7 +486,7 @@ https://myaccount.google.com/linkedapps?continue=https%3A%2F%2Fmyaccount.google.
     </item>
     <item>
       <title>Check whether you load third-party JS that could be compromised</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#third-party-js-supply-chain-check</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#third-party-js-supply-chain-check</link>
       <guid isPermaLink="false">urn:prompt-collection:third-party-js-supply-chain-check</guid>
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A third-party script provider has been compromised and you want to know if your site is exposed to a similar attack.&lt;/p&gt;&lt;pre&gt;Read this incident: https://x.com/Scott_Helme/status/2122422157959471456
@@ -501,7 +501,7 @@ Do we load any third-party JS that would be susceptible to a similar attack (if 
     </item>
     <item>
       <title>Estimate what your Claude Code usage would cost on the API</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#claude-code-api-cost-estimate</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#claude-code-api-cost-estimate</link>
       <guid isPermaLink="false">urn:prompt-collection:claude-code-api-cost-estimate</guid>
       <pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;The user wants a local, offline-safe report of what their Claude Code sessions over a time frame would have cost at Anthropic&amp;#x27;s API list prices, with an HTML summary card.&lt;/p&gt;&lt;pre&gt;Time frame: 30d
@@ -583,7 +583,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
     </item>
     <item>
       <title>Find and fix happy-path debt in your app</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#fix-happy-path-debt</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#fix-happy-path-debt</link>
       <guid isPermaLink="false">urn:prompt-collection:fix-happy-path-debt</guid>
       <pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;An app works in the demo but breaks on slow loads, failures, empty lists, long text, or narrow screens.&lt;/p&gt;&lt;pre&gt;Find all the happy-path debt in my app: every screen that only works when data loads fast, nothing fails, lists aren&amp;#x27;t empty, text is short, and the screen is wide. Fix missing states and layout breaks, one component at a time, without changing my design and without breaking anything. Summarize by file: what happened before vs. how it works now.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2120864199324889469"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -596,7 +596,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
     </item>
     <item>
       <title>Fresh-eyes due-diligence audit of a live domain</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#fresh-eyes-domain-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#fresh-eyes-domain-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:fresh-eyes-domain-audit</guid>
       <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;The user wants an outside-in check of a live site or product, run from an empty folder with no repo access, to catch broken links, stale subdomains, and sloppy public pages.&lt;/p&gt;&lt;pre&gt;Visit [domain] like a strict enterprise buyer doing due diligence. Check DNS records, every footer/legal link, public JS bundles, and onboarding pages, and give me a checklist of anything broken or sloppy.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/illyism/status/2121301002490192378"&gt;@illyism&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -609,7 +609,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
     </item>
     <item>
       <title>Browser testing across widths, touch, and slow networks</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#browser-testing</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#browser-testing</link>
       <guid isPermaLink="false">urn:prompt-collection:browser-testing</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A web interface needs verification across screen sizes, touch input, and slow connections.&lt;/p&gt;&lt;pre&gt;Test this in the browser at different widths, with touch emulation, and on a throttled 3G connection. Fix anything that looks broken or feels off. Save a before and after screenshot for every fix and send me a summary afterwards.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/emilkowalski/status/2120508498236596597"&gt;@emilkowalski&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -622,7 +622,7 @@ the API, nothing more.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Zaz
     </item>
     <item>
       <title>Delete, simplify, optimize, automate</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#delete-and-simplify</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#delete-and-simplify</link>
       <guid isPermaLink="false">urn:prompt-collection:delete-and-simplify</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Complexity or weak assumptions make a codebase harder to maintain.&lt;/p&gt;&lt;pre&gt;I want you to audit our codebase, is anything here unnecessary, overly complicated in our current setup, or based on weak assumptions? Challenge them.
@@ -641,7 +641,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Document state machines and fix reachable bugs</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#document-state-machines</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#document-state-machines</link>
       <guid isPermaLink="false">urn:prompt-collection:document-state-machines</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Reachable invalid states need evidence, documentation, and regression-tested fixes.&lt;/p&gt;&lt;pre&gt;Find the app’s explicit and implicit state machines and document their states, invariants, and transition tables in one file. Identify invalid states or transitions the code can actually reach, with evidence, including through retries and concurrency. Prioritize confirmed bugs by impact, group related fixes into issues, then fix them with regression tests and keep the document updated.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/trevin/status/2118690987153186845"&gt;@trevin&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -653,7 +653,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>End-to-end proof</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#e2e-proof</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#e2e-proof</link>
       <guid isPermaLink="false">urn:prompt-collection:e2e-proof</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A completed feature needs end-to-end evidence that it works.&lt;/p&gt;&lt;pre&gt;test this e2e &amp;amp; give me irrefutable proof it works&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/thorstenball/status/2102623376196194763"&gt;@thorstenball&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -664,7 +664,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Find implicit state machines</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#find-state-machines</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#find-state-machines</link>
       <guid isPermaLink="false">urn:prompt-collection:find-state-machines</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;An app has behavior that depends on changing state and events.&lt;/p&gt;&lt;pre&gt;find all of the implicit state machines in my app&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/steveruizok/status/2116552016218710389"&gt;@steveruizok&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -675,7 +675,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Full project audit</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#full-project-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#full-project-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:full-project-audit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A project needs a broad review of correctness, consistency, and unnecessary work.&lt;/p&gt;&lt;pre&gt;Read this entire project and find everything that&amp;#x27;s broken, inconsistent, inefficient, or no longer needed. Fix what you&amp;#x27;re sure about and list the rest for me to review.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/chenchengpro/status/2120040764243894547"&gt;@chenchengpro&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -687,7 +687,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Promote hot JSONB keys to columns</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#jsonb-key-to-column</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#jsonb-key-to-column</link>
       <guid isPermaLink="false">urn:prompt-collection:jsonb-key-to-column</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A hot path repeatedly reads a single key from a large JSONB value.&lt;/p&gt;&lt;pre&gt;find hot-path reads of a single key from a large jsonb column and promote that key to a real column&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (unverified)&lt;/p&gt;</description>
@@ -699,7 +699,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Remove unused macOS software and permissions</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#macos-cleanup</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#macos-cleanup</link>
       <guid isPermaLink="false">urn:prompt-collection:macos-cleanup</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;The user explicitly wants to review and remove unused macOS software and permissions.&lt;/p&gt;&lt;pre&gt;remove all the apps, tcc/permission grants, login items, daemons, kexts, browser exts, homebrew packages, etc., that I don&amp;#x27;t need and use.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/sqs/status/2120113139996086409"&gt;@sqs&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -711,7 +711,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Make useful state machines explicit</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#make-state-machines-explicit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#make-state-machines-explicit</link>
       <guid isPermaLink="false">urn:prompt-collection:make-state-machines-explicit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Implicit state transitions may benefit from explicit modeling; the prompt references lavish-axi.&lt;/p&gt;&lt;pre&gt;audit and find implicit state machines in this &amp;lt;codebase/directory/module&amp;gt; that would drive concrete improvements if made explicit. explain before/after of each one and discuss with me in lavish-axi. fewer words, big visuals&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kunchenguid/status/2119924895060795492"&gt;@kunchenguid&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -722,7 +722,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Map the codebase into ARCHITECTURE.md</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#map-codebase-architecture</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#map-codebase-architecture</link>
       <guid isPermaLink="false">urn:prompt-collection:map-codebase-architecture</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A project has grown messy and you want a written map of its structure, data flow, and riskiest files.&lt;/p&gt;&lt;pre&gt;Map this codebase for me. Show the folder structure, what each main file does, how data flows from UI to database, and the 5 riskiest files to touch. Write it all to ARCHITECTURE.md.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/mdjunaidap/status/2119844974019973308"&gt;@mdjunaidap&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -735,7 +735,7 @@ This product is being used by thousands of customers, do not cut any corners.&lt
     </item>
     <item>
       <title>Recover the minimal semantic model</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#minimal-semantic-model</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#minimal-semantic-model</link>
       <guid isPermaLink="false">urn:prompt-collection:minimal-semantic-model</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Async behavior, duplicated state, or refactors need semantic analysis.&lt;/p&gt;&lt;pre&gt;Recover my program&amp;#x27;s minimal semantic model.
@@ -759,7 +759,7 @@ Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;q
     </item>
     <item>
       <title>Compute regexes at module level</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#module-level-regexes</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#module-level-regexes</link>
       <guid isPermaLink="false">urn:prompt-collection:module-level-regexes</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Regexes are repeatedly constructed in functions or loops.&lt;/p&gt;&lt;pre&gt;compute all regexes at the module level instead of inside functions and loops&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (unverified)&lt;/p&gt;</description>
@@ -770,7 +770,7 @@ Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;q
     </item>
     <item>
       <title>Remove unnecessary sequential async calls</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#parallel-async-calls</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#parallel-async-calls</link>
       <guid isPermaLink="false">urn:prompt-collection:parallel-async-calls</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Independent async operations appear to run sequentially on hot paths.&lt;/p&gt;&lt;pre&gt;do a deep scan of all hot paths and fix any unnecessary sequential async function calls&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117099613022732412"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -782,7 +782,7 @@ Last, split my refactors into &amp;quot;provably equivalent&amp;quot; and &amp;q
     </item>
     <item>
       <title>Product experience coverage audit (summary)</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#product-experience-coverage-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#product-experience-coverage-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:product-experience-coverage-audit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Editorial summary; follow the source link for the full prompt.&lt;/p&gt;&lt;p&gt;You need a product-wide UX review with an actionable handoff for product, design, and engineering.&lt;/p&gt;&lt;pre&gt;Assess the current product without modifying its repository. Establish its users, goals, and constraints from workspace evidence. Track coverage of screens, states, and complete journeys, combining code inspection with safe runtime observation. Focus on desktop and tablet, including keyboard, touch, accessibility, and recovery behavior; phone optimization is generally excluded.
@@ -800,7 +800,7 @@ This is an editorial summary. Read the linked gist for the complete workflow.&lt
     </item>
     <item>
       <title>Audit and prune old AI agent transcripts on macOS</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#prune-old-agent-transcripts</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#prune-old-agent-transcripts</link>
       <guid isPermaLink="false">urn:prompt-collection:prune-old-agent-transcripts</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;The user wants to review and remove old coding-agent transcripts, session logs, and leftover editor folders on a Mac.&lt;/p&gt;&lt;pre&gt;Audit my Mac for AI agent transcripts (Claude, Codex, Cursor, Grok), SQLite session logs, and leftover editor dotfolders older than 30 days. Show me the sizes first, delete everything &amp;gt;30 days old, and add a daily 30-day auto-prune check.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/illyism/status/2117103631564689691"&gt;@illyism&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -812,7 +812,7 @@ This is an editorial summary. Read the linked gist for the complete workflow.&lt
     </item>
     <item>
       <title>Read-only codebase simplification audit (summary)</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#read-only-codebase-simplification-audit</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#read-only-codebase-simplification-audit</link>
       <guid isPermaLink="false">urn:prompt-collection:read-only-codebase-simplification-audit</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Editorial summary; follow the source link for the full prompt.&lt;/p&gt;&lt;p&gt;You want evidence-backed simplification recommendations before authorizing code changes.&lt;/p&gt;&lt;pre&gt;Review the repository without changing it. Map its subsystems and boundaries, then examine each for worthwhile improvements to data structures, state representation, algorithms, control flow, and ownership. Use bounded, independent reviews where available. Keep a shared coverage record, including explicit decisions that no change is warranted.
@@ -829,7 +829,7 @@ This is an editorial summary. Read the linked gist for the complete workflow.&lt
     </item>
     <item>
       <title>Security audit, remediation, and dashboard</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#security-audit-dashboard</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#security-audit-dashboard</link>
       <guid isPermaLink="false">urn:prompt-collection:security-audit-dashboard</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;A project needs a security audit and evidence of remediation; the prompt references an external Cloudflare skill.&lt;/p&gt;&lt;pre&gt;Install Cloudflare’s security-audit skill globally and invoke its full audit workflow on this project.
@@ -856,7 +856,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
     </item>
     <item>
       <title>Select only the database fields you need</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#select-database-fields</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#select-database-fields</link>
       <guid isPermaLink="false">urn:prompt-collection:select-database-fields</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Database queries fetch whole rows while using only a few fields.&lt;/p&gt;&lt;pre&gt;find every place we load a whole row from the database just to read a couple of fields. instead, select only what we need&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -867,7 +867,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
     </item>
     <item>
       <title>Simplicity across UX, DX, and AX</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#simple-ux-dx-ax</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#simple-ux-dx-ax</link>
       <guid isPermaLink="false">urn:prompt-collection:simple-ux-dx-ax</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;An interface or implementation feels cluttered or unnecessarily complex.&lt;/p&gt;&lt;pre&gt;I want this to be as perfect as Linear&amp;#x27;s website or Apple Notes: simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything.&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/Voxyz_ai/status/2117281830449942825"&gt;@Voxyz_ai&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -880,7 +880,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
     </item>
     <item>
       <title>Single source of truth audit</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#single-source-of-truth</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#single-source-of-truth</link>
       <guid isPermaLink="false">urn:prompt-collection:single-source-of-truth</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;The same fact or configuration may be maintained in multiple places.&lt;/p&gt;&lt;pre&gt;single source of truth audit&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/kitlangton/status/2120341112959455559"&gt;@kitlangton&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -892,7 +892,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
     </item>
     <item>
       <title>Remove unnecessary URL parsing</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#unnecessary-url-parsing</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#unnecessary-url-parsing</link>
       <guid isPermaLink="false">urn:prompt-collection:unnecessary-url-parsing</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Repeated or redundant URL parsing may add unnecessary work.&lt;/p&gt;&lt;pre&gt;remove all unnecessary `new URL()` parsing&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/_dylanga/status/2117400205314421058"&gt;@_dylanga&lt;/a&gt; (verified)&lt;/p&gt;</description>
@@ -903,7 +903,7 @@ Base posture assessments on evidence and clearly label coverage gaps.&lt;/pre&gt
     </item>
     <item>
       <title>Review last week's sessions and suggest improvements</title>
-      <link>https://github.com/tomquirk/prompt-collectooor/blob/main/PROMPTS.md#weekly-session-review</link>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#weekly-session-review</link>
       <guid isPermaLink="false">urn:prompt-collection:weekly-session-review</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <description>&lt;p&gt;Recent coding sessions are available and the user wants to identify ways to improve their workflow.&lt;/p&gt;&lt;pre&gt;look at last weeks sessions and suggest improvements&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/nateberkopec/status/2114842635743674790"&gt;@nateberkopec&lt;/a&gt; (verified)&lt;/p&gt;</description>

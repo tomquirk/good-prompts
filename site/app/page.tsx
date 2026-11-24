@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const SETUP_PROMPT = readFileSync(join(process.cwd(), "..", "setup-prompt.md"), "utf8").trim();
 // The bare install command, lifted from the setup prompt so the two never drift.
 const { command: INSTALL } = SETUP_PROMPT.match(/`(?<command>npx skills add [^`]+)`/u)?.groups ?? {};
-const SKILL_URL = "https://github.com/tomquirk/prompt-collectooor/blob/main/skills/daily-prompt/SKILL.md";
+const SKILL_URL = "https://github.com/tomquirk/good-prompts/blob/main/skills/daily-prompt/SKILL.md";
 
 const link = "transition-colors hover:text-foreground";
 const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });

@@ -1,11 +1,11 @@
 ---
 name: publish-prompts
-description: Take candidate prompts (for example from the find-prompts skill) and add the good ones to the prompt-collectooor collection through a pull request that merges cleanly.
+description: Take candidate prompts (for example from the find-prompts skill) and add the good ones to the Good Prompts collection through a pull request that merges cleanly.
 ---
 
-# Publish prompts to prompt-collectooor
+# Publish prompts to Good Prompts
 
-Add new prompts to `prompts.json` in https://github.com/tomquirk/prompt-collectooor through a pull request. Run [`find-prompts`](../find-prompts/SKILL.md) first to get candidates, or start from a single post someone wants added.
+Add new prompts to `prompts.json` in https://github.com/tomquirk/good-prompts through a pull request. Run [`find-prompts`](../find-prompts/SKILL.md) first to get candidates, or start from a single post someone wants added.
 
 ## Before you add anything
 

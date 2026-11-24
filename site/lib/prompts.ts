@@ -68,9 +68,9 @@ export function tweetId(url: string | null): string | null {
   return id ?? null;
 }
 
-export const REPO_URL = "https://github.com/tomquirk/prompt-collectooor";
+export const REPO_URL = "https://github.com/tomquirk/good-prompts";
 // The daily-prompt skill's listing on skills.sh, Vercel's agent skills directory.
-export const SKILLS_SH_URL = "https://skills.sh/tomquirk/prompt-collectooor/daily-prompt";
+export const SKILLS_SH_URL = "https://skills.sh/tomquirk/good-prompts/daily-prompt";
 // Opens prompts.json in GitHub's web editor, which forks and starts a PR.
 export const EDIT_URL = `${REPO_URL}/edit/main/prompts.json`;
 

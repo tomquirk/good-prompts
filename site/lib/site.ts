@@ -1,7 +1,7 @@
 import process from "node:process";
 import type { Prompt } from "@/lib/prompts";
 
-export const SITE_NAME = "prompt-collectooor";
+export const SITE_NAME = "Good Prompts";
 
 export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
