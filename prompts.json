@@ -931,6 +931,26 @@
           }
         ]
       }
+    },
+    {
+      "id": "median-agent-cost-per-task-chart",
+      "title": "Chart the median dollar cost per agent task over time",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "sessions",
+        "cost",
+        "metrics",
+        "maintainability"
+      ],
+      "use_when": "Your codebase is growing fast with agents doing most of the work and you want to see whether each task is getting more expensive.",
+      "scope": "project",
+      "added_on": "2026-11-26",
+      "prompt": "Look at my past month's agent sessions' usage stats in this codebase to calculate a 7d sliding window median $ cost per task and report it as a chart.",
+      "source": {
+        "url": "https://x.com/kunchenguid/status/2125378087689068798",
+        "author": "@kunchenguid",
+        "status": "verified"
+      }
     }
   ]
 }
