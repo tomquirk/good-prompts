@@ -931,6 +931,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "mcp-tasks-elicitation-audit",
+      "title": "Audit your MCP servers for long-running tasks and unconfirmed destructive actions",
+      "category": "Agent workflows and retrospectives",
+      "tags": [
+        "mcp",
+        "claude-code",
+        "audit",
+        "safety"
+      ],
+      "use_when": "You want to know which connected MCP servers or your own MCP code still run irreversible actions without asking, or block on long-running tools instead of returning tasks.",
+      "scope": "project",
+      "added_on": "2026-11-27",
+      "prompt": "Read the MCP tasks and elicitation sections of this doc: https://code.claude.com/docs/en/mcp\n\nThen check the MCP servers I'm connected to, and any MCP server code in this repo (say so if there isn't any). Find three kinds of problems:\n1. Tools that run for minutes (builds, test runs, exports, research): for my own code, tell me how to make them return a task; for other people's servers, tell me whether they support tasks.\n2. Tools that fill in missing parameters on their own, or do something irreversible without confirming: they should ask me first through an elicitation. If an Elicitation hook I've set up would confirm these for me automatically, flag that too.\n3. Anything in my setup that keeps tasks from working: go through the conditions the doc lists one by one, including version, environment variables, third-party providers, subagents and claude -p.\n\nFor each problem, name the tool or setting, what happens now, and the smallest change.\n\nShow me your recommendations first. Don't change anything yet.",
+      "source": {
+        "url": "https://x.com/Voxyz_ai/status/2125302499548750250",
+        "author": "@Voxyz_ai",
+        "status": "verified",
+        "related_urls": [
+          {
+            "url": "https://claude.com/blog/skills-over-mcp-tasks-and-more",
+            "label": "Anthropic MCP update post",
+            "status": "unverified"
+          }
+        ]
+      }
     }
   ]
 }
