@@ -529,6 +529,18 @@ You want an agent to autonomously drive the app's latency, payload size and lag 
 
 Source: [@PatrickToulme](https://x.com/PatrickToulme/status/2124562528738988251) (verified)
 
+<a id="find-accidentally-quadratic-code"></a>
+
+### Find accidentally quadratic code
+
+An app slows down as data grows and you suspect nested loops or repeated scans hiding O(n²) work.
+
+```text
+find all the accidentally quadratic code in my app
+```
+
+Source: [@gunnarmorling](https://x.com/gunnarmorling/status/2126046184129396925) (verified)
+
 ## Security and system cleanup
 
 <a id="security-audit-dashboard"></a>

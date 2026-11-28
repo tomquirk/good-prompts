@@ -7,6 +7,39 @@
   "language": "en",
   "items": [
     {
+      "id": "urn:prompt-collection:find-accidentally-quadratic-code",
+      "url": "https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#find-accidentally-quadratic-code",
+      "title": "Find accidentally quadratic code",
+      "content_text": "find all the accidentally quadratic code in my app",
+      "summary": "An app slows down as data grows and you suspect nested loops or repeated scans hiding O(n²) work.",
+      "date_published": "2026-11-28T00:00:00+00:00",
+      "tags": [
+        "Performance",
+        "performance",
+        "complexity",
+        "algorithms"
+      ],
+      "_prompt": {
+        "id": "find-accidentally-quadratic-code",
+        "category": "Performance",
+        "use_when": "An app slows down as data grows and you suspect nested loops or repeated scans hiding O(n²) work.",
+        "scope": "project",
+        "added_on": "2026-11-28",
+        "source": {
+          "url": "https://x.com/gunnarmorling/status/2126046184129396925",
+          "author": "@gunnarmorling",
+          "status": "verified"
+        },
+        "text_kind": "collected"
+      },
+      "external_url": "https://x.com/gunnarmorling/status/2126046184129396925",
+      "authors": [
+        {
+          "name": "@gunnarmorling"
+        }
+      ]
+    },
+    {
       "id": "urn:prompt-collection:audit-app-buttons",
       "url": "https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-app-buttons",
       "title": "Audit your app's buttons for icons, chevrons and ellipses",

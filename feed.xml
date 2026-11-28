@@ -7,6 +7,17 @@
     <language>en</language>
     <atom:link href="https://raw.githubusercontent.com/tomquirk/good-prompts/main/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Find accidentally quadratic code</title>
+      <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#find-accidentally-quadratic-code</link>
+      <guid isPermaLink="false">urn:prompt-collection:find-accidentally-quadratic-code</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 GMT</pubDate>
+      <description>&lt;p&gt;An app slows down as data grows and you suspect nested loops or repeated scans hiding O(n²) work.&lt;/p&gt;&lt;pre&gt;find all the accidentally quadratic code in my app&lt;/pre&gt;&lt;p&gt;Source: &lt;a href="https://x.com/gunnarmorling/status/2126046184129396925"&gt;@gunnarmorling&lt;/a&gt; (verified)&lt;/p&gt;</description>
+      <category>Performance</category>
+      <category>performance</category>
+      <category>complexity</category>
+      <category>algorithms</category>
+    </item>
+    <item>
       <title>Audit your app's buttons for icons, chevrons and ellipses</title>
       <link>https://github.com/tomquirk/good-prompts/blob/main/PROMPTS.md#audit-app-buttons</link>
       <guid isPermaLink="false">urn:prompt-collection:audit-app-buttons</guid>
